@@ -20,6 +20,16 @@ button {
   font: inherit;
 }
 
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 18px;
+  background: #f8f7f4;
+  border-bottom: 1px solid rgba(14, 22, 17, 0.08);
+}
+
 .navbar {
   display: flex;
   align-items: center;
