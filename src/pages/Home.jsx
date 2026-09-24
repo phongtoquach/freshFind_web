@@ -5,12 +5,14 @@ import { useEffect, useContext, useState, useRef } from 'react';
 
 //import { websiteName } from "../config/app_configs";
 
-//import ProductContext from "../context/ProductContext";
+import AppContext from "../context/AppContext";
 //import CartContext from "../context/CartContext";
 
 import HomeMarketSearchBox from "../components/HomeMarketSearchBox";
 
 function Home() {
+    const { refreshUserLocation } = useContext(AppContext);
+
     console.log("[Home] Vừa vào hàm component Home !");
 
     useEffect(() => {
@@ -21,6 +23,9 @@ function Home() {
             console.log("[Home] đang chạy hàm cleanup của useEffect() !");
         };
     });
+
+    
+
 
     return (
         <>
