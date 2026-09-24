@@ -1,0 +1,87 @@
+.Navbar_Season {
+  padding: 12px 24px;
+}
+
+.ul_Season_list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.season_text {
+  color: black;
+  font-size: 18px;
+}
+
+.btn_seansons {
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.Season_Background {
+  position: relative;
+
+  background-image: url("/images/Spring_img.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Lớp phủ mờ (Overlay) */
+.Season_Background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.Choice_Season_Container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 40px 24px;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.Choice_Season_Content {
+  position: relative;
+  z-index: 2;
+
+  color: #fff;
+  width: 370px;
+}
+
+.Choice_Season_Duration {
+  color: #fff;
+  margin: 0;
+  font-size: 14px;
+}
+
+.Choice_Season_Header {
+  color: #fff;
+  margin: 15px 0;
+  font-size: 36px;
+}
+
+.Choice_Season_Text {
+  color: #fff;
+  margin: 0;
+}
+
+.btn_seansons.Spring .season_text {
+  color: #fff;
+}
+
+.btn_seansons.Spring {
+  background-color: aqua;
+  border-radius: 7px;
+}
