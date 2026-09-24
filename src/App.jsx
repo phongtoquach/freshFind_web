@@ -1,21 +1,23 @@
-import Navbar from './components/NavBar.jsx';
+import Header from './components/Header.jsx';
 import Home from './Pages/Home.jsx';
 import Footer from './components/Footer.jsx';
 import MarketPage from './Pages/MarketPage.jsx';
 import ProduceGuide from './Pages/ProduceGuide.jsx';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
+    <>
+      <Header />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/markets" element={<MarketPage />} />
         <Route path="/produce-guide" element={<ProduceGuide />} />
       </Routes>
+
       <Footer />
-    </BrowserRouter>
+    </>
   );
 }
 
