@@ -241,6 +241,13 @@ footer {
   border-top: 1px solid #e6e6e6;
 }
 
+
+.category-buttons{
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-direction: column;
+}
 @media (max-width: 768px) {
   .produce-guide-page {
     flex-direction: column;
