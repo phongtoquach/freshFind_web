@@ -5,7 +5,7 @@
         "slug": "apple",
         "categoryId": 1,
         "description": "Crisp and juicy apples picked at peak ripeness from local orchards. Perfect for snacking, baking, or making fresh cider.",
-        "image": "/images/products/apple.jpg",
+        "image": "public/images/photo-1597821332032-0f2b6f2e8c59.avif",
         "seasonIds": [2, 3]
     },
     {
