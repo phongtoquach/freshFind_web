@@ -77,11 +77,36 @@
   margin: 0;
 }
 
-.btn_seansons.Spring .season_text {
-  color: #fff;
+.Main_Container {
+  max-width: 1400px;
+  margin: auto;
+  padding-top: 32px;
 }
 
-.btn_seansons.Spring {
-  background-color: aqua;
-  border-radius: 7px;
+.Container_div {
+  display: flex;
+  gap: 10px;
+}
+
+.Primary_bar {
+  width: 70%;
+}
+
+.Search_bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.Input_Search {
+  padding: 6px 12px;
+  flex: 1;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.Second_bar {
+  width: 30%;
+  background-color: antiquewhite;
+  height: 100px;
 }

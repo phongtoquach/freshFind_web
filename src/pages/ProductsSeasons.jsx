@@ -2,7 +2,7 @@ import "../assets/css/ProductsSeasons.css";
 function ProductsSeasons() {
   return (
     <div className="Container_Product">
-      <div className="Main_Container">
+      <div className="Navbar_Container">
         <div className="Navbar_Season">
           <ul className="ul_Season_list">
             <li className="li_Seasob_item">
@@ -11,17 +11,17 @@ function ProductsSeasons() {
               </button>
             </li>
             <li className="li_Seasob_item">
-              <button className="btn_seansons">
+              <button className="btn_seansons ">
                 <span className="season_text">Summer</span>
               </button>
             </li>
             <li className="li_Seasob_item">
-              <button className="btn_seansons">
+              <button className="btn_seansons ">
                 <span className="season_text">Autumn</span>
               </button>
             </li>
             <li className="li_Seasob_item">
-              <button className="btn_seansons">
+              <button className="btn_seansons ">
                 <span className="season_text">Winter</span>
               </button>
             </li>
@@ -41,6 +41,18 @@ function ProductsSeasons() {
               </p>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="Main_Container">
+        <div className="Container_div">
+          <div className="Primary_bar">
+            <div className="Search_bar">
+              <h3 className="header_text">Summer products</h3>
+              <input className="Input_Search" type="text" />
+            </div>
+          </div>
+          <div className="Second_bar"></div>
         </div>
       </div>
     </div>
