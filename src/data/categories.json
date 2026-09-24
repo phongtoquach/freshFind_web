@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Fruits",
+        "slug": "fruits",
+        "icon": "apple",
+        "description": "Fresh seasonal fruits from local farms"
+    },
+    {
+        "id": 2,
+        "name": "Vegetables",
+        "slug": "vegetables",
+        "icon": "carrot",
+        "description": "Locally grown vegetables and greens"
+    },
+    {
+        "id": 3,
+        "name": "Herbs",
+        "slug": "herbs",
+        "icon": "leaf",
+        "description": "Fresh herbs and aromatics"
+    },
+    {
+        "id": 4,
+        "name": "Dairy",
+        "slug": "dairy",
+        "icon": "milk",
+        "description": "Farm-fresh dairy products"
+    },
+    {
+        "id": 5,
+        "name": "Grains",
+        "slug": "grains",
+        "icon": "wheat",
+        "description": "Artisan breads, cereals, and grains"
+    },
+    {
+        "id": 6,
+        "name": "Other",
+        "slug": "other",
+        "icon": "package",
+        "description": "Honey, preserves, and specialty items"
+    }
+]
