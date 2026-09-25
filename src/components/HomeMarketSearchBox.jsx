@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-//import ProductContext from "../context/ProductContext";
+import AppContext from "../context/AppContext";
+
+import { getAllCategories } from "../services/categoryService";
 
 function HomeMarketSearchBox() {
+
+    const { setUserLocation } = useContext(AppContext);
 
     console.log("[HomeMarketSearchBox] Vừa vào hàm component HomeMarketSearchBox !");
 
@@ -18,52 +22,64 @@ function HomeMarketSearchBox() {
 
     const navigate = useNavigate();
 
+    const productCatesData = getAllCategories();
+    console.log("Data cua productCatesData : ");
+    console.log(productCatesData);
+
     const [areaName, setAreaName] = useState("");
-    const [produceName, setProduceName] = useState("");
-    const [weekDay, setWeekDay] = useState("");
+    const [productCategoryId, setProductCategoryId] = useState("");
+    const [daysOfWeek, setDaysOfWeek] = useState([]);
+
+    console.log("value hien tai cua bien useState daysOfWeek :");
+    console.log(daysOfWeek);
+
+    function handleSelectDaysOfWeek(event) {
+        const selectedDaysOfWeek = Array.from(event.target.selectedOptions).map(option => option.value);
+
+        console.log("[HomeMarketSearchBox - handleSelectDaysOfWeek] Data cua selectedDaysOfWeek :");
+        console.log(selectedDaysOfWeek);
+            
+        setDaysOfWeek(selectedDaysOfWeek);
+    }
 
     function handleSubmitMarketSearchForm(event) {
         event.preventDefault();
         console.log("[handleSubmitMarketSearchForm] Calling function !");
 
-        let areaNameStr = areaName.trim();
-        let produceNameStr = produceName.trim();
-        let weekDayStr = weekDay.trim();
+        // convert daysOfWeek to string sperated by comma
+        let daysOfWeekStr = "";
+        if (daysOfWeek.length > 0) {
+            daysOfWeekStr = daysOfWeek.join(",");
+        }
 
-        navigate("/markets?area=" + areaNameStr + "&produce=" + produceNameStr + "&weekDay=" + weekDayStr);
+        setUserLocation(undefined);
+
+        navigate("/markets?produceCateId=" + productCategoryId + "&daysOfWeek=" + daysOfWeekStr);
     }
    
     return (
         <>
             <form className="market-search home-market-search" onSubmit={handleSubmitMarketSearchForm}>
                 <div className="market-search-grid">
+                    
                     <div className="market-field">
-                        <label htmlFor="txtAreName">Area</label>
-                        <input id="txtAreName" type="text" value={areaName} onChange={(event) => setAreaName(event.target.value)} placeholder="Downtown"/>
-                    </div>
-
-                    <div className="market-field">
-                        <label htmlFor="txtProduceName">Produce</label>
-                        <input id="txtProduceName" type="text" value={produceName} onChange={(event) => setProduceName(event.target.value)} placeholder="Tomatoes"/>
-                        {/* <select id="home-produce">
-                            <option value="">All produce</option>
-                            <option value="Bakery">Bakery</option>
-                            <option value="Dairy">Dairy</option>
-                            <option value="Eggs">Eggs</option>
-                            <option value="Flowers">Flowers</option>
-                            <option value="Fruit">Fruit</option>
-                            <option value="Herbs">Herbs</option>
-                            <option value="Organic">Organic</option>
-                            <option value="Seafood">Seafood</option>
-                            <option value="Tropical">Tropical</option>
-                            <option value="Vegetables">Vegetables</option>
-                        </select> */}
+                        <label htmlFor="ddlProduceType">Produce Type</label>
+                        <select id="ddlProduceType" value={productCategoryId} onChange={(event) => setProductCategoryId(event.target.value)}>
+                            <option value="">All produce types</option>
+                            {productCatesData.map((cateItem) => (
+                                <option key={cateItem.id} value={cateItem.id}>
+                                    {cateItem.name}
+                                </option>
+                            ))}
+                        </select>
                     </div>
 
                     <div className="market-field">
                         <label htmlFor="ddlWeekDays">Day</label>
-                        <select id="ddlWeekDays" value={weekDay} onChange={(event) => setWeekDay(event.target.value)}>
-                            <option value="">Any day</option>
+                        <select id="ddlWeekDays" className="multiple-selectbox" value={daysOfWeek}
+                        onChange={(event) => handleSelectDaysOfWeek(event)}
+                        multiple={true} size="7">
+                            {/* <option value="">Any day</option> */}
                             <option value="mon">Monday</option>
                             <option value="tue">Tuesday</option>
                             <option value="wed">Wednesday</option>

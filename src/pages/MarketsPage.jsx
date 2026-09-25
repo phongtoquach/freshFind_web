@@ -37,7 +37,7 @@ function MarketsPage() {
     console.log(userLocation);
 
     if (userLocation === undefined) {
-        console.log("[MarketsPage] Đang lấy user current location !");
+        console.log("[MarketsPage] Đang lấy user current location ! Only show Loading text !");
         return (
             <div style={{ textAlign: "center" }}>Loading...</div>
         )

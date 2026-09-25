@@ -59,11 +59,20 @@ img { display: block; max-width: 100%; }
 
 .market-search { width: min(100%, 1040px); margin-inline: auto; padding: 28px 30px 18px; border: 1px solid rgba(255,255,255,.24); border-radius: 14px; color: var(--surface); background: rgba(25, 34, 28, .72); box-shadow: 0 20px 60px rgba(0,0,0,.28); backdrop-filter: blur(9px); }
 .market-search > h3 { margin-bottom: 18px; color: var(--surface); font-size: var(--font-lg); }
-.market-search-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1.3fr; align-items: end; gap: 16px; }
+.market-search-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* align-items: end; */
+  align-items: center;
+  gap: 16px;
+}
 .market-field label { display: block; margin-bottom: 7px; color: #f3f4f6; font-size: var(--font-xs); font-weight: 800; letter-spacing: .6px; text-transform: uppercase; }
+
 .market-field input, .market-field select { width: 100%; height: 50px; padding: 0 14px; border: 1px solid rgba(255,255,255,.32); border-radius: var(--radius-sm); outline: 0; color: var(--surface); background: rgba(255,255,255,.1); }
+.market-field select.multiple-selectbox { height: 150px; }
+
 .market-field input::placeholder { color: #d1d5db; }
-.market-field select option { color: var(--ink-800); background: var(--surface); }
+/* .market-field select option { color: var(--ink-800); background: var(--surface); } */
 .market-field input:focus, .market-field select:focus { border-color: #86efac; box-shadow: 0 0 0 3px rgba(34,197,94,.18); background: rgba(255,255,255,.16); }
 .market-submit { height: 50px; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0 18px; border: 0; border-radius: var(--radius-sm); color: var(--surface); background: var(--green-600); font-weight: 800; white-space: nowrap; }
 .market-submit:hover { background: var(--green-500); }
