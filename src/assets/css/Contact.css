@@ -116,8 +116,31 @@
   border-radius: 12px;
   border: 1px solid #ccc;
   padding: 6px 12px;
+  min-height: 40px;
 }
 
 .form_item ~ .form_item {
   margin-top: 20px;
+}
+
+select > option {
+  color: #aaa;
+}
+
+.form_btn_submit {
+  display: inline-block;
+  font-size: 18px;
+  color: #fff;
+  width: 100%;
+  line-height: 50px;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background-color: #a39591;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form_btn_submit:hover {
+  background-color: #4c4538;
 }

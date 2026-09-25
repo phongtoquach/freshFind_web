@@ -83,13 +83,46 @@ function ContactPage() {
                   <p className="form_label">
                     <label htmlFor="email">Reason for contact *</label>
                   </p>
-                  <input
+                  <select type="select" id="email" className="form_input">
+                    <option className="form_options" disabled value="0">
+                      Select a reason
+                    </option>
+                    <option className="form_options" value="1">
+                      List a new market
+                    </option>
+                    <option className="form_options" value="2">
+                      Update market infomation
+                    </option>
+                    <option className="form_options" value="3">
+                      Report an issue
+                    </option>
+                    <option className="form_options" value="4">
+                      Partneship inquiry
+                    </option>
+                    <option className="form_options" value="5">
+                      Press & media
+                    </option>
+                    <option className="form_options" value="5">
+                      General question
+                    </option>
+                  </select>
+                </div>
+
+                <div className="form_item">
+                  <p className="form_label">
+                    <label htmlFor="message">Message *</label>
+                  </p>
+                  <textarea
                     type="text"
-                    id="email"
+                    id="message"
                     className="form_input"
-                    placeholder="Select a reason"
+                    placeholder="Tell us about your market, question, or idea..."
+                    rows="5"
+                    cols="40"
                   />
                 </div>
+
+                <button className="form_btn_submit">Send Message</button>
               </form>
             </div>
           </div>
