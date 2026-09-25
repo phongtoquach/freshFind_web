@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "../assets/css/BookMarks.css";
 
-function BookMarks() {
+function Bookmarks() {
   return (
     <div className="section bookmarks-container-section">
       <div className="container">
@@ -31,7 +31,7 @@ function BookMarks() {
             <p className="saved_location">Downtown</p>
           </div>
 
-          <button className="">
+          <button className="saved_delete_btn">
             <img className="saved_delete_img" src="/images/delete.png" alt="" />
           </button>
         </div>
@@ -40,4 +40,4 @@ function BookMarks() {
   );
 }
 
-export default BookMarks;
+export default Bookmarks;

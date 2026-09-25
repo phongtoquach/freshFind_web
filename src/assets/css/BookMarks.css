@@ -8,7 +8,8 @@
 }
 
 .header_desc,
-.no_saved_desc {
+.no_saved_desc,
+.saved_location {
   color: #636e72;
 }
 
@@ -24,4 +25,38 @@
 
 .no_saved_container.none {
   display: none;
+}
+
+.saved_delete_btn {
+  display: inline-block;
+  padding: 12px;
+  border: none;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.saved_delete_btn:hover {
+  background-color: rgba(233, 114, 114, 0.5);
+}
+
+.saved_delete_img {
+  width: 16px;
+  height: 16px;
+}
+
+.saved_header {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.saved_container {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+  padding: 14px 18px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
