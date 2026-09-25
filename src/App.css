@@ -151,6 +151,23 @@
   line-height: 1.5;
 }
 
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.page-transition {
+  animation: fade-in 0.3s;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @media (max-width: 768px) {
   .produce-guide-page {
     flex-direction: column;
@@ -162,5 +179,9 @@
 
   .produce-card {
     width: 100%;
+  }
+
+  .footer-content {
+    justify-content: center;
   }
 }
