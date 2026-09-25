@@ -108,9 +108,22 @@ function MarketsGrid({ filters, sortType, limit, showMarketsCount }) {
                                                     <img src="/images/gps-icon.png" alt={market.location.address}/>
                                                     <span>{market.location.address}</span>
                                                 </p>
-                                                <p>
-
-                                                </p>
+                                                <div className="market-operating-schedule">
+                                                    <img src="/images/schedule-icon.png" alt="schedule"/>
+                                                    <div>
+                                                        {
+                                                            (!Array.isArray(market.schedule) || market.schedule.length == 0) ? "No schedule" : (
+                                                                market.schedule.map((weekDayItem) => {
+                                                                    if (weekDayItem.open === true) {
+                                                                        return (
+                                                                            <p>{weekDayItem.day} ({weekDayItem.hours.start} - {weekDayItem.hours.end})</p>
+                                                                        )
+                                                                    }
+                                                                })
+                                                            )
+                                                        }
+                                                    </div>
+                                                </div>
                                                 <div className="badge-list">
                                                     <span>Vegetables</span><span>Fruit</span><span>Herbs</span>
                                                 </div>

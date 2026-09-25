@@ -139,6 +139,13 @@ img { display: block; max-width: 100%; }
   padding-top: 5px;
 }
 
+.market-operating-schedule {
+  display: flex;
+  gap: 5px;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
 .badge-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
 .badge-list span { padding: 4px 9px; border-radius: 30px; color: var(--green-700); background: var(--green-50); font-size: .72rem; font-weight: 700; }
 .market-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 19px; padding-top: 15px; border-top: 1px solid var(--border); }
