@@ -134,7 +134,11 @@ img { display: block; max-width: 100%; }
 .market-area { display: flex; align-items: center; gap: 5px; color: var(--green-600); font-size: var(--font-xs); font-weight: 800; text-transform: uppercase; }
 .market-area .icon { width: 15px; height: 15px; }
 .market-card h3 { margin-top: 5px; color: var(--ink-950); font-size: var(--font-xl); }
-.market-address { margin-top: 4px; color: var(--ink-500); font-size: var(--font-sm); }
+.market-address { margin-top: 4px; color: var(--ink-500); font-size: var(--font-sm); display: flex; align-items: center; gap: 5px; }
+.market-address span {
+  padding-top: 5px;
+}
+
 .badge-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
 .badge-list span { padding: 4px 9px; border-radius: 30px; color: var(--green-700); background: var(--green-50); font-size: .72rem; font-weight: 700; }
 .market-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 19px; padding-top: 15px; border-top: 1px solid var(--border); }
