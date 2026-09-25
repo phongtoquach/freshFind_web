@@ -5,7 +5,6 @@ const AppContext = createContext();
 export function AppProvider({ children }) {
 
     console.log("[AppProvider] Vừa vào hàm provider : AppProvider !");
-    
 
     useEffect(() => {
         console.log("[AppProvider] đang chạy useEffect() test !");
@@ -18,39 +17,39 @@ export function AppProvider({ children }) {
 
     console.log("[AppProvider] AppProvider được render !");
 
-    const userLocationRef = useRef(null);
+    //const userLocationRef = useRef(null);
 
     const [userLocation, setUserLocation] = useState(undefined);
 
-    function refreshUserLocation() {
-        return new Promise((resolve, reject) => {
-            if (!navigator.geolocation) {
-                reject(new Error("Geolocation is not supported."));
-                return;
-            }
+    // function refreshUserLocation() {
+    //     return new Promise((resolve, reject) => {
+    //         if (!navigator.geolocation) {
+    //             reject(new Error("Geolocation is not supported."));
+    //             return;
+    //         }
 
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const location = {
-                        latitude: position.coords.latitude,
-                        longitude: position.coords.longitude,
-                    };
+    //         navigator.geolocation.getCurrentPosition(
+    //             (position) => {
+    //                 const location = {
+    //                     latitude: position.coords.latitude,
+    //                     longitude: position.coords.longitude,
+    //                 };
 
-                    userLocationRef.current = location;
+    //                 userLocationRef.current = location;
 
-                    resolve(location);
-                },
-                (error) => {
-                    reject(error);
-                },
-                {
-                    enableHighAccuracy: true,
-                    maximumAge: 60000,
-                    timeout: 5000,
-                }
-            );
-        });
-    }
+    //                 resolve(location);
+    //             },
+    //             (error) => {
+    //                 reject(error);
+    //             },
+    //             {
+    //                 enableHighAccuracy: true,
+    //                 maximumAge: 0,
+    //                 timeout: 2000,
+    //             }
+    //         );
+    //     });
+    // }
 
     // function getUserCurrentLocation() {
     //     return userLocationRef.current;
@@ -61,9 +60,7 @@ export function AppProvider({ children }) {
 
         navigator.geolocation.getCurrentPosition(
             (position) => {
-                console.log("[AppProvider - refreshUserCurrentLocation] Da lay duoc position !");
-                console.log("[AppProvider - refreshUserCurrentLocation] latitude : " + position.coords.latitude);
-                console.log("[AppProvider - refreshUserCurrentLocation] longitude : " + position.coords.longitude);
+                console.log("[AppProvider - refreshUserCurrentLocation] Da lay duoc position : " + position.coords.latitude + ", " + position.coords.longitude);
 
                 setUserLocation({
                     latitude: position.coords.latitude,
@@ -84,7 +81,7 @@ export function AppProvider({ children }) {
     }
 
     return (
-        <AppContext.Provider value={{ userLocation, refreshUserCurrentLocation }}>
+        <AppContext.Provider value={{ userLocation, setUserLocation, refreshUserCurrentLocation }}>
             {children}
         </AppContext.Provider>
     )

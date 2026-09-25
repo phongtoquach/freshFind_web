@@ -3,8 +3,6 @@ import { useEffect, useContext, useState, useRef } from 'react';
 
 //import "../assets/css/market_details_page.css";
 
-//import { websiteName } from "../config/app_configs";
-
 import AppContext from "../context/AppContext";
 //import CartContext from "../context/CartContext";
 
@@ -25,7 +23,7 @@ function Home() {
     });
 
     useEffect(() => {
-        console.log("[Home] đang chạy useEffect() gọi refreshUserCurrentLocation !");
+        console.log("[Home] đang chạy useEffect() gọi AppProvider.refreshUserCurrentLocation !");
 
         refreshUserCurrentLocation();
     }, []);
@@ -34,7 +32,7 @@ function Home() {
     console.log(userLocation);
 
     if (userLocation === undefined) {
-        console.log("[Home] Đang lấy user current location !");
+        console.log("[Home] Đang lấy user current location ! Only show loadng text !");
         return (
             <div style={{ textAlign: "center" }}>Loading...</div>
         )
