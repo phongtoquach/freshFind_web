@@ -186,3 +186,21 @@ select > option {
 .form_maps {
   margin-top: 30px;
 }
+
+.form_maps .map-wrapper {
+  height: 450px;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.form_maps .leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+.form_maps .leaflet-tile-pane {
+  transform: none;
+}
+.form_maps .leaflet-pane {
+  transition: none;
+  animation: none;
+}

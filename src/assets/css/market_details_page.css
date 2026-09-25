@@ -1,0 +1,136 @@
+.main_container {
+  padding-top: 50px;
+  display: flex;
+  gap: 20px;
+}
+
+.left_container,
+.right_container {
+  width: 50%;
+}
+
+.left_img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.right_header {
+  color: #2d3436;
+  font-size: 30px;
+  line-height: 40px;
+}
+
+.icons {
+  width: 16px;
+  height: 16px;
+}
+
+.right_address {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: #2d3436;
+  margin-top: 5px;
+}
+
+.status_badge {
+  font-weight: bold;
+  color: rgb(189, 7, 7);
+}
+
+.right_time_open,
+.product_available {
+  margin-top: 5px;
+}
+
+.right_desc_header {
+  margin-top: 10px;
+}
+
+.right_desc_content {
+  color: #677072;
+}
+
+.products_list {
+  list-style-type: none;
+  display: flex;
+  gap: 10px;
+}
+
+.product_item {
+  padding: 0 15px;
+  background-color: #e8f5e9;
+  color: #336144;
+  border-radius: 7px;
+  margin-top: 5px;
+}
+
+.time_open_week {
+  margin-top: 30px;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.time_open_week_container {
+  display: flex;
+  gap: 30px;
+}
+
+.time_open_week > h4 {
+  margin-bottom: 40px;
+}
+
+.time_open_week {
+  width: 30%;
+}
+
+.open_in_week_list {
+  list-style-type: none;
+}
+
+.open_in_week_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 14px;
+  position: relative;
+}
+
+.open_in_week_item ~ .open_in_week_item {
+  margin-top: 30px;
+}
+
+.open_in_week_item_status.closed {
+  color: rgb(189, 7, 7);
+}
+
+.open_in_week_item_status.open {
+  color: #3a7d44;
+}
+
+.open_in_week_item.actived::after {
+  content: "Today!";
+  font-weight: bold;
+  position: absolute;
+  font-size: 10px;
+  left: 60px;
+  top: -10px;
+  color: #fff;
+  padding: 4px 8px;
+  background-color: #3a7d44;
+  border-radius: 4px;
+}
+
+.open_in_week_item.actived {
+  background-color: #e8f5e9;
+  padding: 12px 24px;
+  border-radius: 10px;
+}
+
+.maps_container {
+  width: 70%;
+  margin-top: 30px;
+}

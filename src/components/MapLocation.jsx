@@ -44,8 +44,8 @@ function MapContent({ position, zoom, popupText }) {
       scrollWheelZoom={false}
     >
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
       />
       <Marker position={position}>
         <Popup>
@@ -65,7 +65,10 @@ function MapLocation({
   popupText = 'FreshFind Market',
 }) {
   return (
-    <div style={{ height, width: '100%', borderRadius: '12px', overflow: 'hidden' }}>
+    <div
+      style={{ height, width: '100%', borderRadius: '12px', overflow: 'hidden' }}
+      className="map-wrapper"
+    >
       <MapContent position={position} zoom={zoom} popupText={popupText} />
     </div>
   );
