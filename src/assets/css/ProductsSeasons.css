@@ -24,9 +24,8 @@
   transition: all 0.3s ease;
 }
 
-/* Style cho nút đang được chọn (Active) */
 .btn_season_active .season_text {
-  color: var(--green-600, #16a34a); /* Màu chủ đạo xanh lá */
+  color: var(--green-600, #16a34a);
   font-weight: 700;
 }
 
@@ -34,7 +33,6 @@
   position: relative;
 }
 
-/* Hiệu ứng gạch chân hoặc highlight nhẹ khi active */
 .btn_season_active::after {
   content: "";
   position: absolute;
@@ -50,14 +48,12 @@
 .Season_Background {
   position: relative;
   min-height: 242px;
-
-  background-image: url("/images/Spring_img.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  transition: background-image 0.5s ease-in-out;
 }
 
-/* Lớp phủ mờ (Overlay) */
 .Season_Background::before {
   content: "";
   position: absolute;
@@ -140,8 +136,6 @@
   margin-top: 20px;
 }
 
-/* ── Market List ─────────────────────────────────── */
-
 .ul_market_list {
   list-style-type: none;
   padding: 0;
@@ -174,6 +168,11 @@
 }
 
 .market_button:hover {
+  border-color: var(--green-500);
+  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.1);
+}
+
+.market_button_active {
   border-color: var(--green-500);
   box-shadow: 0 4px 16px rgba(34, 197, 94, 0.1);
 }

@@ -10,17 +10,15 @@
 //import ProductsGrid from "../components/ProductsGrid";
 
 function AboutPage() {
-    console.log("[AboutPage] Vừa vào hàm component AboutPage !");
-
-    return (
-        <>
-            <section className="section markets-container-section">
-                <div className="container">
-                    <h1>This is About page !</h1>
-                </div>
-            </section>
-        </>
-    )
+  return (
+    <>
+      <section className="section markets-container-section">
+        <div className="container">
+          <h1>This is About page !</h1>
+        </div>
+      </section>
+    </>
+  );
 }
 
 export default AboutPage;
