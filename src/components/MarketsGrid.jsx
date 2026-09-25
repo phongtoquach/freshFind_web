@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 
 import { getMarketsByFilters, sortMarketsByType } from "../services/marketService";
 
+import { truncateDescription } from "../utils/textUtils";
+import { getWeekDayDescByKey } from "../utils/dateTimeUtils";
+
 
 function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarketsCount }) {
 
@@ -98,6 +101,7 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
                                             </div>
                                             <div className="market-card-content">
                                                 <h3>{market.name} - {market.id}</h3>
+                                                <p className="market-desc">{ truncateDescription(market.description, 70) }</p>
                                                 <p className="market-area">
                                                     <img src="/images/location-mark.png" alt={market.location.area}/>
                                                     {market.location.area}
@@ -114,7 +118,7 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
                                                                 market.schedule.map((weekDayItem) => {
                                                                     if (weekDayItem.open === true) {
                                                                         return (
-                                                                            <p key={market.id + "-" + weekDayItem.day}>{weekDayItem.day} ({weekDayItem.hours.start} - {weekDayItem.hours.end})</p>
+                                                                            <p key={market.id + "-" + weekDayItem.day}>{getWeekDayDescByKey(weekDayItem.day)} ({weekDayItem.hours.start} - {weekDayItem.hours.end})</p>
                                                                         )
                                                                     }
                                                                 })

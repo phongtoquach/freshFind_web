@@ -555,6 +555,7 @@ img {
   font-size: var(--font-xs);
   font-weight: 800;
   text-transform: uppercase;
+  margin-top: 10px;
 }
 .market-area .icon {
   width: 15px;
