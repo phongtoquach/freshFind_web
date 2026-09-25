@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 function Header() {
 
-    const activeClass = ({ isActive }) => (isActive ? "link active" : "link");
+    const activeClass = ({ isActive }) => (isActive ? "nav-link active" : "nav-link");
 
     useEffect(() => {
         console.log("[Header] đang chạy useEffect() của component Header !");
