@@ -42,6 +42,7 @@ function ProduceGuide() {
           placeholder="Search produce..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          className="search"
         />
 
         <div className="listCategories">
@@ -75,19 +76,8 @@ function ProduceGuide() {
 
       <section className="content">
         <h1>Produce Guide</h1>
-
-        <div className="produce-grid">
-          {filteredCategories.map((category) => (
-            <article key={category.id} className="produce-card">
-              <div className="produce-icon">{category.icon}</div>
-              <h3>{category.name}</h3>
-              <p>{category.description}</p>
-            </article>
-          ))}
-        </div>
-
-        <div className="product-list">
-          <h2>Products</h2>
+        <h2>Discover what is available at local farmers markets. Browse by category or search for specific produce.</h2>
+        <div className="product">
           {displayedProducts.length > 0 ? (
             displayedProducts.map((product) => (
               <div key={product.id} className="product-item">
