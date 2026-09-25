@@ -106,23 +106,23 @@ function MarketsPage() {
         console.log("[handleChangeFilterInput] Đặt lịch set value của biến useState filtersFormData !");
         setFiltersFormData(currentFiltersFormData => {
             console.log("[handleChangeFilterInput - setFiltersFormData] attrKey : " + attrKey);
-            console.log("[handleChangeFilterInput] Data cua currentFiltersFormData :");
+            console.log("[handleChangeFilterInput - setFiltersFormData] Data cua currentFiltersFormData :");
 			console.log(currentFiltersFormData);
 
             let inputVal = "";
             if (attrKey === "daysOfWeek") {
                 inputVal = Array.from(e.target.selectedOptions).map(option => option.value);
 
-                console.log("[handleChangeFilterInput] Data cua daysOfWeek da duoc chon : ", inputVal);
+                console.log("[handleChangeFilterInput - setFiltersFormData] Data cua daysOfWeek da duoc chon : ", inputVal);
             }
             else {
                 inputVal = e.target.value;
-                console.log("[handleChangeFilterInput] inputVal cua input binh thuong : ", inputVal);
+                console.log("[handleChangeFilterInput - setFiltersFormData] inputVal cua input binh thuong : ", inputVal);
             }
             
 			let newFiltersFormData = { ...currentFiltersFormData, [attrKey]: inputVal };
 			
-			console.log("[handleChangeFilterInput] Data cua newFiltersFormData :");
+			console.log("[handleChangeFilterInput - setFiltersFormData] Data cua newFiltersFormData :");
 			console.log(newFiltersFormData);
 
 			return newFiltersFormData;

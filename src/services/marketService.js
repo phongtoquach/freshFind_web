@@ -54,6 +54,7 @@ export function getMarketsByFilters(filters) {
                         }
                         else {
                             console.log("[getMarketsByFilters] Market " + market.id + " - Product " + productObj.id + " KHONG thuoc category duoc search !");
+                            return false;
                         }
                     }
                     
@@ -72,6 +73,45 @@ export function getMarketsByFilters(filters) {
         }
         else {
             console.log("[getMarketsByFilters] productCateId = 0 ! Bo qua filter nay !");
+        }
+
+        // check finalFiltersData.daysOfWeek
+        if (Array.isArray(finalFiltersData.daysOfWeek) && finalFiltersData.daysOfWeek.length > 0) {
+            // check market nay co open vao 1 trong nhung ngay trong finalFiltersData.daysOfWeek hay ko
+            // chi can match 1 ngay trong finalFiltersData.daysOfWeek la MATCHED
+
+            // check market nay co schedule ko
+            if (!Array.isArray(market.schedule) || market.schedule.length == 0) {
+                console.log("[getMarketsByFilters] Market " + market.id + " khong co schedule ! NOT MATCHED voi filter daysOfWeek !");
+                return false;
+            }
+
+            const hasOpenDayMatchWithFilter = market.schedule.some(weekDayItem => {
+                console.log("[getMarketsByFilters] Market " + market.id + " - schedule item : ", weekDayItem);
+                if (weekDayItem.open === true) {
+                    console.log("[getMarketsByFilters] Market " + market.id + " - OPEN at weekday " + weekDayItem.day);
+                    if (!finalFiltersData.daysOfWeek.includes(weekDayItem.day)) {
+                        console.log("[getMarketsByFilters] Market " + market.id + " - Open weekday " + weekDayItem.day + " NOT MATCHED with filter daysOfWeek !");
+                        return false;
+                    }
+                    else {
+                        console.log("[getMarketsByFilters] Market " + market.id + " - Open weekday " + weekDayItem.day + " MATCHED with filter daysOfWeek !");
+                        return true;
+                    }
+                }
+                else {
+                    console.log("[getMarketsByFilters] Market " + market.id + " - CLOSE at weekday " + weekDayItem.day + " ! NOT MATCHED");
+                    return false;
+                }
+            });
+
+            if (hasOpenDayMatchWithFilter === false) {
+                console.log("[getMarketsByFilters] Market " + market.id + " : NOT MATCHED with filter daysOfWeek !");
+                return false;
+            }
+        }
+        else {
+            console.log("[getMarketsByFilters] daysOfWeek khong phai array hoac la empty array ! Bo qua filter nay !");
         }
 
         console.log("[getMarketsByFilters] Market " + market.id + " DA PASSED het cac filter !");

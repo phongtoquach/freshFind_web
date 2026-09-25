@@ -101,10 +101,12 @@ function MarketsGrid({ filters, sortType, limit, showMarketsCount }) {
                                             <div className="market-card-content">
                                                 <h3>{market.name} - {market.id}</h3>
                                                 <p className="market-area">
+                                                    <img src="/images/location-mark.png" alt={market.location.area}/>
                                                     {market.location.area}
                                                 </p>
                                                 <p className="market-address">
-                                                    {market.location.address}
+                                                    <img src="/images/gps-icon.png" alt={market.location.address}/>
+                                                    <span>{market.location.address}</span>
                                                 </p>
                                                 <p>
 
