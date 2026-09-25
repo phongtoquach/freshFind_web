@@ -144,3 +144,41 @@ select > option {
 .form_btn_submit:hover {
   background-color: #4c4538;
 }
+
+.message.error {
+  color: red;
+  display: block;
+  min-height: 18px;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.form_server_error {
+  background-color: #fdecea;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+.form_input[aria-invalid="true"] {
+  border-color: red;
+}
+
+.form_success {
+  border: 1px solid #cfe8d4;
+  background-color: #f1faf3;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.form_success:focus-visible {
+  outline: 2px solid #4c4538;
+  outline-offset: 2px;
+}
+
+.form_btn_submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
