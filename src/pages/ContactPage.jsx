@@ -49,7 +49,49 @@ function ContactPage() {
                 </p>
               </div>
             </div>
-            <div className="form_container_right"></div>
+            <div className="form_container_right">
+              <form action="" className="form_action">
+                <div className="form_contain">
+                  <div className="form_left">
+                    <div className="form_item">
+                      <p className="form_label">
+                        <label htmlFor="name">Full Name *</label>
+                      </p>
+                      <input
+                        type="text"
+                        id="name"
+                        className="form_input"
+                        placeholder="Enter your name..."
+                      />
+                    </div>
+                  </div>
+                  <div className="form_right">
+                    <div className="form_item">
+                      <p className="form_label">
+                        <label htmlFor="email">Email Address *</label>
+                      </p>
+                      <input
+                        type="text"
+                        id="email"
+                        className="form_input"
+                        placeholder="Enter your email..."
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="form_item">
+                  <p className="form_label">
+                    <label htmlFor="email">Reason for contact *</label>
+                  </p>
+                  <input
+                    type="text"
+                    id="email"
+                    className="form_input"
+                    placeholder="Select a reason"
+                  />
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </section>
