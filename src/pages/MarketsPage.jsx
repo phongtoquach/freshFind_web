@@ -60,7 +60,7 @@ function MarketsPage() {
     const [filtersFormData, setFiltersFormData] = useState(defaultFiltersFormData);
 
     console.log("[MarketsPage] Here is before the line declaring useState sortOption !");
-    const [sortOption, setSortOption] = useState("default");
+    const [sortOption, setSortOption] = useState("nearest_first");
 
     console.log("[MarketsPage] Value hien tai cua bien useState filtersFormData : ");
     console.log(filtersFormData);
@@ -128,6 +128,8 @@ function MarketsPage() {
 			return newFiltersFormData;
 		});
     }
+
+    const userCurrentLocationObj = {...userLocation};
     
     return (
         <>
@@ -160,7 +162,7 @@ function MarketsPage() {
                                         </div>
 
                                         <div className="market-field">
-                                            <label htmlFor="ddlWeekDays">Day</label>
+                                            <label htmlFor="ddlWeekDays">Days of week</label>
                                             <select id="ddlWeekDays" className="multiple-selectbox" value={filtersFormData.daysOfWeek}
                                             onChange={(event) => handleChangeFilterInput("daysOfWeek", event)}
                                             multiple={true} size="7">
@@ -174,6 +176,17 @@ function MarketsPage() {
                                                 <option value="sun">Sunday</option>
                                             </select>
                                         </div>
+
+                                        <div className="market-field">
+                                            <label htmlFor="ddlSortOption">Sort by</label>
+                                            <select id="ddlSortOption" value={sortTypeStr} onChange={(event) => setSortOption(event.target.value)}>
+                                                <option value="nearest_first">Nearest First</option>
+                                                <option value="name_asc">Name A-Z</option>
+                                                <option value="name_desc">Name Z-A</option>
+                                                <option value="open_next_day">Open next day</option>
+                                            </select>
+                                        </div>
+
                                         <button className="market-submit" type="submit">
                                             Search Markets
                                         </button>
@@ -181,8 +194,7 @@ function MarketsPage() {
                                 </form>
                             </aside>
                             <div className="directory-results">
-                                <MarketsGrid filters={filtersData} sortType={sortTypeStr} showProductsCount={1}/>
-                                {/* <MarketsGrid sortType={sortTypeStr} showProductsCount={1}/> */}
+                                <MarketsGrid filters={filtersData} sortType={sortTypeStr} userCurrentLocation={userCurrentLocationObj} showMarketsCount={1} />
                             </div>
                         </div>
                     </div>
