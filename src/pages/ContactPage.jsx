@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../assets/css/Contact.css";
+import MapLocation from "../components/MapLocation";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -52,10 +53,6 @@ function validateAll(values) {
   return errors;
 }
 
-/**
- * Upsert-or-drop a single field's message inside an errors object so the
- * reference stays stable when nothing changed (avoids needless re-renders).
- */
 function withFieldError(prevErrors, field, message) {
   const hasMessage = Boolean(message);
   const hadMessage = Boolean(prevErrors[field]);
@@ -78,7 +75,6 @@ function ContactPage() {
 
     setValues((prev) => ({ ...prev, [name]: value }));
 
-    // Re-validate live once a field has been touched, so errors clear as the user fixes them.
     if (touched[name]) {
       setErrors((prev) =>
         withFieldError(prev, name, validateField(name, value)),
@@ -92,7 +88,6 @@ function ContactPage() {
     setErrors((prev) => withFieldError(prev, name, validateField(name, value)));
   }
 
-  // Clear the field's error as soon as the user focuses it to type again.
   function handleFocus(e) {
     const { name } = e.target;
     if (errors[name]) {
@@ -115,7 +110,6 @@ function ContactPage() {
     setErrors(nextErrors);
 
     if (Object.keys(nextErrors).length > 0) {
-      // Move focus to the first invalid control for keyboard/screen-reader users.
       const firstInvalid = Object.keys(INITIAL_VALUES).find(
         (field) => nextErrors[field],
       );
@@ -126,7 +120,6 @@ function ContactPage() {
       return;
     }
 
-    // Validation passed — show success immediately.
     setIsSubmitted(true);
     setValues(INITIAL_VALUES);
     setTouched({});
@@ -354,6 +347,15 @@ function ContactPage() {
                 </form>
               )}
             </div>
+          </div>
+
+          <div className="form_maps">
+            <MapLocation
+              position={[10.807834396930526, 106.66347632096286]}
+              zoom={15}
+              height="450px"
+              popupText="1420 SE Morrison St, Portland, OR 97214"
+            />
           </div>
         </div>
       </section>

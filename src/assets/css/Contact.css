@@ -182,3 +182,7 @@ select > option {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.form_maps {
+  margin-top: 30px;
+}
