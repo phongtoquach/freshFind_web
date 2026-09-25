@@ -1,0 +1,188 @@
+.contact_container {
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: center;
+  box-sizing: border-box;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 12px;
+  background: url("/images/fresh-produce-banner.jpg");
+}
+
+.contact_container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.contact_container > * {
+  position: relative;
+  z-index: 2;
+}
+
+.sub_containt {
+  max-width: 500px;
+  margin: auto;
+}
+
+.contact_content {
+  color: #c8841a;
+}
+
+.contact_header {
+  color: #fff;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.contact_desc {
+  color: #fff;
+}
+
+.form_container {
+  margin-top: 40px;
+}
+
+.form_container {
+  display: flex;
+  gap: 30px;
+}
+
+.form_container_left {
+  width: 40%;
+}
+
+.form_contain {
+  margin-bottom: 20px;
+}
+
+.fast_track_container {
+  padding: 24px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-top: 10px;
+  text-align: justify;
+  background-color: #f0e8d8;
+}
+
+.header_desc {
+  color: #6b6355;
+}
+
+.address_container_list {
+  margin-top: 10px;
+}
+
+.address_contaner_item p {
+  color: #6b6355;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.form_container_right {
+  min-height: 100px;
+  width: 60%;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 12px;
+  box-sizing: border-box;
+  padding: 24px;
+  background-color: #faf6ee;
+}
+
+.form_contain {
+  display: flex;
+  gap: 20px;
+}
+
+.form_left,
+.form_right {
+  width: 50%;
+}
+
+.form_label {
+  color: #a18b77;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.form_input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  padding: 6px 12px;
+  min-height: 40px;
+}
+
+.form_item ~ .form_item {
+  margin-top: 20px;
+}
+
+select > option {
+  color: #aaa;
+}
+
+.form_btn_submit {
+  display: inline-block;
+  font-size: 18px;
+  color: #fff;
+  width: 100%;
+  line-height: 50px;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background-color: #a39591;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form_btn_submit:hover {
+  background-color: #4c4538;
+}
+
+.message.error {
+  color: red;
+  display: block;
+  min-height: 18px;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.form_server_error {
+  background-color: #fdecea;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+.form_input[aria-invalid="true"] {
+  border-color: red;
+}
+
+.form_success {
+  border: 1px solid #cfe8d4;
+  background-color: #f1faf3;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.form_success:focus-visible {
+  outline: 2px solid #4c4538;
+  outline-offset: 2px;
+}
+
+.form_btn_submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form_maps {
+  margin-top: 30px;
+}

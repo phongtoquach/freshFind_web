@@ -4,10 +4,10 @@
         "name": "Downtown Farmers Market",
         "slug": "downtown-farmers-market",
         "images": [
-            "/images/markets/downtown_farmers_market.jpg"
+            "/images/markets/farmer_market_1.jpg"
         ],
         "description": "The city's largest weekly farmers market, featuring over 50 local vendors offering fresh produce, artisanal goods, and prepared foods. A vibrant community gathering every weekend.",
-        "productIds": [1, 4, 5, 6, 8, 9],
+        "productIds": [1, 10],
         "location": {
             "address": "123 Market Street",
             "area": "Downtown",
@@ -16,32 +16,32 @@
         },
         "schedule": [
             {
-                "day": "Monday",
+                "day": "mon",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Tuesday",
+                "day": "tue",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Wednesday",
+                "day": "wed",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Thursday",
+                "day": "thu",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Friday",
+                "day": "fri",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Saturday",
+                "day": "sat",
                 "open": true,
                 "hours": {
                     "start": "07:00",
@@ -49,7 +49,7 @@
                 }
             },
             {
-                "day": "Sunday",
+                "day": "sun",
                 "open": true,
                 "hours": {
                     "start": "07:00",
@@ -63,12 +63,11 @@
         "name": "Riverside Farmers Market",
         "slug": "riverside-farmers-market",
         "images": [
-            "/images/markets/downtown_farmers_market.jpg"
+            "/images/markets/farmer_market_2.jpeg"
         ],
         "description": "A scenic market along the riverfront offering organic produce, fresh-baked bread, and handmade crafts. Popular for its peaceful atmosphere and family-friendly environment.",
         "productIds": [
             1,
-            3,
             4,
             5,
             9,
@@ -83,17 +82,17 @@
         },
         "schedule": [
             {
-                "day": "Monday",
+                "day": "mon",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Tuesday",
+                "day": "tue",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Wednesday",
+                "day": "wed",
                 "open": true,
                 "hours": {
                     "start": "07:00",
@@ -101,12 +100,12 @@
                 }
             },
             {
-                "day": "Thursday",
+                "day": "thu",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Friday",
+                "day": "fri",
                 "open": true,
                 "hours": {
                     "start": "07:00",
@@ -114,7 +113,7 @@
                 }
             },
             {
-                "day": "Saturday",
+                "day": "sat",
                 "open": true,
                 "hours": {
                     "start": "06:30",
@@ -122,7 +121,7 @@
                 }
             },
             {
-                "day": "Sunday",
+                "day": "sun",
                 "open": false,
                 "hours": null
             }
@@ -133,18 +132,10 @@
         "name": "Green Valley Market",
         "slug": "green-valley-market",
         "images": [
-            "/images/markets/downtown_farmers_market.jpg"
+            "/images/markets/farmer_market_3.jpeg"
         ],
         "description": "Specializing in organic and certified naturally-grown produce. This market connects consumers directly with sustainable farmers from the surrounding valley region.",
-        "productIds": [
-            2,
-            4,
-            5,
-            6,
-            7,
-            8,
-            10
-        ],
+        "productIds": [7, 11],
         "location": {
             "address": "80 Valley Drive",
             "area": "Green Valley",
@@ -153,12 +144,12 @@
         },
         "schedule": [
             {
-                "day": "Monday",
+                "day": "mon",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Tuesday",
+                "day": "tue",
                 "open": true,
                 "hours": {
                     "start": "08:00",
@@ -166,12 +157,12 @@
                 }
             },
             {
-                "day": "Wednesday",
+                "day": "wed",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Thursday",
+                "day": "thu",
                 "open": true,
                 "hours": {
                     "start": "08:00",
@@ -179,12 +170,12 @@
                 }
             },
             {
-                "day": "Friday",
+                "day": "fri",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Saturday",
+                "day": "sat",
                 "open": true,
                 "hours": {
                     "start": "07:00",
@@ -192,7 +183,7 @@
                 }
             },
             {
-                "day": "Sunday",
+                "day": "sun",
                 "open": false,
                 "hours": null
             }
@@ -203,7 +194,7 @@
         "name": "Saturday Community Market",
         "slug": "saturday-community-market",
         "images": [
-            "/images/markets/downtown_farmers_market.jpg"
+            "/images/markets/farmer_market_4.jpeg"
         ],
         "description": "A beloved neighborhood market running every Saturday morning. Features local farmers, bakers, and food artisans in a relaxed community setting.",
         "productIds": [
@@ -222,32 +213,32 @@
         },
         "schedule": [
             {
-                "day": "Monday",
+                "day": "mon",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Tuesday",
+                "day": "tue",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Wednesday",
+                "day": "wed",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Thursday",
+                "day": "thu",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Friday",
+                "day": "fri",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Saturday",
+                "day": "sat",
                 "open": true,
                 "hours": {
                     "start": "08:00",
@@ -255,7 +246,7 @@
                 }
             },
             {
-                "day": "Sunday",
+                "day": "sun",
                 "open": false,
                 "hours": null
             }
@@ -266,7 +257,7 @@
         "name": "Lakeside Farmers Market",
         "slug": "lakeside-farmers-market",
         "images": [
-            "/images/markets/downtown_farmers_market.jpg"
+            "/images/markets/farmer_market_5.jpeg"
         ],
         "description": "Set against the beautiful lakeside backdrop, this market offers premium produce, fresh seafood, and artisan products. A weekend destination for food lovers.",
         "productIds": [
@@ -286,27 +277,27 @@
         },
         "schedule": [
             {
-                "day": "Monday",
+                "day": "mon",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Tuesday",
+                "day": "tue",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Wednesday",
+                "day": "wed",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Thursday",
+                "day": "thu",
                 "open": false,
                 "hours": null
             },
             {
-                "day": "Friday",
+                "day": "fri",
                 "open": true,
                 "hours": {
                     "start": "09:00",
@@ -314,7 +305,7 @@
                 }
             },
             {
-                "day": "Saturday",
+                "day": "sat",
                 "open": true,
                 "hours": {
                     "start": "07:00",
@@ -322,7 +313,7 @@
                 }
             },
             {
-                "day": "Sunday",
+                "day": "sun",
                 "open": true,
                 "hours": {
                     "start": "08:00",
@@ -331,4 +322,5 @@
             }
         ]
     }
+    
 ]

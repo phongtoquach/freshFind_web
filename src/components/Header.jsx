@@ -1,45 +1,41 @@
 import { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 
 function Header() {
 
     const activeClass = ({ isActive }) => (isActive ? "nav-link active" : "nav-link");
 
-    useEffect(() => {
-        console.log("[Header] đang chạy useEffect() của component Header !");
+    // useEffect(() => {
+    //     console.log("[Header] đang chạy useEffect() của component Header !");
         
-        // hàm cleanup
-        return () => {
-            console.log("[Header] đang chạy hàm cleanup của useEffect() !");
-        };
-    });
+    //     // hàm cleanup
+    //     return () => {
+    //         console.log("[Header] đang chạy hàm cleanup của useEffect() !");
+    //     };
+    // });
 
    
     return (
-        <header className="header">
-            <div className="box">
-                <div className="brand">
-                    <NavLink to="/" className="brandlink">
-                    <span className="mark">FF</span>
-                    <span className="text">FreshFind</span>
-                    </NavLink>
-                </div>
-
-                <div className="links">
-                    <NavLink to="/markets" className={activeClass}>Markets</NavLink>
-                    <NavLink to="/produce-guide" className={activeClass}>Produce Guide</NavLink>
-                    <NavLink to="/seasonal" className={activeClass}>Seasonal</NavLink>
-                    <NavLink to="/about" className={activeClass}>About</NavLink>
-                    <NavLink to="/contact" className={activeClass}>Contact</NavLink>
-                </div>
-
-                <div className="actions">
-                    <NavLink to="/markets" className="market">Find a Market</NavLink>
-                    <NavLink to="/login" className="login">Login / Sign Up</NavLink>
-                </div>
-            </div>
-        </header>
+        <>
+            <header className="site-header">
+                <nav className="navbar container" aria-label="Main navigation">
+                    <Link className="brand" to="/"><span>Fresh</span>Find</Link>
+                    <div className="nav-links">
+                        <NavLink to="/" end>Home</NavLink>
+                        <NavLink to="/markets" end>Markets</NavLink>
+                        <NavLink to="/produce-guide" end>Produce</NavLink>
+                        <NavLink to="/products-seasons" end>Seasonal</NavLink>
+                        <NavLink to="/about" end>About Us</NavLink>
+                        <NavLink to="/contact" end>Contact</NavLink>
+                    </div>
+                    <div className="nav-actions">
+                        <button className="login-button" type="button">Login / Sign Up</button>
+                        <button className="bookmark-nav" type="button">Bookmarks <span>3</span></button>
+                    </div>
+                </nav>
+            </header>
+        </>
     )
 }
 

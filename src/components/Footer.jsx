@@ -1,10 +1,9 @@
 function Footer() {
   return (
-   
-      <footer>
-        <p>© {new Date().getFullYear()} Wild Cats — No Fear, No Limits</p>
-      </footer>
-    
+    <footer className="simple-footer">
+      <div className="container"><p>@ Copyright by FreshFind</p>
+      </div>
+    </footer>
   );
 }
 
