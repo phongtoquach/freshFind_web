@@ -11,7 +11,7 @@ import AppContext from "../context/AppContext";
 import HomeMarketSearchBox from "../components/HomeMarketSearchBox";
 
 function Home() {
-    const { refreshUserLocation } = useContext(AppContext);
+    const { userLocation, refreshUserCurrentLocation } = useContext(AppContext);
 
     console.log("[Home] Vừa vào hàm component Home !");
 
@@ -24,9 +24,22 @@ function Home() {
         };
     });
 
+    useEffect(() => {
+        console.log("[Home] đang chạy useEffect() gọi refreshUserCurrentLocation !");
+
+        refreshUserCurrentLocation();
+    }, []);
+
+    console.log("[Home] Value hien tai cua bien useState userLocation : ");
+    console.log(userLocation);
+
+    if (userLocation === undefined) {
+        console.log("[Home] Đang lấy user current location !");
+        return (
+            <div style={{ textAlign: "center" }}>Loading...</div>
+        )
+    }
     
-
-
     return (
         <>
             <main id="home">

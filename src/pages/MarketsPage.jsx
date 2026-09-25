@@ -5,18 +5,45 @@ import { useEffect, useContext, useState, useRef } from 'react';
 
 //import { websiteName } from "../config/app_configs";
 
-//import ProductContext from "../context/ProductContext";
-//import CartContext from "../context/CartContext";
+import AppContext from "../context/AppContext";
 
 //import ProductsGrid from "../components/ProductsGrid";
 
 function MarketsPage() {
+    const { userLocation, refreshUserCurrentLocation } = useContext(AppContext);
+
     console.log("[MarketsPage] Vừa vào hàm component MarketsPage !");
+
+    useEffect(() => {
+        console.log("[MarketsPage] đang chạy useEffect() của component MarketsPage !");
+        
+        // hàm cleanup
+        return () => {
+            console.log("[MarketsPage] đang chạy hàm cleanup của useEffect() !");
+        };
+    });
 
     const [areaName, setAreaName] = useState("");
     const [produceName, setProduceName] = useState("");
     const [weekDay, setWeekDay] = useState("");
 
+    useEffect(() => {
+        console.log("[MarketsPage] đang chạy useEffect() gọi refreshUserCurrentLocation !");
+
+        refreshUserCurrentLocation();
+    }, []);
+
+    console.log("[MarketsPage] Value hien tai cua bien useState userLocation : ");
+    console.log(userLocation);
+
+    if (userLocation === undefined) {
+        console.log("[MarketsPage] Đang lấy user current location !");
+        return (
+            <div style={{ textAlign: "center" }}>Loading...</div>
+        )
+    }
+
+    
     return (
         <>
             <main id="home">
