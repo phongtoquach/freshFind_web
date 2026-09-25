@@ -26,7 +26,6 @@ function HomeMarketSearchBox() {
     console.log("Data cua productCatesData : ");
     console.log(productCatesData);
 
-    const [areaName, setAreaName] = useState("");
     const [productCategoryId, setProductCategoryId] = useState("");
     const [daysOfWeek, setDaysOfWeek] = useState([]);
 
@@ -54,7 +53,7 @@ function HomeMarketSearchBox() {
 
         setUserLocation(undefined);
 
-        navigate("/markets?produceCateId=" + productCategoryId + "&daysOfWeek=" + daysOfWeekStr);
+        navigate("/markets?productCateId=" + productCategoryId + "&daysOfWeek=" + daysOfWeekStr);
     }
    
     return (

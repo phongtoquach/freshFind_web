@@ -1,5 +1,5 @@
 import { Link, useSearchParams } from "react-router-dom";
-import { useEffect, useContext, useState, useRef } from 'react';
+import { useEffect, useContext, useState } from 'react';
 
 //import "../assets/css/markets_page.css";
 
@@ -7,12 +7,73 @@ import { useEffect, useContext, useState, useRef } from 'react';
 
 import AppContext from "../context/AppContext";
 
-//import ProductsGrid from "../components/ProductsGrid";
+import { getAllCategories } from "../services/categoryService";
+
+import MarketsGrid from "../components/MarketsGrid";
 
 function MarketsPage() {
     const { userLocation, refreshUserCurrentLocation } = useContext(AppContext);
 
     console.log("[MarketsPage] Vừa vào hàm component MarketsPage !");
+
+    // check URL params
+    const [searchParams] = useSearchParams();
+    // get productCateId param
+    const productCateIdVal = searchParams.get("productCateId");
+    console.log("[MarketsPage] Original URL param productCateId : " + productCateIdVal);
+    // get daysOfWeek param
+    const daysOfWeekParamVal = searchParams.get("daysOfWeek");
+    console.log("[MarketsPage] Original URL param daysOfWeek: " + daysOfWeekParamVal);
+
+    // hanlde URL param productCateId
+    let productCateIdParam = 0;
+    if (productCateIdVal !== null) {
+        if (Number(productCateIdVal) > 0) {
+            console.log("[MarketsPage] productCateIdVal > 0 !");
+            productCateIdParam = Number(productCateIdVal);
+        }
+    }
+    console.log("[MarketsPage] Final productCateId param : " + productCateIdParam);
+
+    // hanlde URL param daysOfWeek
+    let daysOfWeekParam = "";
+    if (daysOfWeekParamVal !== null) {
+        daysOfWeekParam = daysOfWeekParamVal.trim();
+    }
+    console.log("[MarketsPage] Final daysOfWeekParam param : " + daysOfWeekParam);
+    // convert daysOfWeekParam str to array
+    let daysOfWeekArr = [];
+    if (daysOfWeekParam !== "") {
+        daysOfWeekArr = daysOfWeekParam.split(",");
+    }
+
+    const defaultFiltersFormData = {
+        areaName: "",
+        productCateId: productCateIdParam,
+        daysOfWeek: daysOfWeekArr
+    };
+
+    //console.log("[MarketsPage] Data của defaultFiltersFormData : ");
+    //console.log(defaultFiltersFormData);
+
+    console.log("[MarketsPage] Here is before the line declaring useState filtersFormData !");
+    const [filtersFormData, setFiltersFormData] = useState(defaultFiltersFormData);
+
+    console.log("[MarketsPage] Here is before the line declaring useState sortOption !");
+    const [sortOption, setSortOption] = useState("default");
+
+    console.log("[MarketsPage] Value hien tai cua bien useState filtersFormData : ");
+    console.log(filtersFormData);
+
+    // copy value hiện tại của biến useState filtersFormData ra 1 object moi
+    const filtersData = {...filtersFormData};
+    console.log("[MarketsPage] value của biến filtersData (copy từ biến useState filtersFormData) :");
+    console.log(filtersData);
+
+    console.log("[MarketsPage] Value hien tai cua bien useState sortOption : " + sortOption);
+    const sortTypeStr = sortOption;
+
+    const productCatesData = getAllCategories();
 
     useEffect(() => {
         console.log("[MarketsPage] đang chạy useEffect() của component MarketsPage !");
@@ -22,10 +83,6 @@ function MarketsPage() {
             console.log("[MarketsPage] đang chạy hàm cleanup của useEffect() !");
         };
     });
-
-    const [areaName, setAreaName] = useState("");
-    const [produceName, setProduceName] = useState("");
-    const [weekDay, setWeekDay] = useState("");
 
     useEffect(() => {
         console.log("[MarketsPage] đang chạy useEffect() gọi refreshUserCurrentLocation !");
@@ -43,6 +100,34 @@ function MarketsPage() {
         )
     }
 
+    function handleChangeFilterInput(attrKey, e) {
+        console.log("[handleChangeFilterInput] Calling handleChangeFilterInput() ! attrKey : " + attrKey);
+
+        console.log("[handleChangeFilterInput] Đặt lịch set value của biến useState filtersFormData !");
+        setFiltersFormData(currentFiltersFormData => {
+            console.log("[handleChangeFilterInput - setFiltersFormData] attrKey : " + attrKey);
+            console.log("[handleChangeFilterInput] Data cua currentFiltersFormData :");
+			console.log(currentFiltersFormData);
+
+            let inputVal = "";
+            if (attrKey === "daysOfWeek") {
+                inputVal = Array.from(e.target.selectedOptions).map(option => option.value);
+
+                console.log("[handleChangeFilterInput] Data cua daysOfWeek da duoc chon : ", inputVal);
+            }
+            else {
+                inputVal = e.target.value;
+                console.log("[handleChangeFilterInput] inputVal cua input binh thuong : ", inputVal);
+            }
+            
+			let newFiltersFormData = { ...currentFiltersFormData, [attrKey]: inputVal };
+			
+			console.log("[handleChangeFilterInput] Data cua newFiltersFormData :");
+			console.log(newFiltersFormData);
+
+			return newFiltersFormData;
+		});
+    }
     
     return (
         <>
@@ -59,31 +144,27 @@ function MarketsPage() {
                                     <div className="market-search-grid">
                                         <div className="market-field">
                                             <label htmlFor="txtAreName">Area</label>
-                                            <input id="txtAreName" type="text" value={areaName} onChange={(event) => setAreaName(event.target.value)} placeholder="Downtown"/>
+                                            <input id="txtAreName" type="text" value={filtersFormData.areaName} onChange={(event) => handleChangeFilterInput("areaName", event)} placeholder="Downtown"/>
                                         </div>
 
                                         <div className="market-field">
-                                            <label htmlFor="txtProduceName">Produce</label>
-                                            <input id="txtProduceName" type="text" value={produceName} onChange={(event) => setProduceName(event.target.value)} placeholder="Tomatoes"/>
-                                            {/* <select id="home-produce">
-                                                <option value="">All produce</option>
-                                                <option value="Bakery">Bakery</option>
-                                                <option value="Dairy">Dairy</option>
-                                                <option value="Eggs">Eggs</option>
-                                                <option value="Flowers">Flowers</option>
-                                                <option value="Fruit">Fruit</option>
-                                                <option value="Herbs">Herbs</option>
-                                                <option value="Organic">Organic</option>
-                                                <option value="Seafood">Seafood</option>
-                                                <option value="Tropical">Tropical</option>
-                                                <option value="Vegetables">Vegetables</option>
-                                            </select> */}
+                                            <label htmlFor="ddlProduceType">Produce Type</label>
+                                            <select id="ddlProduceType" value={filtersFormData.productCateId} onChange={(event) => handleChangeFilterInput("productCateId", event)}>
+                                                <option value="">All produce types</option>
+                                                {productCatesData.map((cateItem) => (
+                                                    <option key={cateItem.id} value={cateItem.id}>
+                                                        {cateItem.name}
+                                                    </option>
+                                                ))}
+                                            </select>
                                         </div>
 
                                         <div className="market-field">
                                             <label htmlFor="ddlWeekDays">Day</label>
-                                            <select id="ddlWeekDays" value={weekDay} onChange={(event) => setWeekDay(event.target.value)}>
-                                                <option value="">Any day</option>
+                                            <select id="ddlWeekDays" className="multiple-selectbox" value={filtersFormData.daysOfWeek}
+                                            onChange={(event) => handleChangeFilterInput("daysOfWeek", event)}
+                                            multiple={true} size="7">
+                                                {/* <option value="">Any day</option> */}
                                                 <option value="mon">Monday</option>
                                                 <option value="tue">Tuesday</option>
                                                 <option value="wed">Wednesday</option>
@@ -100,63 +181,8 @@ function MarketsPage() {
                                 </form>
                             </aside>
                             <div className="directory-results">
-                                <div className="directory-toolbar">
-                                    <p><strong>6</strong> markets found</p>
-                                </div>
-
-                                <div className="market-grid">
-                                    <div className="market-card">
-                                        <div className="market-image-wrap">
-                                            <button
-                                            className="card-bookmark"
-                                            type="button"
-                                            aria-label="Add Riverside Green Market bookmark"
-                                            >
-                                            </button>
-                                        </div>
-                                        <div className="market-card-content">
-                                            <p className="market-area">
-                                                Riverside
-                                            </p>
-                                            <h3>Riverside Green Market</h3>
-                                            <p className="market-address">
-                                                12 Riverside Walk, FreshFind City
-                                            </p>
-                                            <div className="badge-list">
-                                                <span>Vegetables</span><span>Fruit</span><span>Herbs</span>
-                                            </div>
-                                            <div className="market-card-footer">
-                                                <button type="button">View Details</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="market-card">
-                                        <div className="market-image-wrap">
-                                            <button
-                                            className="card-bookmark"
-                                            type="button"
-                                            aria-label="Add Riverside Green Market bookmark"
-                                            >
-                                            </button>
-                                        </div>
-                                        <div className="market-card-content">
-                                            <p className="market-area">
-                                                Riverside
-                                            </p>
-                                            <h3>Riverside Green Market</h3>
-                                            <p className="market-address">
-                                                12 Riverside Walk, FreshFind City
-                                            </p>
-                                            <div className="badge-list">
-                                                <span>Vegetables</span><span>Fruit</span><span>Herbs</span>
-                                            </div>
-                                            <div className="market-card-footer">
-                                                <button type="button">View Details</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <MarketsGrid filters={filtersData} sortType={sortTypeStr} showProductsCount={1}/>
+                                {/* <MarketsGrid sortType={sortTypeStr} showProductsCount={1}/> */}
                             </div>
                         </div>
                     </div>
