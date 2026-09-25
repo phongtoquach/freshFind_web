@@ -1,7 +1,10 @@
 import { NavLink, Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import BookmarkContext from "../context/BookmarkContext";
 
 function Header() {
   const navigate = useNavigate();
+  const { bookmarkedIds } = useContext(BookmarkContext);
 
   const clickToBookmark = () => {
     navigate("/bookmarks");
@@ -43,7 +46,7 @@ function Header() {
               className="bookmark-nav"
               type="button"
             >
-              Bookmarks <span>3</span>
+              Bookmarks {bookmarkedIds.length > 0 && <span>{bookmarkedIds.length}</span>}
             </button>
           </div>
         </nav>

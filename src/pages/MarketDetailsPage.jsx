@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import "../assets/css/market_details_page.css";
 import MapLocation from "../components/MapLocation";
 import { getMarketByIdOrSlug } from "../services/marketService";
 import productsData from "../data/products.json";
+import BookmarkContext from "../context/BookmarkContext";
 
 const DAYS_OF_WEEK = [
   { key: "mon", label: "Monday", dayIndex: 1 },
@@ -29,12 +31,14 @@ const getCurrentTimeString = () => {
 };
 
 function MarketDetailsPage() {
-  console.log("[MarketDetailsPage] Vừa vào hàm component MarketDetailsPage !");
+  const { toggleBookmark, isBookmarked } = useContext(BookmarkContext);
 
   const { marketId, marketSlug } = useParams();
   const foundMarket = getMarketByIdOrSlug(marketId || marketSlug);
 
   const market = foundMarket;
+  const marketIdNum = Number(market?.id);
+  const bookmarked = isBookmarked(marketIdNum);
 
   const todayDayIndex = new Date().getDay();
   const todayKey = DAYS_OF_WEEK.find((d) => d.dayIndex === todayDayIndex)?.key;
@@ -102,7 +106,12 @@ function MarketDetailsPage() {
               <div className="right_container">
                 <div className="right_header_containt">
                   <h1 className="right_header">{market.name}</h1>
-                  <button className="right_header_btn">Bookmark</button>
+                  <button
+                    className={`right_header_btn ${bookmarked ? "actived" : ""}`}
+                    onClick={() => toggleBookmark(marketIdNum)}
+                  >
+                    Bookmark
+                  </button>
                 </div>
                 <p className="right_address">
                   <span className="right_icons">

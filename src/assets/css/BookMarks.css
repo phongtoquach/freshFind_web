@@ -55,8 +55,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 50px;
   padding: 14px 18px;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.saved_container ~ .saved_container {
+  margin-top: 20px;
+}
+
+.container_main {
+  margin-top: 20px;
 }
