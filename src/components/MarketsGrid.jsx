@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { getMarketsByFilters } from "../services/marketService";
@@ -154,7 +154,9 @@ function MarketsGrid({ filters, sortType, limit, showMarketsCount }) {
                       <span>Herbs</span>
                     </div>
                     <div className="market-card-footer">
-                      <button type="button">View Details</button>
+                      <Link to={`/markets/${market.id}/${market.slug}`}>
+                        View Details
+                      </Link>
                     </div>
                   </div>
                 </div>

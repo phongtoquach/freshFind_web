@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { AppProvider } from "./context/AppContext.jsx";

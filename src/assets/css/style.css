@@ -618,7 +618,8 @@ img {
   width: 15px;
   height: 15px;
 }
-.market-card-footer button {
+.market-card-footer button,
+.market-card-footer a {
   padding: 7px 10px;
   border: 1px solid var(--green-500);
   border-radius: 6px;
@@ -626,8 +627,13 @@ img {
   background: transparent;
   font-size: var(--font-xs);
   font-weight: 800;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  line-height: normal;
 }
-.market-card-footer button:hover {
+.market-card-footer button:hover,
+.market-card-footer a:hover {
   color: var(--surface);
   background: var(--green-600);
 }

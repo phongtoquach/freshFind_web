@@ -2,169 +2,290 @@ import marketsData from "../data/markets.json";
 import productsData from "../data/products.json";
 
 export function getMarketsByFilters(filters) {
-    console.log("[getMarketsByFilters] Calling getMarketsByFilters() ! filters : ", filters);
+  console.log(
+    "[getMarketsByFilters] Calling getMarketsByFilters() ! filters : ",
+    filters,
+  );
 
-    let finalFiltersData = handleMarketFiltersData(filters);
-    console.log("[getMarketsByFilters] finalFiltersData cuoi cung : ", finalFiltersData);
+  let finalFiltersData = handleMarketFiltersData(filters);
+  console.log(
+    "[getMarketsByFilters] finalFiltersData cuoi cung : ",
+    finalFiltersData,
+  );
 
-    let lowerCaseAreaName = finalFiltersData.areaName.toLocaleLowerCase();
-    // neu cac filter trong filtersData deu rong, null : lay tat ca product trong mang productsData
-    if (lowerCaseAreaName == "" && finalFiltersData.productCateId == 0 && finalFiltersData.daysOfWeek.length == 0) {
-        console.log("[getMarketsByFilters] Khong co filter nao trong finalFiltersData. Lay tat ca market trong mang marketsData !");
-        console.log(marketsData);
-        return marketsData;
+  let lowerCaseAreaName = finalFiltersData.areaName.toLocaleLowerCase();
+  // neu cac filter trong filtersData deu rong, null : lay tat ca product trong mang productsData
+  if (
+    lowerCaseAreaName == "" &&
+    finalFiltersData.productCateId == 0 &&
+    finalFiltersData.daysOfWeek.length == 0
+  ) {
+    console.log(
+      "[getMarketsByFilters] Khong co filter nao trong finalFiltersData. Lay tat ca market trong mang marketsData !",
+    );
+    console.log(marketsData);
+    return marketsData;
+  }
+
+  // neu co filter, bat dau di qua tung phan tu trong
+  const filteredMarkets = marketsData.filter((market) => {
+    console.log("[getMarketsByFilters] market dang check :");
+    console.log(market);
+
+    // check finalFiltersData.areaName
+    if (lowerCaseAreaName != "") {
+      console.log(
+        "[getMarketsByFilters] AreaName keyword not empty : " +
+          lowerCaseAreaName,
+      );
+      if (
+        !market.location.area.toLocaleLowerCase().includes(lowerCaseAreaName)
+      ) {
+        console.log(
+          "[getMarketsByFilters] Market " +
+            market.id +
+            " : NOT MATCHED with AreaName keyword !",
+        );
+        return false;
+      } else {
+        console.log(
+          "[getMarketsByFilters] Market " +
+            market.id +
+            " : MATCHED with AreaName keyword !",
+        );
+      }
+    } else {
+      console.log(
+        "[getProductsByFilters] AreaName keyword rong ! Bo qua filter nay !",
+      );
     }
 
-    // neu co filter, bat dau di qua tung phan tu trong 
-    const filteredMarkets = marketsData.filter((market) => {
-        console.log("[getMarketsByFilters] market dang check :");
-        console.log(market);
+    // check finalFiltersData.productCateId
+    if (finalFiltersData.productCateId > 0) {
+      if (market.productIds.length > 0) {
+        console.log(
+          "[getMarketsByFilters] Market " +
+            market.id +
+            " - productIds co phan tu ! Di qua tung phan tu trong productIds !",
+        );
+        console.log(market.productIds);
 
-        // check finalFiltersData.areaName
-        if (lowerCaseAreaName != "") {
-            console.log("[getMarketsByFilters] AreaName keyword not empty : " + lowerCaseAreaName);
-            if (!market.location.area.toLocaleLowerCase().includes(lowerCaseAreaName)) {
-                console.log("[getMarketsByFilters] Market " + market.id + " : NOT MATCHED with AreaName keyword !");
+        const hasProductBelongFilterCate = market.productIds.some(
+          (productId) => {
+            console.log(
+              "[getMarketsByFilters] Market " +
+                market.id +
+                " - Check phan tu productId : " +
+                productId,
+            );
+            const productObj = productsData.find((p) => p.id === productId);
+
+            if (productObj) {
+              console.log("[getMarketsByFilters] Data of the product : ");
+              console.log(productObj);
+              if (productObj.categoryId === finalFiltersData.productCateId) {
+                console.log(
+                  "[getMarketsByFilters] Market " +
+                    market.id +
+                    " - Product " +
+                    productObj.id +
+                    " thuoc category duoc search !",
+                );
+                return true;
+              } else {
+                console.log(
+                  "[getMarketsByFilters] Market " +
+                    market.id +
+                    " - Product " +
+                    productObj.id +
+                    " KHONG thuoc category duoc search !",
+                );
                 return false;
-            }
-            else {
-                console.log("[getMarketsByFilters] Market " + market.id + " : MATCHED with AreaName keyword !");
-            }
-        }
-        else {
-            console.log("[getProductsByFilters] AreaName keyword rong ! Bo qua filter nay !");
-        }
-
-        // check finalFiltersData.productCateId
-        if (finalFiltersData.productCateId > 0) {
-            if (market.productIds.length > 0) {
-                console.log("[getMarketsByFilters] Market " + market.id + " - productIds co phan tu ! Di qua tung phan tu trong productIds !");
-                console.log(market.productIds);
-
-                const hasProductBelongFilterCate = market.productIds.some(productId => {
-                    console.log("[getMarketsByFilters] Market " + market.id + " - Check phan tu productId : " + productId);
-                    const productObj = productsData.find(p => p.id === productId);
-
-                    if (productObj) {
-                        console.log("[getMarketsByFilters] Data of the product : ");
-                        console.log(productObj);
-                        if (productObj.categoryId === finalFiltersData.productCateId) {
-                            console.log("[getMarketsByFilters] Market " + market.id + " - Product " + productObj.id + " thuoc category duoc search !");
-                            return true;
-                        }
-                        else {
-                            console.log("[getMarketsByFilters] Market " + market.id + " - Product " + productObj.id + " KHONG thuoc category duoc search !");
-                            return false;
-                        }
-                    }
-                    
-                    return false;
-                });
-
-                if (hasProductBelongFilterCate === false) {
-                    console.log("[getMarketsByFilters] Market " + market.id + " : NOT MATCHED with productCateId " + finalFiltersData.productCateId);
-                    return false;
-                }
-            }
-            else {
-                console.log("[getMarketsByFilters] Market " + market.id + " khong co product nao ! NOT MATCHED with productCateId" + finalFiltersData.productCateId);
-                return false;
-            }
-        }
-        else {
-            console.log("[getMarketsByFilters] productCateId = 0 ! Bo qua filter nay !");
-        }
-
-        // check finalFiltersData.daysOfWeek
-        if (Array.isArray(finalFiltersData.daysOfWeek) && finalFiltersData.daysOfWeek.length > 0) {
-            // check market nay co open vao 1 trong nhung ngay trong finalFiltersData.daysOfWeek hay ko
-            // chi can match 1 ngay trong finalFiltersData.daysOfWeek la MATCHED
-
-            // check market nay co schedule ko
-            if (!Array.isArray(market.schedule) || market.schedule.length == 0) {
-                console.log("[getMarketsByFilters] Market " + market.id + " khong co schedule ! NOT MATCHED voi filter daysOfWeek !");
-                return false;
+              }
             }
 
-            const hasOpenDayMatchWithFilter = market.schedule.some(weekDayItem => {
-                console.log("[getMarketsByFilters] Market " + market.id + " - schedule item : ", weekDayItem);
-                if (weekDayItem.open === true) {
-                    console.log("[getMarketsByFilters] Market " + market.id + " - OPEN at weekday " + weekDayItem.day);
-                    if (!finalFiltersData.daysOfWeek.includes(weekDayItem.day)) {
-                        console.log("[getMarketsByFilters] Market " + market.id + " - Open weekday " + weekDayItem.day + " NOT MATCHED with filter daysOfWeek !");
-                        return false;
-                    }
-                    else {
-                        console.log("[getMarketsByFilters] Market " + market.id + " - Open weekday " + weekDayItem.day + " MATCHED with filter daysOfWeek !");
-                        return true;
-                    }
-                }
-                else {
-                    console.log("[getMarketsByFilters] Market " + market.id + " - CLOSE at weekday " + weekDayItem.day + " ! NOT MATCHED");
-                    return false;
-                }
-            });
+            return false;
+          },
+        );
 
-            if (hasOpenDayMatchWithFilter === false) {
-                console.log("[getMarketsByFilters] Market " + market.id + " : NOT MATCHED with filter daysOfWeek !");
-                return false;
-            }
+        if (hasProductBelongFilterCate === false) {
+          console.log(
+            "[getMarketsByFilters] Market " +
+              market.id +
+              " : NOT MATCHED with productCateId " +
+              finalFiltersData.productCateId,
+          );
+          return false;
         }
-        else {
-            console.log("[getMarketsByFilters] daysOfWeek khong phai array hoac la empty array ! Bo qua filter nay !");
+      } else {
+        console.log(
+          "[getMarketsByFilters] Market " +
+            market.id +
+            " khong co product nao ! NOT MATCHED with productCateId" +
+            finalFiltersData.productCateId,
+        );
+        return false;
+      }
+    } else {
+      console.log(
+        "[getMarketsByFilters] productCateId = 0 ! Bo qua filter nay !",
+      );
+    }
+
+    // check finalFiltersData.daysOfWeek
+    if (
+      Array.isArray(finalFiltersData.daysOfWeek) &&
+      finalFiltersData.daysOfWeek.length > 0
+    ) {
+      // check market nay co open vao 1 trong nhung ngay trong finalFiltersData.daysOfWeek hay ko
+      // chi can match 1 ngay trong finalFiltersData.daysOfWeek la MATCHED
+
+      // check market nay co schedule ko
+      if (!Array.isArray(market.schedule) || market.schedule.length == 0) {
+        console.log(
+          "[getMarketsByFilters] Market " +
+            market.id +
+            " khong co schedule ! NOT MATCHED voi filter daysOfWeek !",
+        );
+        return false;
+      }
+
+      const hasOpenDayMatchWithFilter = market.schedule.some((weekDayItem) => {
+        console.log(
+          "[getMarketsByFilters] Market " + market.id + " - schedule item : ",
+          weekDayItem,
+        );
+        if (weekDayItem.open === true) {
+          console.log(
+            "[getMarketsByFilters] Market " +
+              market.id +
+              " - OPEN at weekday " +
+              weekDayItem.day,
+          );
+          if (!finalFiltersData.daysOfWeek.includes(weekDayItem.day)) {
+            console.log(
+              "[getMarketsByFilters] Market " +
+                market.id +
+                " - Open weekday " +
+                weekDayItem.day +
+                " NOT MATCHED with filter daysOfWeek !",
+            );
+            return false;
+          } else {
+            console.log(
+              "[getMarketsByFilters] Market " +
+                market.id +
+                " - Open weekday " +
+                weekDayItem.day +
+                " MATCHED with filter daysOfWeek !",
+            );
+            return true;
+          }
+        } else {
+          console.log(
+            "[getMarketsByFilters] Market " +
+              market.id +
+              " - CLOSE at weekday " +
+              weekDayItem.day +
+              " ! NOT MATCHED",
+          );
+          return false;
         }
+      });
 
-        console.log("[getMarketsByFilters] Market " + market.id + " DA PASSED het cac filter !");
-        return true;
-    });
+      if (hasOpenDayMatchWithFilter === false) {
+        console.log(
+          "[getMarketsByFilters] Market " +
+            market.id +
+            " : NOT MATCHED with filter daysOfWeek !",
+        );
+        return false;
+      }
+    } else {
+      console.log(
+        "[getMarketsByFilters] daysOfWeek khong phai array hoac la empty array ! Bo qua filter nay !",
+      );
+    }
 
-    console.log("[getMarketsByFilters] Mang filteredMarkets sau cung :");
-    console.log(filteredMarkets);
+    console.log(
+      "[getMarketsByFilters] Market " +
+        market.id +
+        " DA PASSED het cac filter !",
+    );
+    return true;
+  });
 
-    return filteredMarkets;
+  console.log("[getMarketsByFilters] Mang filteredMarkets sau cung :");
+  console.log(filteredMarkets);
+
+  return filteredMarkets;
 }
 
-/**
- * This function is used to format param filtersData to a unique formar
- * {
-*      areaName: "",
-*      productCateId: 0,
-*      daysOfWeek: []
- * }
- */
 export function handleMarketFiltersData(filtersData) {
-    console.log("[handleMarketFiltersData] Calling handleMarketFiltersData() ! filtersData : ", filtersData);
-    let finalFilters = {
-        areaName: "",
-        productCateId: 0,
-        daysOfWeek: []
-    };
+  console.log(
+    "[handleMarketFiltersData] Calling handleMarketFiltersData() ! filtersData : ",
+    filtersData,
+  );
+  let finalFilters = {
+    areaName: "",
+    productCateId: 0,
+    daysOfWeek: [],
+  };
 
-    // check areaName
-    if (Object.hasOwn(filtersData, "areaName")) {
-        console.log("[handleMarketFiltersData] filtersData co attr areaName ! Value : " + filtersData.areaName);
-        finalFilters.areaName = filtersData.areaName.trim();
+  if (Object.hasOwn(filtersData, "areaName")) {
+    console.log(
+      "[handleMarketFiltersData] filtersData co attr areaName ! Value : " +
+        filtersData.areaName,
+    );
+    finalFilters.areaName = filtersData.areaName.trim();
+  }
+
+  if (Object.hasOwn(filtersData, "productCateId")) {
+    console.log(
+      "[handleMarketFiltersData] filtersData co attr productCateId ! Value : " +
+        filtersData.productCateId,
+    );
+
+    if (
+      filtersData.productCateId !== null &&
+      filtersData.productCateId !== ""
+    ) {
+      let productCateId_int = Number(filtersData.productCateId);
+      if (productCateId_int > 0) {
+        finalFilters.productCateId = productCateId_int;
+      }
     }
+  }
 
-    // check productCateId
-    if (Object.hasOwn(filtersData, "productCateId")) {
-        console.log("[handleMarketFiltersData] filtersData co attr productCateId ! Value : " + filtersData.productCateId);
-        
-        if (filtersData.productCateId !== null && filtersData.productCateId !== "") {
-            let productCateId_int = Number(filtersData.productCateId); 
-            if (productCateId_int > 0) {
-                finalFilters.productCateId = productCateId_int;
-            }
-        }
-    }
+  if (
+    Object.hasOwn(filtersData, "daysOfWeek") &&
+    Array.isArray(filtersData.daysOfWeek)
+  ) {
+    console.log(
+      "[handleMarketFiltersData] filtersData co attr daysOfWeek va la array !",
+    );
+    finalFilters.daysOfWeek = filtersData.daysOfWeek;
+  }
 
-    // check daysOfWeek
-    if (Object.hasOwn(filtersData, "daysOfWeek") && Array.isArray(filtersData.daysOfWeek)) {
-        console.log("[handleMarketFiltersData] filtersData co attr daysOfWeek va la array !");
-        finalFilters.daysOfWeek = filtersData.daysOfWeek;
-    }
+  console.log(
+    "[handleMarketFiltersData] Data cuoi cung cua finalFilters : ",
+    finalFilters,
+  );
 
-    console.log("[handleMarketFiltersData] Data cuoi cung cua finalFilters : ", finalFilters);
+  return finalFilters;
+}
 
-    return finalFilters;
+export function getMarketById(id) {
+  if (!id) return null;
+  const marketIdNum = Number(id);
+  return marketsData.find((m) => m.id === marketIdNum) || null;
+}
+
+export function getMarketByIdOrSlug(idOrSlug) {
+  if (!idOrSlug) return null;
+  const idNum = Number(idOrSlug);
+  if (!Number.isNaN(idNum) && idNum > 0) {
+    return marketsData.find((m) => m.id === idNum) || null;
+  }
+  return marketsData.find((m) => m.slug === idOrSlug) || null;
 }
