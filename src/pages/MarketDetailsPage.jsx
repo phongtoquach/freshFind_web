@@ -1,8 +1,6 @@
 import "../assets/css/market_details_page.css";
 import MapLocation from "../components/MapLocation";
 function MarketDetailsPage() {
-  console.log("[MarketDetailsPage] Vừa vào hàm component MarketDetailsPage !");
-
   return (
     <>
       <section className="section markets-container-section">

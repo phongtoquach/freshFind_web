@@ -12,14 +12,15 @@ import ProduceGuide from "./pages/ProduceGuide.jsx";
 import ProductsSeasons from "./pages/ProductsSeasons";
 import AboutPage from "./pages/AboutPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
+import BookMarks from "./pages/BookMarks.jsx";
 
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 
 function App() {
   return (
-    <ProductsSeasonProvider>
-      <AppProvider>
+    <AppProvider>
+      <ProductsSeasonProvider>
         <BookmarkProvider>
           <Header />
 
@@ -30,6 +31,7 @@ function App() {
               path="/markets/:marketId/:marketSlug"
               element={<MarketDetailsPage />}
             />
+            <Route path="/bookmarks" element={<BookMarks />} />
             <Route path="/produce-guide" element={<ProduceGuide />} />
             <Route path="/products-seasons" element={<ProductsSeasons />} />
             <Route path="/about" element={<AboutPage />} />
@@ -38,8 +40,8 @@ function App() {
 
           <Footer />
         </BookmarkProvider>
-      </AppProvider>
-    </ProductsSeasonProvider>
+      </ProductsSeasonProvider>
+    </AppProvider>
   );
 }
 
