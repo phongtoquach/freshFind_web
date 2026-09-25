@@ -136,6 +136,11 @@ function MarketsPage() {
             <main id="home">
                 <section className="market-section section" id="markets">
                     <div className="container">
+                        <nav className="breadcrumb" aria-label="Breadcrumb">
+                            <Link to="/">Home</Link>
+                            <span aria-hidden="true"> / </span>
+                            <span aria-current="page">Markets</span>
+                        </nav>
                         <div className="section-heading">
                             <h2 className="section-title">Market Directory</h2>
                         </div>

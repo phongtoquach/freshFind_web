@@ -163,6 +163,20 @@
   animation: fade-in 0.3s;
 }
 
+.breadcrumb {
+  margin-bottom: 20px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.breadcrumb a {
+  color: #15803d;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }

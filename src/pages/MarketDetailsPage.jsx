@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../assets/css/market_details_page.css";
 import MapLocation from "../components/MapLocation";
 import { getMarketByIdOrSlug } from "../services/marketService";
@@ -90,6 +90,13 @@ function MarketDetailsPage() {
     <>
       <section className="section markets-container-section">
         <div className="container">
+          <nav className="breadcrumb" aria-label="Breadcrumb">
+            <Link to="/">Home</Link>
+            <span aria-hidden="true"> / </span>
+            <Link to="/markets">Markets</Link>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page">{market.name}</span>
+          </nav>
           <div className="container_market_detail">
             <div className="main_container">
               <div className="left_container">
