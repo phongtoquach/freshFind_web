@@ -193,14 +193,4 @@ select > option {
   border-radius: 12px;
   overflow: hidden;
 }
-.form_maps .leaflet-container {
-  height: 100%;
-  width: 100%;
-}
-.form_maps .leaflet-tile-pane {
-  transform: none;
-}
-.form_maps .leaflet-pane {
-  transition: none;
-  animation: none;
-}
+/* Let Leaflet manage its own internal panes and tiles */
