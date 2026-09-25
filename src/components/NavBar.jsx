@@ -1,18 +1,19 @@
 import { NavLink } from "react-router-dom";
+import '../assets/css/navbar.css';
 
 function Navbar() {
   const linkClass = ({ isActive }) => (isActive ? "nav-link active" : "nav-link");
 
   return (
     <nav className="navbar">
-      <div className="navbar-brand">
-        <NavLink to="/" className="brand-link">
+      <div className="nav-header">
+        <NavLink to="/" className="brand">
           <span className="brand-mark">FF</span>
           <span className="brand-text">FreshFind</span>
         </NavLink>
       </div>
 
-      <div className="navbar-links">
+      <div className="links">
         <NavLink to="/markets" className={linkClass}>Markets</NavLink>
         <NavLink to="/produce-guide" className={linkClass}>Produce Guide</NavLink>
         <NavLink to="/seasonal" className={linkClass}>Seasonal</NavLink>

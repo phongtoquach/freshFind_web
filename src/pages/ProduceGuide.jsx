@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import categories from '../data/categories.json';
 import products from '../data/products.json';
+import '../assets/css/produceGuide.css';
 
 function ProduceGuide() {
   const [search, setSearch] = useState('');
@@ -33,19 +34,20 @@ function ProduceGuide() {
   });
 
   return (
-    <main className="produce-guide-page">
-      <aside className="produce-sidebar">
+    <div className="produce-guide">
+      <aside className="sidebar">
         <h2>Search</h2>
         <input
           type="text"
           placeholder="Search produce..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          className="search"
         />
 
-        <div className="filter-group">
+        <div className="listCategories">
           <label>Category</label>
-          <div className="category-buttons">
+          <div className="buttons">
             <button
               type="button"
               className={selectedCategoryId === 'all' ? 'category-btn active' : 'category-btn'}
@@ -72,21 +74,10 @@ function ProduceGuide() {
         </div>
       </aside>
 
-      <section className="produce-content">
+      <section className="content">
         <h1>Produce Guide</h1>
-
-        <div className="produce-grid">
-          {filteredCategories.map((category) => (
-            <article key={category.id} className="produce-card">
-              <div className="produce-icon">{category.icon}</div>
-              <h3>{category.name}</h3>
-              <p>{category.description}</p>
-            </article>
-          ))}
-        </div>
-
-        <div className="product-list">
-          <h2>Products</h2>
+        <h2>Discover what is available at local farmers markets. Browse by category or search for specific produce.</h2>
+        <div className="product">
           {displayedProducts.length > 0 ? (
             displayedProducts.map((product) => (
               <div key={product.id} className="product-item">
@@ -103,7 +94,7 @@ function ProduceGuide() {
           )}
         </div>
       </section>
-    </main>
+    </div>
   );
 }
 
