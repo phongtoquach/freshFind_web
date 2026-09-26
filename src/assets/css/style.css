@@ -142,7 +142,8 @@ img {
 .nav-links a:hover {
   color: var(--green-500);
 }
-.nav-actions button {
+.nav-actions button,
+.nav-actions .login-button {
   height: 40px;
   display: inline-flex;
   align-items: center;
@@ -156,7 +157,8 @@ img {
   font-weight: 800;
   white-space: nowrap;
 }
-.nav-actions button:hover {
+.nav-actions button:hover,
+.nav-actions .login-button:hover {
   border-color: var(--green-500);
   background: rgba(34, 197, 94, 0.12);
 }
@@ -1096,9 +1098,6 @@ img {
   }
   .nav-actions {
     gap: 8px;
-  }
-  .login-button {
-    display: none !important;
   }
   .market-search-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

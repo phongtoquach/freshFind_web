@@ -38,9 +38,9 @@ function Header() {
             </NavLink>
           </div>
           <div className="nav-actions">
-            <button className="login-button" type="button">
+            <Link className="login-button" to="/login">
               Login / Sign Up
-            </button>
+            </Link>
             <button
               onClick={clickToBookmark}
               className="bookmark-nav"

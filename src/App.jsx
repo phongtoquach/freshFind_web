@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import { AppProvider } from "./context/AppContext.jsx";
 import { BookmarkProvider } from "./context/BookmarkContext.jsx";
@@ -13,12 +13,12 @@ import ProductsSeasons from "./pages/ProductsSeasons";
 import AboutPage from "./pages/AboutPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import Bookmarks from "./pages/BookMarks.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 
 function App() {
-
   return (
     <AppProvider>
       <ProductsSeasonProvider>
@@ -38,6 +38,8 @@ function App() {
               <Route path="/products-seasons" element={<ProductsSeasons />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<LoginPage signup />} />
             </Routes>
 
             <Footer />
