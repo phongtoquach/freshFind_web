@@ -94,7 +94,7 @@ function ProduceGuide() {
       </aside>
 
       <section className="content">
-        <h1>Farm Products</h1>
+        <h1>Produce Guide</h1>
         <h2>Discover what is available at local farmers markets. Browse by category or search for specific produce.</h2>
         <div className="product">
           {displayedProducts.length > 0 ? (

@@ -1,0 +1,11 @@
+.notfoundmessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+  padding: 32px 20px;
+  color: #181f2e;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+}

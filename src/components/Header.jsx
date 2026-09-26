@@ -33,7 +33,7 @@ function Header() {
               Markets
             </NavLink>
             <NavLink to="/produce-guide" end>
-              Farm Products
+              Produce Guide
             </NavLink>
             <NavLink to="/products-seasons" end>
               Seasonal
@@ -57,8 +57,8 @@ function Header() {
               Bookmarks {marketBookmarks.length > 0 && <span>{marketBookmarks.length}</span>}
             </button>
 
-            <div style={{ paddingLeft: "10px" }}><img src="/images/clock.png" alt="clock"/></div>
-            <span>{time}</span>
+            <div style={{ paddingLeft: "10px" }}><img src="/images/clock.png" alt="clock" /></div>
+            {getFormattedCurrentHourMinute()}
           </div>
         </nav>
       </header>
