@@ -26,6 +26,9 @@ function MarketList({ items = [] }) {
             <div className="descrip_container">
               <p className="descrip_text">{market.description}</p>
             </div>
+            <div className="descrip_produtc">
+              <span className="descrip_produtc_item">Strawberry</span>
+            </div>
           </button>
         </li>
       ))}

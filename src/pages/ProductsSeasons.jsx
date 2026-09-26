@@ -6,13 +6,6 @@ import MarketList from "../components/MarketList";
 import { useState, useMemo } from "react";
 
 function ProductsSeasons() {
-  const SEASON_BG_IMAGES = {
-    spring: "/images/Spring_img.jpg",
-    summer: "/images/Summer_img.jpg",
-    autumn: "/images/Autumn_img.jpg",
-    winter: "/images/Winter_img.jpg",
-  };
-
   const [searchTerm, setSearchTerm] = useState("");
 
   const {
@@ -45,10 +38,6 @@ function ProductsSeasons() {
     if (!startMonth || !endMonth) return "";
     return `${months[startMonth - 1]} to ${months[endMonth - 1]}`;
   };
-
-  // Tra cứu ảnh nền dựa trên slug của mùa hiện tại
-  const currentBgImage =
-    SEASON_BG_IMAGES[currentSeason?.slug] || "/images/Spring_img.jpg";
 
   // Logic lọc sản phẩm theo mùa và từ khóa tìm kiếm
   const filteredProducts = useMemo(() => {
@@ -85,38 +74,45 @@ function ProductsSeasons() {
     <div className="Container_Product">
       <div className="Navbar_Container">
         <div className="Navbar_Season">
+          <h1 className="header_season">Seasonal produce</h1>
           <ul className="ul_Season_list">
-            {seasons.map((season) => (
-              <li key={season.id} className="li_Season_item">
-                <button
-                  className={`btn_seansons ${activeSeasonId === season.id ? "btn_season_active" : ""}`}
-                  onClick={() => setActiveSeasonId(season.id)}
-                >
-                  <span className="season_text">{season.name}</span>
-                </button>
-              </li>
-            ))}
+            <li className="li_season_item active">
+              <button className="btn_moth_seasons">Jan</button>
+            </li>
+            <li className="li_season_item">
+              <button className="btn_moth_seasons">Feb</button>
+            </li>
+            <li className="li_season_item">
+              <button className="btn_moth_seasons">Mar</button>
+            </li>
+            <li className="li_season_item">
+              <button className="btn_moth_seasons">Apr</button>
+            </li>
+            <li className="li_season_item">
+              <button className="btn_moth_seasons">May</button>
+            </li>
+            <li className="li_season_item">
+              <button className="btn_moth_seasons">Jun</button>
+            </li>
+            <li className="li_season_item">
+              <button className="btn_moth_seasons">Jul</button>
+            </li>
+            <li className="li_season_item">
+              <button className="btn_moth_seasons">Aug</button>
+            </li>
+            <li className="li_season_item">
+              <button className="btn_moth_seasons">Sep</button>
+            </li>
+            <li className="li_season_item">
+              <button className="btn_moth_seasons">Oct</button>
+            </li>
+            <li className="li_season_item">
+              <button className="btn_moth_seasons">Nov</button>
+            </li>
+            <li className="li_season_item">
+              <button className="btn_moth_seasons">Dec</button>
+            </li>
           </ul>
-        </div>
-
-        <div
-          className="Season_Background"
-          style={{ backgroundImage: `url(${currentBgImage})` }}
-        >
-          <div className="Choice_Season_Container">
-            <div className="Choice_Season_Content">
-              <p className="Choice_Season_Duration">
-                {currentSeason.name} lasts from{" "}
-                {formatDuration(
-                  currentSeason.startMonth,
-                  currentSeason.endMonth,
-                )}
-                .
-              </p>
-              <h2 className="Choice_Season_Header">{currentSeason.name}</h2>
-              <p className="Choice_Season_Text">{currentSeason.description}</p>
-            </div>
-          </div>
         </div>
       </div>
 

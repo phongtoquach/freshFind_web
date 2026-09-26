@@ -62,8 +62,8 @@
 
 .product {
     display: grid;
-    grid-template-columns: repeat(2, 250px);
-    gap: 80px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
 }
 
 .product-items {
@@ -71,6 +71,7 @@
     width: 250px;
     border: 1px solid #ccc;
     border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .product-items > img {

@@ -1,5 +1,26 @@
 .Navbar_Season {
+  max-width: 1400px;
   padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.btn_moth_seasons {
+  padding: 6px 12px;
+  background-color: #fff;
+  border: 1px solid #181F2E;
+  border-radius: 5px;
+  color: #181F2E;
+  transition: all 0.3s ease;
+}
+
+.btn_moth_seasons:hover,
+.li_season_item.active .btn_moth_seasons {
+  background-color: #181F2E;
+  border: 1px solid #181F2E;
+  color: #fff;
 }
 
 .ul_Season_list {
@@ -9,93 +30,6 @@
   display: flex;
   justify-content: center;
   gap: 20px;
-}
-
-.season_text {
-  color: black;
-  font-size: 18px;
-}
-
-.btn_seansons {
-  padding: 6px 12px;
-  border: none;
-  cursor: pointer;
-  background-color: transparent;
-  transition: all 0.3s ease;
-}
-
-.btn_season_active .season_text {
-  color: var(--green-600, #16a34a);
-  font-weight: 700;
-}
-
-.btn_season_active {
-  position: relative;
-}
-
-.btn_season_active::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 2px;
-  background-color: var(--green-600, #16a34a);
-  border-radius: 2px;
-}
-
-.Season_Background {
-  position: relative;
-  min-height: 242px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: background-image 0.5s ease;
-}
-
-.Season_Background::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-}
-
-.Choice_Season_Container {
-  display: flex;
-  justify-content: flex-end;
-  padding: 40px 24px;
-  max-width: 1400px;
-  margin: auto;
-}
-
-.Choice_Season_Content {
-  position: relative;
-  z-index: 2;
-
-  color: #fff;
-  width: 370px;
-}
-
-.Choice_Season_Duration {
-  color: #fff;
-  margin: 0;
-  font-size: 14px;
-}
-
-.Choice_Season_Header {
-  color: #fff;
-  margin: 15px 0;
-  font-size: 36px;
-}
-
-.Choice_Season_Text {
-  color: #fff;
-  margin: 0;
 }
 
 .Main_Container {
@@ -230,4 +164,13 @@
   color: var(--ink-500);
   line-height: 1.5;
   margin: 0;
+}
+
+.descrip_produtc_item {
+  padding: 4px 12px;
+  background-color: #DCFCE7;
+  border-radius: 999px;
+  font-weight: bold;
+  color: #3a624c;
+  font-size: 12px;
 }
