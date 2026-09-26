@@ -5,7 +5,7 @@
         "slug": "apple",
         "categoryId": 1,
         "description": "Crisp and juicy apples picked at peak ripeness from local orchards. Perfect for snacking, baking, or making fresh cider.",
-        "image": "public/images/apple.jpg",
+        "image": "/images/apple.jpg",
         "seasonIds": [2, 3],
         "availableMonths": [1, 5, 6, 9]
     },
@@ -15,7 +15,7 @@
         "slug": "tomato",
         "categoryId": 2,
         "description": "Vine-ripened tomatoes bursting with flavor. A staple of summer markets, ideal for salads, sauces, and sandwiches.",
-        "image": "public/images/ca_chua.jpg",
+        "image": "/images/ca_chua.jpg",
         "seasonIds": [2],
         "availableMonths": [3, 4, 12]
     },
@@ -25,7 +25,7 @@
         "slug": "strawberry",
         "categoryId": 1,
         "description": "Sweet, fragrant strawberries fresh from the farm. A seasonal delight best enjoyed within days of picking.",
-        "image": "public/images/dau.jpg",
+        "image": "/images/dau.jpg",
         "seasonIds": [1, 2],
         "availableMonths": [5, 6, 9, 10]
     },
@@ -35,7 +35,7 @@
         "slug": "carrot",
         "categoryId": 2,
         "description": "Earthy, crunchy carrots grown in rich local soil. Great raw, roasted, or juiced.",
-        "image": "public/images/ca_rot.jpg",
+        "image": "/images/ca_rot.jpg",
         "seasonIds": [1, 2, 3],
         "availableMonths": [2, 10]
     },
@@ -45,7 +45,7 @@
         "slug": "potato",
         "categoryId": 2,
         "description": "Versatile local potatoes perfect for roasting, mashing, or frying. Available year-round at most markets.",
-        "image": "public/images/khoai_tay.jpg",
+        "image": "/images/khoai_tay.jpg",
         "seasonIds": [],
         "availableMonths": []     
     },
@@ -55,7 +55,7 @@
         "slug": "basil",
         "categoryId": 3,
         "description": "Aromatic fresh basil, essential for Italian dishes and homemade pesto. Best used the same day for maximum flavor.",
-        "image": "public/images/basil.jpg",
+        "image": "/images/basil.jpg",
         "seasonIds": [2],
         "availableMonths": [5, 7]
     },
@@ -65,7 +65,7 @@
         "slug": "mint",
         "categoryId": 3,
         "description": "Cool, refreshing mint leaves perfect for teas, cocktails, and garnishes. Easy to grow and always in demand.",
-        "image": "public/images/mint.jpg",
+        "image": "/images/mint.jpg",
         "seasonIds": [
             1,
             2
@@ -78,7 +78,7 @@
         "slug": "spinach",
         "categoryId": 2,
         "description": "Tender, nutrient-packed spinach leaves. Best in spring and fall, perfect for salads and sauteed dishes.",
-        "image": "public/images/spinach.jpg",
+        "image": "/images/spinach.jpg",
         "seasonIds": [
             1,    
             3
@@ -91,7 +91,7 @@
         "slug": "pumpkin",
         "categoryId": 2,
         "description": "Classic autumn pumpkins for cooking, baking pies, or decoration. A seasonal favorite from local farms.",
-        "image": "public/images/pumpkin.jpg",
+        "image": "/images/pumpkin.jpg",
         "seasonIds": [3],
         "availableMonths": [8, 9, 10]
     },
@@ -101,7 +101,7 @@
         "slug": "corn",
         "categoryId": 2,
         "description": "Sweet, freshly picked corn on the cob. A summer essential best grilled or boiled the same day.",
-        "image": "public/images/corn.jpg",
+        "image": "/images/corn.jpg",
         "seasonIds": [2],
         "availableMonths": [3, 5]
     },
@@ -111,7 +111,7 @@
         "slug": "milk",
         "categoryId": 4,
         "description": "Fresh, unpasteurized milk from local dairy farms. Rich in nutrients and free from artificial additives.",
-        "image": "public/images/milk.jpg",
+        "image": "/images/milk.jpg",
         "seasonIds": [],
         "availableMonths": []
     },
@@ -121,7 +121,7 @@
         "slug": "cheese",
         "categoryId": 4,
         "description": "Artisanal cheeses crafted by local producers. From creamy brie to sharp cheddar, a wide variety available.",
-        "image": "public/images/cheese.jpg",
+        "image": "/images/cheese.jpg",
         "seasonIds": [],
         "availableMonths": []
     }
