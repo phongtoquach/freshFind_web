@@ -8,6 +8,7 @@ import AppContext from "../context/AppContext";
 
 import HomeMarketSearchBox from "../components/HomeMarketSearchBox";
 import MarketsGrid from "../components/MarketsGrid";
+import ProducesGrid from "../components/ProducesGrid";
 
 function Home() {
     const { userLocation, refreshUserCurrentLocation } = useContext(AppContext);
@@ -64,6 +65,11 @@ function Home() {
 
                         <MarketsGrid filters={{ onlyOpenNow: 1 }} sortType="featured_desc" userCurrentLocation={userCurrentLocationObj} />
 
+                        <div className="section-heading" style={{ marginTop: "30px" }}>
+                            <h2 className="section-title">This week's seasonal picks</h2>
+                        </div>
+
+                        <ProducesGrid getByCurrentMonth={1} />
                     </div>
                 </section>
             </main>

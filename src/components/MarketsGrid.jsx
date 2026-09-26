@@ -9,10 +9,10 @@ import { getWeekDayDescByKey } from "../utils/dateTimeUtils";
 
 function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarketsCount }) {
 
-    console.log("[MarketsGrid] Vừa vào hàm component ProductsGrid !");
+    console.log("[MarketsGrid] Vừa vào hàm component MarketsGrid !");
 
     useEffect(() => {
-        console.log("[MarketsGrid] đang chạy useEffect() của component ProductsGrid !");
+        console.log("[MarketsGrid] đang chạy useEffect() của component MarketsGrid !");
             
         // hàm cleanup
         return () => {

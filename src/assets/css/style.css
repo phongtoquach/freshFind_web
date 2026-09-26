@@ -587,6 +587,15 @@ img {
   margin-top: 10px;
 }
 
+.market-operating-schedule .markets-list {
+  font-size: 14px;
+  color: #d97706;
+  font-weight: bold;
+}
+.market-operating-schedule .markets-list a:hover {
+  color: #16a34a;
+}
+
 .badge-list {
   display: flex;
   flex-wrap: wrap;
