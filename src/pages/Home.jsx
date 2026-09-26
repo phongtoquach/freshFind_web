@@ -4,7 +4,6 @@ import { useEffect, useContext, useState, useRef } from 'react';
 //import "../assets/css/market_details_page.css";
 
 import AppContext from "../context/AppContext";
-//import CartContext from "../context/CartContext";
 
 import HomeMarketSearchBox from "../components/HomeMarketSearchBox";
 import MarketsGrid from "../components/MarketsGrid";

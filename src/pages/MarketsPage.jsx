@@ -3,7 +3,6 @@ import { useEffect, useContext, useState } from 'react';
 
 //import "../assets/css/markets_page.css";
 
-//import { websiteName } from "../config/app_configs";
 
 import AppContext from "../context/AppContext";
 
