@@ -358,6 +358,16 @@ export function calculateDistance(lat1, lon1, lat2, lon2) {
     return R * c;
 }
 
+export function formatDistance(distanceKm) {
+    if (distanceKm < 1) {
+        return `${Math.round(distanceKm * 1000)} m`;
+    }
+
+    return `${new Intl.NumberFormat("en-US", {
+        maximumFractionDigits: 1
+    }).format(distanceKm)} km`;
+}
+
 
 export function getMarketById(id) {
     if (!id) return null;

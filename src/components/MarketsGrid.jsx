@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { getMarketsByFilters, sortMarketsByType, calculateDistance } from "../services/marketService";
+import { getMarketsByFilters, sortMarketsByType, calculateDistance, formatDistance } from "../services/marketService";
 
 import { truncateDescription } from "../utils/textUtils";
 import { getWeekDayDescByKey } from "../utils/dateTimeUtils";
@@ -120,6 +120,22 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
                                                     <img src="/images/gps-icon.png" alt={market.location.address}/>
                                                     <span>{market.location.address}</span>
                                                 </p>
+
+                                                {
+                                                    (userCurrentLocation && typeof userCurrentLocation === "object" && userCurrentLocation !== null && !Array.isArray(userCurrentLocation)
+                                                    && Object.hasOwn(userCurrentLocation, "latitude") && Object.hasOwn(userCurrentLocation, "longitude")) && (
+                                                        <p className="market-address">
+                                                            <img src="/images/distance-icon.png" alt={market.location.address}/>
+                                                            <span>{formatDistance(calculateDistance(
+                                                                userCurrentLocation.latitude,
+                                                                userCurrentLocation.longitude,
+                                                                market.location.latitude,
+                                                                market.location.longitude))}
+                                                            </span>
+                                                        </p>
+                                                    )
+                                                }
+                                                
                                                 <p className="market-click-count">
                                                     <img src="/images/feature-icon.png" alt={market.clickCount}/>
                                                     <span>{market.clickCount} Views</span>
