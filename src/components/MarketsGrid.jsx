@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { getMarketsByFilters, sortMarketsByType, calculateDistance, formatDistance, isMarketOpenNow } from "../services/marketService";
+import { getMarketsByFilters, sortMarketsByType, calculateDistance, formatDistance, isMarketOpenNow, getWorkingHoursOfCurrentDateByMarket } from "../services/marketService";
 
 import { truncateDescription } from "../utils/textUtils";
 import { getWeekDayDescByKey, getFormattedCurrentHourMinute } from "../utils/dateTimeUtils";
@@ -99,6 +99,11 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
                             {
                                 sortedFilteredMarketsList.map((market) => {
                                     const marketIsOpenNow = isMarketOpenNow(market);
+                                    let closeHourStr = "";
+                                    if (marketIsOpenNow) {
+                                        const curDateWorkingHoursObj = getWorkingHoursOfCurrentDateByMarket(market);
+                                        closeHourStr = curDateWorkingHoursObj.end;
+                                    }
 
                                     return (
                                         <div className="market-card" key={market.id} data-marketid={market.id}>
@@ -119,8 +124,8 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
                                                     (marketIsOpenNow) ? (
                                                         <div className="market-opennow">
                                                             <div className="green-badge"><span>OPEN NOW</span></div>
-                                                            <img src="/images/clock.png" alt="clock"/>
-                                                            <span>{getFormattedCurrentHourMinute()}</span>
+                                                            
+                                                            <span className="close-hour-msg">Close at {closeHourStr}</span>
                                                         </div>
                                                     ) : (
                                                         <div className="red-badge"><span>CLOSED</span></div>

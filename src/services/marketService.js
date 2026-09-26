@@ -369,6 +369,30 @@ export function formatDistance(distanceKm) {
 }
 
 
+export function getWorkingHoursOfCurrentDateByMarket(market) {
+    const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+
+    const nowObj = new Date();
+
+    const dayIndex = nowObj.getDay();
+    const currentDay = days[dayIndex];
+    console.log("[getWorkingHoursOfCurrentDateByMarket] dayIndex : " + dayIndex + " ; currentDay : " + currentDay);
+
+    const todaySchedule = market.schedule.find(item => item.day === currentDay);
+
+    if (!todaySchedule) {
+        console.log("[getWorkingHoursOfCurrentDateByMarket] Market " + market.id + " : todaySchedule not found !");
+        return { start: "", end: "" };
+    }
+    
+    console.log("[getWorkingHoursOfCurrentDateByMarket] Market " + market.id + " - data cua todaySchedule cua market nay : ", todaySchedule);
+
+    console.log("[getWorkingHoursOfCurrentDateByMarket] Market " + market.id + " - hours data : ", todaySchedule.hours);
+    
+    return todaySchedule.hours;
+}
+
+
 export function getMarketById(id) {
     if (!id) return null;
     const marketIdNum = Number(id);

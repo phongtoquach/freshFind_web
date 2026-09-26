@@ -589,6 +589,11 @@ img {
   align-items: center;
 }
 
+.market-opennow .close-hour-msg {
+  color: #d97706;
+  font-size: 16px;
+}
+
 .green-badge {
   display: flex;
   flex-wrap: wrap;

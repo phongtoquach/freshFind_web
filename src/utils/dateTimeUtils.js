@@ -98,10 +98,9 @@ export function formatMonthsList(months) {
 export function getFormattedCurrentHourMinute() {
     const nowObj = new Date();
 
-    let curHour = nowObj.getHours();   // Ví dụ: 9
-    let curMin = nowObj.getMinutes(); // Ví dụ: 5
+    let curHour = nowObj.getHours();
+    let curMin = nowObj.getMinutes();
 
-    // Cách định dạng để luôn có 2 chữ số (09:05)
     const formattedHour = String(curHour).padStart(2, '0');
     const formattedMin = String(curMin).padStart(2, '0');
 
