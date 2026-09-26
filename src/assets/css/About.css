@@ -1,4 +1,4 @@
-.cotainer_about_side {
+.container_about_side {
   background: url("/images/fresh-produce-banner.jpg");
   margin-bottom: 40px;
   position: relative;
@@ -32,7 +32,7 @@
   color: #fff;
 }
 
-.cotainer_about_side::before {
+.container_about_side::before {
   position: absolute;
   content: "";
   background-color: rgba(0, 0, 0, 0.5);
@@ -66,12 +66,12 @@
   transform: scale(1.05);
 }
 
-.cotainer_about_side > * {
+.container_about_side > * {
   position: relative;
   z-index: 2;
 }
 
-.section.markets-container-section {
+.section.markets-grid-section {
   padding-top: 0;
 }
 
