@@ -1,0 +1,38 @@
+[
+  {
+    "keywords": ["find a market", "market near me", "market directory", "markets"],
+    "answer": "Use the Market Directory to find markets by area, opening day, or produce type.",
+    "link": "/markets",
+    "linkText": "Find a market"
+  },
+  {
+    "keywords": ["opening hours", "open now", "open today", "market hours"],
+    "answer": "Each market detail page shows its opening days and hours. You can also browse the market directory to find a market.",
+    "link": "/markets",
+    "linkText": "Browse markets"
+  },
+  {
+    "keywords": ["produce", "product", "vegetable", "fruit"],
+    "answer": "The Produce Guide shows when each product is available and which markets sell it.",
+    "link": "/produce-guide",
+    "linkText": "Browse produce"
+  },
+  {
+    "keywords": ["seasonal", "by month", "in season", "this month"],
+    "answer": "Choose a month on the Seasonal Produce page to see available products and related markets.",
+    "link": "/products-seasons",
+    "linkText": "View seasonal produce"
+  },
+  {
+    "keywords": ["bookmark", "favorite", "note"],
+    "answer": "Save your favorite markets and products, then view them and add notes on the Bookmarks page.",
+    "link": "/bookmarks",
+    "linkText": "View bookmarks"
+  },
+  {
+    "keywords": ["contact", "report an issue", "report a problem"],
+    "answer": "You can find our contact information on the Contact page.",
+    "link": "/contact",
+    "linkText": "Contact us"
+  }
+]
