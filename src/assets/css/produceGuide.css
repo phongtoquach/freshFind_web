@@ -140,3 +140,18 @@
     text-align: justify;
     margin-top: 5px;
 }
+
+.available-months,
+.product-markets {
+    margin-top: 10px;
+}
+
+.product-markets ul {
+    margin: 5px 0 0;
+    padding-left: 20px;
+}
+
+.product-markets a {
+    color: green;
+    text-decoration: underline;
+}
