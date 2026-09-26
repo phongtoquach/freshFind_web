@@ -16,9 +16,21 @@ function ProductsSeasons() {
     activeSeasonId,
     setActiveSeasonId,
     currentSeason,
+    activeMonth,
+    setActiveMonth,
   } = useProductsSeason();
 
   if (isLoading) return <div>Loading...</div>;
+
+  // Handler khi click vào tháng
+  const handleMonthClick = (month) => {
+    setActiveMonth(activeMonth === month ? null : month);
+  };
+
+  // Handler khi click vào All
+  const handleAllClick = () => {
+    setActiveMonth(null);
+  };
 
   const formatDuration = (startMonth, endMonth) => {
     const months = [
@@ -39,15 +51,15 @@ function ProductsSeasons() {
     return `${months[startMonth - 1]} to ${months[endMonth - 1]}`;
   };
 
-  // Logic lọc sản phẩm theo mùa và từ khóa tìm kiếm
+  // Logic lọc sản phẩm theo tháng và từ khóa tìm kiếm
   const filteredProducts = useMemo(() => {
     const lowerTerm = searchTerm.toLowerCase().trim();
 
     return products.filter((product) => {
-      // Điều kiện 1: Khớp mùa (hoặc là Year-round nếu seasonIds rỗng)
-      const matchesSeason =
-        product.seasonIds.length === 0 ||
-        product.seasonIds.includes(activeSeasonId);
+      // Điều kiện 1: Lọc theo tháng (nếu activeMonth === null thì hiển thị tất cả)
+      const matchesMonth =
+        activeMonth === null ||
+        product.availableMonths.includes(activeMonth);
 
       // Điều kiện 2: Khớp từ khóa (tìm trong tên hoặc mô tả)
       const matchesSearch =
@@ -55,9 +67,9 @@ function ProductsSeasons() {
         product.name.toLowerCase().includes(lowerTerm) ||
         product.description.toLowerCase().includes(lowerTerm);
 
-      return matchesSeason && matchesSearch;
+      return matchesMonth && matchesSearch;
     });
-  }, [products, activeSeasonId, searchTerm]);
+  }, [products, activeMonth, searchTerm]);
 
   // Logic lọc chợ liên quan đến các sản phẩm đã được lọc ở trên
   const relatedMarkets = useMemo(() => {
@@ -76,41 +88,44 @@ function ProductsSeasons() {
         <div className="Navbar_Season">
           <h1 className="header_season">Seasonal produce</h1>
           <ul className="ul_Season_list">
-            <li className="li_season_item active">
-              <button className="btn_moth_seasons">Jan</button>
+            <li className={`li_season_item ${activeMonth === null ? 'active' : ''}`}>
+              <button className="btn_moth_seasons" onClick={handleAllClick}>All</button>
             </li>
-            <li className="li_season_item">
-              <button className="btn_moth_seasons">Feb</button>
+            <li className={`li_season_item ${activeMonth === 1 ? 'active' : ''}`}>
+              <button className="btn_moth_seasons" onClick={() => handleMonthClick(1)}>Jan</button>
             </li>
-            <li className="li_season_item">
-              <button className="btn_moth_seasons">Mar</button>
+            <li className={`li_season_item ${activeMonth === 2 ? 'active' : ''}`}>
+              <button className="btn_moth_seasons" onClick={() => handleMonthClick(2)}>Feb</button>
             </li>
-            <li className="li_season_item">
-              <button className="btn_moth_seasons">Apr</button>
+            <li className={`li_season_item ${activeMonth === 3 ? 'active' : ''}`}>
+              <button className="btn_moth_seasons" onClick={() => handleMonthClick(3)}>Mar</button>
             </li>
-            <li className="li_season_item">
-              <button className="btn_moth_seasons">May</button>
+            <li className={`li_season_item ${activeMonth === 4 ? 'active' : ''}`}>
+              <button className="btn_moth_seasons" onClick={() => handleMonthClick(4)}>Apr</button>
             </li>
-            <li className="li_season_item">
-              <button className="btn_moth_seasons">Jun</button>
+            <li className={`li_season_item ${activeMonth === 5 ? 'active' : ''}`}>
+              <button className="btn_moth_seasons" onClick={() => handleMonthClick(5)}>May</button>
             </li>
-            <li className="li_season_item">
-              <button className="btn_moth_seasons">Jul</button>
+            <li className={`li_season_item ${activeMonth === 6 ? 'active' : ''}`}>
+              <button className="btn_moth_seasons" onClick={() => handleMonthClick(6)}>Jun</button>
             </li>
-            <li className="li_season_item">
-              <button className="btn_moth_seasons">Aug</button>
+            <li className={`li_season_item ${activeMonth === 7 ? 'active' : ''}`}>
+              <button className="btn_moth_seasons" onClick={() => handleMonthClick(7)}>Jul</button>
             </li>
-            <li className="li_season_item">
-              <button className="btn_moth_seasons">Sep</button>
+            <li className={`li_season_item ${activeMonth === 8 ? 'active' : ''}`}>
+              <button className="btn_moth_seasons" onClick={() => handleMonthClick(8)}>Aug</button>
             </li>
-            <li className="li_season_item">
-              <button className="btn_moth_seasons">Oct</button>
+            <li className={`li_season_item ${activeMonth === 9 ? 'active' : ''}`}>
+              <button className="btn_moth_seasons" onClick={() => handleMonthClick(9)}>Sep</button>
             </li>
-            <li className="li_season_item">
-              <button className="btn_moth_seasons">Nov</button>
+            <li className={`li_season_item ${activeMonth === 10 ? 'active' : ''}`}>
+              <button className="btn_moth_seasons" onClick={() => handleMonthClick(10)}>Oct</button>
             </li>
-            <li className="li_season_item">
-              <button className="btn_moth_seasons">Dec</button>
+            <li className={`li_season_item ${activeMonth === 11 ? 'active' : ''}`}>
+              <button className="btn_moth_seasons" onClick={() => handleMonthClick(11)}>Nov</button>
+            </li>
+            <li className={`li_season_item ${activeMonth === 12 ? 'active' : ''}`}>
+              <button className="btn_moth_seasons" onClick={() => handleMonthClick(12)}>Dec</button>
             </li>
           </ul>
         </div>
@@ -141,7 +156,7 @@ function ProductsSeasons() {
             <div className="container_second_bar">
               <ul className="ul_market_list">
                 {/* Truyền danh sách chợ đã lọc xuống */}
-                <MarketList items={relatedMarkets} />
+                <MarketList items={relatedMarkets} products={products} activeMonth={activeMonth} />
               </ul>
             </div>
           </div>

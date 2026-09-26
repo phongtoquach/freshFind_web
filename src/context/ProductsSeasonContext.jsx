@@ -14,6 +14,9 @@ export const ProductsSeasonProvider = ({ children }) => {
   // State mới: Lưu ID của mùa đang được chọn (Mặc định là Spring - ID 1)
   const [activeSeasonId, setActiveSeasonId] = useState(1);
 
+  // State cho lọc theo tháng (null = hiển thị tất cả)
+  const [activeMonth, setActiveMonth] = useState(null);
+
   useEffect(() => {
     try {
       setSeasons(seasonsData);
@@ -42,7 +45,9 @@ export const ProductsSeasonProvider = ({ children }) => {
       setActiveSeasonId,
       currentSeason,
       getProductById,
-      getMarketByProductId
+      getMarketByProductId,
+      activeMonth,
+      setActiveMonth
     }}>
       {children}
     </ProductsSeasonContext.Provider>

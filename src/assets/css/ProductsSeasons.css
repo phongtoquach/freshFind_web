@@ -174,3 +174,10 @@
   color: #3a624c;
   font-size: 12px;
 }
+
+.descrip_produtc {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}

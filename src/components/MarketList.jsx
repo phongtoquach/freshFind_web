@@ -1,37 +1,53 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../assets/css/ProductsSeasons.css";
 
-function MarketList({ items = [] }) {
-  const [activeMarketId, setActiveMarketId] = useState(null);
+function MarketList({ items = [], products = [], activeMonth }) {
+  const navigate = useNavigate();
 
   if (!items || items.length === 0) {
     return <li>Không có chợ nào.</li>;
   }
 
+  // Lấy các sản phẩm của market có trong tháng đang chọn
+  const getMarketProductsForMonth = (market) => {
+    return products.filter(p =>
+      market.productIds.includes(p.id) &&
+      (activeMonth === null || p.availableMonths.includes(activeMonth))
+    );
+  };
+
   return (
     <>
-      {items.map((market) => (
-        <li key={market.id} className="li_market_item">
-          <button
-            className={`market_button ${activeMarketId === market.id ? "market_button_active" : ""}`}
-            onClick={() => setActiveMarketId(market.id)}
-          >
-            <div className="rigtside_name">
-              <span className="name_market">{market.name}</span>
-              <span className="statusBadge">Opening</span>
-            </div>
-            <div className="time_container">
-              <span>{market.location?.area || "Local area"}</span>
-            </div>
-            <div className="descrip_container">
-              <p className="descrip_text">{market.description}</p>
-            </div>
-            <div className="descrip_produtc">
-              <span className="descrip_produtc_item">Strawberry</span>
-            </div>
-          </button>
-        </li>
-      ))}
+      {items.map((market) => {
+        const marketProducts = getMarketProductsForMonth(market);
+        return (
+          <li key={market.id} className="li_market_item">
+            <button
+              className="market_button"
+              onClick={() => navigate(`/markets/${market.id}/${market.slug}`)}
+            >
+              <div className="rigtside_name">
+                <span className="name_market">{market.name}</span>
+              </div>
+              <div className="time_container">
+                <span>{market.location?.area || "Local area"}</span>
+              </div>
+              <div className="descrip_container">
+                <p className="descrip_text">{market.description}</p>
+              </div>
+              {marketProducts.length > 0 && (
+                <div className="descrip_produtc">
+                  {marketProducts.map(product => (
+                    <span key={product.id} className="descrip_produtc_item">
+                      {product.name}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </button>
+          </li>
+        );
+      })}
     </>
   );
 }
