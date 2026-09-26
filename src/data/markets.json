@@ -8,6 +8,7 @@
         ],
         "description": "The city's largest weekly farmers market, featuring over 50 local vendors offering fresh produce, artisanal goods, and prepared foods. A vibrant community gathering every weekend.",
         "productIds": [1, 10],
+        "clickCount": 30,
         "location": {
             "address": "123 Market Street",
             "area": "Downtown",
@@ -66,14 +67,8 @@
             "/images/markets/farmer_market_2.jpeg"
         ],
         "description": "A scenic market along the riverfront offering organic produce, fresh-baked bread, and handmade crafts. Popular for its peaceful atmosphere and family-friendly environment.",
-        "productIds": [
-            1,
-            4,
-            5,
-            9,
-            11,
-            12
-        ],
+        "productIds": [1, 4, 5, 9, 11, 12],
+        "clickCount": 45,
         "location": {
             "address": "45 River Road",
             "area": "Riverside",
@@ -116,8 +111,8 @@
                 "day": "sat",
                 "open": true,
                 "hours": {
-                    "start": "06:30",
-                    "end": "13:00"
+                    "start": "08:30",
+                    "end": "16:30"
                 }
             },
             {
@@ -136,6 +131,7 @@
         ],
         "description": "Specializing in organic and certified naturally-grown produce. This market connects consumers directly with sustainable farmers from the surrounding valley region.",
         "productIds": [7, 11],
+        "clickCount": 12,
         "location": {
             "address": "80 Valley Drive",
             "area": "Green Valley",
@@ -176,11 +172,8 @@
             },
             {
                 "day": "sat",
-                "open": true,
-                "hours": {
-                    "start": "07:00",
-                    "end": "14:00"
-                }
+                "open": false,
+                "hours": null
             },
             {
                 "day": "sun",
@@ -197,14 +190,8 @@
             "/images/markets/farmer_market_4.jpeg"
         ],
         "description": "A beloved neighborhood market running every Saturday morning. Features local farmers, bakers, and food artisans in a relaxed community setting.",
-        "productIds": [
-            1,
-            2,
-            3,
-            10,
-            11,
-            12
-        ],
+        "productIds": [1,2,3,10,11,12],
+        "clickCount": 68,
         "location": {
             "address": "15 Community Lane",
             "area": "Midtown",
@@ -242,7 +229,7 @@
                 "open": true,
                 "hours": {
                     "start": "08:00",
-                    "end": "13:00"
+                    "end": "17:00"
                 }
             },
             {
@@ -260,15 +247,8 @@
             "/images/markets/farmer_market_5.jpeg"
         ],
         "description": "Set against the beautiful lakeside backdrop, this market offers premium produce, fresh seafood, and artisan products. A weekend destination for food lovers.",
-        "productIds": [
-            1,
-            2,
-            3,
-            4,
-            7,
-            9,
-            12
-        ],
+        "productIds": [1,2,3,4,7,9,12],
+        "clickCount": 11,
         "location": {
             "address": "200 Lake Boulevard",
             "area": "Lakeside",

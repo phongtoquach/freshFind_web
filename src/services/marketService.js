@@ -281,6 +281,15 @@ export function sortMarketsByType(markets_data, sortType, startLocation) {
             return clonedMarketsData;
 
             break;
+        case "featured_desc":
+            console.log("[sortMarketsByType] sortType = featured_desc. Sort theo so luot click (clickCount) tu nhieu den it !");
+
+            clonedMarketsData.sort(function(a, b) {
+                return b.clickCount - a.clickCount;
+            });
+            return clonedMarketsData;
+
+            break;
         case "nearest_first":
             console.log("[sortMarketsByType] sortType = " + sortType + ". Sort theo market tu gan nhat den xa nhat ! startLocation : ");
             console.log(startLocation);

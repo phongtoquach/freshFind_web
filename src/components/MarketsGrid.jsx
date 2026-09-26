@@ -120,6 +120,10 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
                                                     <img src="/images/gps-icon.png" alt={market.location.address}/>
                                                     <span>{market.location.address}</span>
                                                 </p>
+                                                <p className="market-click-count">
+                                                    <img src="/images/feature-icon.png" alt={market.clickCount}/>
+                                                    <span>{market.clickCount} Views</span>
+                                                </p>
                                                 <div className="market-operating-schedule">
                                                     <img src="/images/schedule-icon.png" alt="schedule"/>
                                                     <div>

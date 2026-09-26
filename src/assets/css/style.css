@@ -568,7 +568,7 @@ img {
   color: var(--ink-950);
   font-size: var(--font-xl);
 }
-.market-address {
+.market-address, .market-click-count {
   margin-top: 4px;
   color: var(--ink-500);
   font-size: var(--font-sm);
@@ -576,7 +576,7 @@ img {
   align-items: center;
   gap: 5px;
 }
-.market-address span {
+.market-address span, .market-click-count span {
   padding-top: 5px;
 }
 
