@@ -34,7 +34,7 @@ const getCurrentTimeString = () => {
 
 function MarketDetailsPage() {
   const { toggleMarketBookmark, isMarketBookmarked } = useContext(BookmarkContext);
-  const { getNotesByMarketId, addNote, deleteNote } = useContext(NoteContext);
+  const { getNotesByMarketId, addMarketNote, deleteMarketNote } = useContext(NoteContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newNoteText, setNewNoteText] = useState("");
 
@@ -228,7 +228,7 @@ function MarketDetailsPage() {
             onSubmit={(e) => {
               e.preventDefault();
               if (newNoteText.trim()) {
-                addNote(marketIdNum, newNoteText);
+                addMarketNote(marketIdNum, newNoteText);
                 setNewNoteText("");
               }
             }}
@@ -252,7 +252,7 @@ function MarketDetailsPage() {
                     <span className="note_item_text">{note.text}</span>
                     <button
                       className="note_item_button_x"
-                      onClick={() => deleteNote(marketIdNum, note.id)}
+                      onClick={() => deleteMarketNote(marketIdNum, note.id)}
                     >
                       x
                     </button>

@@ -145,7 +145,7 @@ function Bookmarks() {
                 <p className="no_saved_desc">
                   Browse products and bookmark your favorites.
                 </p>
-                <Link className="markets_link" to="/products">
+                <Link className="markets_link" to="/produce-guide">
                   Browse Products
                 </Link>
               </div>
@@ -155,7 +155,7 @@ function Bookmarks() {
                   <div className="saved_content">
                     <div className="name_note_read_container">
                       <Link
-                        to={`/products/${product.id}/${product.slug}`}
+                        to="/produce-guide"
                         className="saved_header"
                       >
                         {product.name}
