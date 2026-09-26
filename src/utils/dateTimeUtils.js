@@ -48,3 +48,48 @@ export function getMonthDescByMonthNo(monthNo) {
 
     return "";
 }
+
+
+export function formatMonthsList(months) {
+    if (!Array.isArray(months) || months.length <= 0) {
+        return "Year around";
+    }
+    
+    const sortedMonths = [...new Set(months)].sort((a, b) => a - b);
+    console.log("[formatMonthsList] Data cua sortedMonths :", sortedMonths);
+
+    const groups = [];
+    let start = sortedMonths[0];
+    let end = sortedMonths[0];
+
+    for (let i = 1; i < sortedMonths.length; i++) {
+        const current = sortedMonths[i];
+
+        if (current === end + 1) {
+            // Tháng tiếp theo liền nhau
+            end = current;
+        } else {
+            // Kết thúc một nhóm
+            groups.push([start, end]);
+
+            start = current;
+            end = current;
+        }
+    }
+
+    // Thêm nhóm cuối cùng
+    if (sortedMonths.length > 0) {
+        groups.push([start, end]);
+    }
+
+    // Format từng nhóm
+    return groups.map(([start, end]) => {
+            if (start === end) {
+                //return monthNames[start - 1];
+                return getMonthDescByMonthNo(start);
+            }
+
+            //return `${monthNames[start - 1]} - ${monthNames[end - 1]}`;
+            return getMonthDescByMonthNo(start) + " - " + getMonthDescByMonthNo(end);
+        }).join(", ");
+}

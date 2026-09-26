@@ -5,7 +5,7 @@ import { getProductsByFilters } from "../services/productService";
 import { getMarketsByFilters, sortMarketsByType, calculateDistance } from "../services/marketService";
 
 import { truncateDescription } from "../utils/textUtils";
-import { getWeekDayDescByKey, getMonthDescByMonthNo } from "../utils/dateTimeUtils";
+import { getWeekDayDescByKey, getMonthDescByMonthNo, formatMonthsList } from "../utils/dateTimeUtils";
 
 
 function ProducesGrid({ getByCurrentMonth, filters, limit }) {
@@ -112,7 +112,8 @@ function ProducesGrid({ getByCurrentMonth, filters, limit }) {
                                                 <h3>{product.name} - {product.id}</h3>
                                                 {/* <p className="market-desc">{ truncateDescription(product.description, 50) }</p> */}
                                                 
-                                                <p><b>Available Months :</b> {avaiMonths_str}</p>
+                                                <p><b>Available Months :</b> {formatMonthsList(product.availableMonths)}</p>
+                                                {/* <p><b>Available Months 1 :</b> {avaiMonths_str}</p> */}
 
                                                 <div className="market-operating-schedule">
                                                     <img src="/images/market-icon.png" alt={product.name}/>
