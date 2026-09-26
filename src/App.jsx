@@ -13,6 +13,7 @@ import ProductsSeasons from "./pages/ProductsSeasons";
 import AboutPage from "./pages/AboutPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import Bookmarks from "./pages/BookMarks.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
@@ -38,6 +39,7 @@ function App() {
               <Route path="/products-seasons" element={<ProductsSeasons />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/login" element={<LoginPage />} />
             </Routes>
 
             <Footer />
