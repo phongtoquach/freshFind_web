@@ -223,8 +223,8 @@ function MarketDetailsPage() {
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <div className="modal_container">
           <h2 className="modal_header">Your Favorite Market Notes</h2>
-          
-          <form 
+
+          <form
             onSubmit={(e) => {
               e.preventDefault();
               if (newNoteText.trim()) {
@@ -233,10 +233,10 @@ function MarketDetailsPage() {
               }
             }}
           >
-            <input 
-              className="modal_input" 
-              type="text" 
-              placeholder="Write some things..." 
+            <input
+              className="modal_input"
+              type="text"
+              placeholder="Write some things..."
               value={newNoteText}
               onChange={(e) => setNewNoteText(e.target.value)}
             />
@@ -250,7 +250,7 @@ function MarketDetailsPage() {
                 {getNotesByMarketId(marketIdNum).map((note) => (
                   <li key={note.id} className="note_item">
                     <span className="note_item_text">{note.text}</span>
-                    <button 
+                    <button
                       className="note_item_button_x"
                       onClick={() => deleteNote(marketIdNum, note.id)}
                     >
