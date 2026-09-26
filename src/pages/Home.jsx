@@ -58,6 +58,12 @@ function Home() {
 
                         <MarketsGrid sortType="nearest_first" userCurrentLocation={userCurrentLocationObj} />
 
+                        <div className="section-heading" style={{ marginTop: "30px" }}>
+                            <h2 className="section-title">Featured Currently Open Markets</h2>
+                        </div>
+
+                        <MarketsGrid filters={{ onlyOpenNow: 1 }} sortType="featured_desc" userCurrentLocation={userCurrentLocationObj} />
+
                     </div>
                 </section>
             </main>
