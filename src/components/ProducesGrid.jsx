@@ -5,7 +5,7 @@ import { getProductsByFilters } from "../services/productService";
 import { getMarketsByFilters, sortMarketsByType, calculateDistance } from "../services/marketService";
 
 import { truncateDescription } from "../utils/textUtils";
-import { getWeekDayDescByKey, getMonthDescByMonthNo } from "../utils/dateTimeUtils";
+import { getWeekDayDescByKey, getMonthDescByMonthNo, formatMonthsList } from "../utils/dateTimeUtils";
 
 
 function ProducesGrid({ getByCurrentMonth, filters, limit }) {
@@ -65,6 +65,21 @@ function ProducesGrid({ getByCurrentMonth, filters, limit }) {
     //     </>
     // );
 
+    // check prop limit
+    console.log("[ProducesGrid] prop limit duoc truyen vao : " + limit);
+    if (limit) {
+        let limitVal = Number(limit);
+        if (Number.isNaN(limitVal)) {
+            console.log("[ProducesGrid] prop limit khong phai number !");
+            limitVal = 0;
+        }
+
+        if (limitVal > 0) {
+            console.log("[ProducesGrid] limitVal = " + limitVal + ". chuan bi slice !");
+            filteredProductsList = filteredProductsList.slice(0, limitVal);
+        }
+    }
+
     return (
         <div className="markets-grid-section">            
             {
@@ -112,7 +127,8 @@ function ProducesGrid({ getByCurrentMonth, filters, limit }) {
                                                 <h3>{product.name} - {product.id}</h3>
                                                 {/* <p className="market-desc">{ truncateDescription(product.description, 50) }</p> */}
                                                 
-                                                <p><b>Available Months :</b> {avaiMonths_str}</p>
+                                                <p><b>Available Months :</b> {formatMonthsList(product.availableMonths)}</p>
+                                                {/* <p><b>Available Months 1 :</b> {avaiMonths_str}</p> */}
 
                                                 <div className="market-operating-schedule">
                                                     <img src="/images/market-icon.png" alt={product.name}/>

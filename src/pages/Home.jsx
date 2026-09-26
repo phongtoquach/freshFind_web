@@ -57,19 +57,19 @@ function Home() {
                             <h2 className="section-title">Nearby Markets</h2>
                         </div>
 
-                        <MarketsGrid sortType="nearest_first" userCurrentLocation={userCurrentLocationObj} />
+                        <MarketsGrid sortType="nearest_first" userCurrentLocation={userCurrentLocationObj} limit={4} />
 
                         <div className="section-heading" style={{ marginTop: "30px" }}>
                             <h2 className="section-title">Featured Currently Open Markets</h2>
                         </div>
 
-                        <MarketsGrid filters={{ onlyOpenNow: 1 }} sortType="featured_desc" userCurrentLocation={userCurrentLocationObj} />
+                        <MarketsGrid filters={{ onlyOpenNow: 1 }} sortType="featured_desc" userCurrentLocation={userCurrentLocationObj} limit={4} />
 
                         <div className="section-heading" style={{ marginTop: "30px" }}>
                             <h2 className="section-title">This week's seasonal picks</h2>
                         </div>
 
-                        <ProducesGrid getByCurrentMonth={1} />
+                        <ProducesGrid getByCurrentMonth={1} limit={4} />
                     </div>
                 </section>
             </main>
