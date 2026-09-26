@@ -331,6 +331,16 @@ export function sortMarketsByType(markets_data, sortType, startLocation) {
             }
 
             break;
+        case "open_next_day":
+            console.log("[sortMarketsByType] sortType = open_next_day. Sort theo ngay mo cua gan nhat !");
+
+            clonedMarketsData.sort((a, b) => {
+                return getDaysUntilNextOpen(a.schedule) - getDaysUntilNextOpen(b.schedule);
+            });
+
+            return clonedMarketsData;
+
+            break;
         default:
             console.log("[sortMarketsByType] Khong co sort type phu hop! Return mang goc !");
             return clonedMarketsData;
@@ -417,6 +427,28 @@ export function getNextOpenDayOfMarket(schedule) {
     }
 
     return null;
+}
+
+
+export function getDaysUntilNextOpen(schedule) {
+    const dayOrder = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+
+    const today = new Date().getDay();
+
+    for (let i = 1; i <= 7; i++) {
+        const dayIndex = (today + i) % 7;
+        const dayName = dayOrder[dayIndex];
+
+        const scheduleItem = schedule.find(
+            item => item.day === dayName
+        );
+
+        if (scheduleItem?.open) {
+            return i;
+        }
+    }
+
+    return Infinity;
 }
 
 
