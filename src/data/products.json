@@ -80,7 +80,7 @@
         "description": "Tender, nutrient-packed spinach leaves. Best in spring and fall, perfect for salads and sauteed dishes.",
         "image": "public/images/spinach.jpg",
         "seasonIds": [
-            1,
+            1,    
             3
         ],
         "availableMonths": [2, 6]
