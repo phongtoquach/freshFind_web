@@ -155,7 +155,7 @@ function Bookmarks() {
                   <div className="saved_content">
                     <div className="name_note_read_container">
                       <Link
-                        to={`/products/${product.id}/${product.slug}`}
+                        to={`/produce-guide`}
                         className="saved_header"
                       >
                         {product.name}

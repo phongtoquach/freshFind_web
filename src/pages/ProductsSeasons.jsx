@@ -56,9 +56,11 @@ function ProductsSeasons() {
     const lowerTerm = searchTerm.toLowerCase().trim();
 
     return products.filter((product) => {
-      // Điều kiện 1: Lọc theo tháng (nếu activeMonth === null thì hiển thị tất cả)
+      // Điều kiện 1: Lọc theo tháng (nếu activeMonth === null hoặc availableMonths rỗng thì hiển thị vì có quanh năm)
       const matchesMonth =
         activeMonth === null ||
+        !product.availableMonths ||
+        product.availableMonths.length === 0 ||
         product.availableMonths.includes(activeMonth);
 
       // Điều kiện 2: Khớp từ khóa (tìm trong tên hoặc mô tả)

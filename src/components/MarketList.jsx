@@ -8,11 +8,16 @@ function MarketList({ items = [], products = [], activeMonth }) {
     return <li>Không có chợ nào.</li>;
   }
 
-  // Lấy các sản phẩm của market có trong tháng đang chọn
+  // Lấy các sản phẩm của market có trong tháng đang chọn (availableMonths rỗng = có quanh năm)
   const getMarketProductsForMonth = (market) => {
     return products.filter(p =>
       market.productIds.includes(p.id) &&
-      (activeMonth === null || p.availableMonths.includes(activeMonth))
+      (
+        activeMonth === null ||
+        !p.availableMonths ||
+        p.availableMonths.length === 0 ||
+        p.availableMonths.includes(activeMonth)
+      )
     );
   };
 
