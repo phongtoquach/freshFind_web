@@ -75,18 +75,20 @@ function ProduceGuide() {
       </aside>
 
       <section className="content">
-        <h1>Produce Guide</h1>
+        <h1>Farm Products</h1>
         <h2>Discover what is available at local farmers markets. Browse by category or search for specific produce.</h2>
         <div className="product">
           {displayedProducts.length > 0 ? (
             displayedProducts.map((product) => (
-              <div key={product.id} className="product-item">
-                <strong>{product.name}</strong>
+              <div key={product.id} className="product-items">
                 <img src={product.image} alt={product.name} />
-                <span>
-                  {categories.find((category) => category.id === product.categoryId)?.name || 'Unknown'}
-                </span>
-                <p>{product.description}</p>
+                <div className='container_name_category'>
+                  <strong>{product.name}</strong>
+                  <span className='category_log'>
+                    {categories.find((category) => category.id === product.categoryId)?.name || 'Unknown'}
+                  </span>
+                </div>
+                <p className='description'>{product.description}</p>
               </div>
             ))
           ) : (
