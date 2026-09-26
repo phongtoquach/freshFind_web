@@ -2,6 +2,8 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import BookmarkContext from "../context/BookmarkContext";
 
+import { getFormattedCurrentHourMinute } from "../utils/dateTimeUtils";
+
 function Header() {
   const navigate = useNavigate();
   const { marketBookmarks } = useContext(BookmarkContext);
@@ -48,6 +50,9 @@ function Header() {
             >
               Bookmarks {marketBookmarks.length > 0 && <span>{marketBookmarks.length}</span>}
             </button>
+
+            <div style={{ paddingLeft: "10px" }}><img src="/images/clock.png" alt="clock"/></div>
+            {getFormattedCurrentHourMinute()}
           </div>
         </nav>
       </header>

@@ -83,7 +83,7 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
         <div className="markets-grid-section">            
             {
                 sortedFilteredMarketsList.length === 0 ? (
-                    <p>No any market found.</p>
+                    <p style={{ textAlign: "center" }}>No any market found.</p>
                 ) : (
                     <>
                         {
@@ -103,6 +103,7 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
                                     return (
                                         <div className="market-card" key={market.id} data-marketid={market.id}>
                                             <div className="market-image-wrap">
+                                                <Link to={`/markets/${market.id}/${market.slug}`}>
                                                 {
                                                     (market.images.length > 0) ? (
                                                         <img src={market.images[0]} alt={market.name} />
@@ -110,9 +111,10 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
                                                         <img src="/images/market_default_image.jpg"/>
                                                     )
                                                 }
+                                                </Link>
                                             </div>
                                             <div className="market-card-content">
-                                                <h3>{market.name} - {market.id}</h3>
+                                                <h3><Link className="lnk-market-name" to={`/markets/${market.id}/${market.slug}`}>{market.name} - {market.id}</Link></h3>
                                                 {
                                                     (marketIsOpenNow) ? (
                                                         <div className="market-opennow">
@@ -170,9 +172,9 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
                                                         }
                                                     </div>
                                                 </div>
-                                                <div className="badge-list">
+                                                {/* <div className="badge-list">
                                                     <span>Vegetables</span><span>Fruit</span><span>Herbs</span>
-                                                </div>
+                                                </div> */}
                                                 <div className="market-card-footer">
                                                     <Link to={`/markets/${market.id}/${market.slug}`}>
                                                         View Details

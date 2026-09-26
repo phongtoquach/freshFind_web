@@ -126,7 +126,7 @@ img {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 10px;
 }
 .nav-links {
   justify-content: center;
@@ -548,6 +548,9 @@ img {
 }
 .market-card-content {
   padding: 21px;
+}
+.market-card-content a.lnk-market-name:hover {
+  color: #16a34a;
 }
 .market-area {
   display: flex;
