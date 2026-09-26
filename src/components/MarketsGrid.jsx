@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { getMarketsByFilters, sortMarketsByType, calculateDistance, formatDistance } from "../services/marketService";
+import { getMarketsByFilters, sortMarketsByType, calculateDistance, formatDistance, isMarketOpenNow } from "../services/marketService";
 
 import { truncateDescription } from "../utils/textUtils";
-import { getWeekDayDescByKey } from "../utils/dateTimeUtils";
+import { getWeekDayDescByKey, getFormattedCurrentHourMinute } from "../utils/dateTimeUtils";
 
 
 function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarketsCount }) {
@@ -98,6 +98,8 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
                         <div className="market-grid">
                             {
                                 sortedFilteredMarketsList.map((market) => {
+                                    const marketIsOpenNow = isMarketOpenNow(market);
+
                                     return (
                                         <div className="market-card" key={market.id} data-marketid={market.id}>
                                             <div className="market-image-wrap">
@@ -111,6 +113,18 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
                                             </div>
                                             <div className="market-card-content">
                                                 <h3>{market.name} - {market.id}</h3>
+                                                {
+                                                    (marketIsOpenNow) ? (
+                                                        <div className="market-opennow">
+                                                            <div className="green-badge"><span>OPEN NOW</span></div>
+                                                            <img src="/images/clock.png" alt="clock"/>
+                                                            <span>{getFormattedCurrentHourMinute()}</span>
+                                                        </div>
+                                                    ) : (
+                                                        <div className="red-badge"><span>CLOSED</span></div>
+                                                    )
+                                                }
+                                                
                                                 <p className="market-desc">{ truncateDescription(market.description, 70) }</p>
                                                 <p className="market-area">
                                                     <img src="/images/location-mark.png" alt={market.location.area}/>

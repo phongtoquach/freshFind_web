@@ -63,7 +63,7 @@ function Home() {
                             <h2 className="section-title">Featured Currently Open Markets</h2>
                         </div>
 
-                        <MarketsGrid filters={{ onlyOpenNow: 1 }} sortType="featured_desc" userCurrentLocation={userCurrentLocationObj} limit={4} />
+                        <MarketsGrid filters={{ onlyOpenNow: 1 }} sortType="featured_desc" userCurrentLocation={userCurrentLocationObj} limit={3} />
 
                         <div className="section-heading" style={{ marginTop: "30px" }}>
                             <h2 className="section-title">This week's seasonal picks</h2>

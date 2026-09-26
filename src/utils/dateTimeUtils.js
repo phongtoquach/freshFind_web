@@ -93,3 +93,17 @@ export function formatMonthsList(months) {
             return getMonthDescByMonthNo(start) + " - " + getMonthDescByMonthNo(end);
         }).join(", ");
 }
+
+
+export function getFormattedCurrentHourMinute() {
+    const nowObj = new Date();
+
+    let curHour = nowObj.getHours();   // Ví dụ: 9
+    let curMin = nowObj.getMinutes(); // Ví dụ: 5
+
+    // Cách định dạng để luôn có 2 chữ số (09:05)
+    const formattedHour = String(curHour).padStart(2, '0');
+    const formattedMin = String(curMin).padStart(2, '0');
+
+    return formattedHour + ":" + formattedMin;
+}

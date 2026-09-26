@@ -566,7 +566,7 @@ img {
 .market-card h3 {
   margin-top: 5px;
   color: var(--ink-950);
-  font-size: var(--font-xl);
+  font-size: 18px;
 }
 .market-address, .market-click-count {
   margin-top: 4px;
@@ -578,6 +578,42 @@ img {
 }
 .market-address span, .market-click-count span {
   padding-top: 5px;
+}
+
+.market-opennow {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.green-badge {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 5px;
+}
+.green-badge span {
+  padding: 4px 9px;
+  border-radius: 30px;
+  color: var(--green-700);
+  background: var(--green-50);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.red-badge {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 5px;
+}
+.red-badge span {
+  padding: 4px 9px;
+  border-radius: 30px;
+  color: #721c24;
+  background: #f8d7da;
+  font-size: 15px;
+  font-weight: 700;
 }
 
 .market-operating-schedule {
