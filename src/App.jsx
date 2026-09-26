@@ -17,7 +17,6 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 
 function App() {
-  const location = useLocation();
 
   return (
     <AppProvider>
@@ -25,21 +24,19 @@ function App() {
         <BookmarkProvider>
           <Header />
 
-          <div className="page-transition" key={location.pathname}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/markets" element={<MarketsPage />} />
-              <Route
-                path="/markets/:marketId/:marketSlug"
-                element={<MarketDetailsPage />}
-              />
-              <Route path="/bookmarks" element={<Bookmarks />} />
-              <Route path="/produce-guide" element={<ProduceGuide />} />
-              <Route path="/products-seasons" element={<ProductsSeasons />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-            </Routes>
-          </div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/markets" element={<MarketsPage />} />
+            <Route
+              path="/markets/:marketId/:marketSlug"
+              element={<MarketDetailsPage />}
+            />
+            <Route path="/bookmarks" element={<Bookmarks />} />
+            <Route path="/produce-guide" element={<ProduceGuide />} />
+            <Route path="/products-seasons" element={<ProductsSeasons />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
 
           <Footer />
         </BookmarkProvider>
