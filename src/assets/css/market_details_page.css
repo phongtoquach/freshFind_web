@@ -154,3 +154,29 @@
   background-color: #181f2e;
   color: #fff;
 }
+
+.button_container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.note_btn {
+  padding: 6px 12px;
+  margin-top: 10px;
+  background-color: #c4b80de5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.note_btn_img {
+  width: 16px;
+  height: 16px;
+}
+
+.note_btn.none {
+  display: none;
+}

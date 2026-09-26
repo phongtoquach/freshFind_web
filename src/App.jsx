@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 
 import { AppProvider } from "./context/AppContext.jsx";
 import { BookmarkProvider } from "./context/BookmarkContext.jsx";
+import { NoteProvider } from "./context/NoteContext.jsx";
 import { ProductsSeasonProvider } from "./context/ProductsSeasonContext.jsx";
 
 import Home from "./pages/Home.jsx";
@@ -22,23 +23,25 @@ function App() {
     <AppProvider>
       <ProductsSeasonProvider>
         <BookmarkProvider>
-          <Header />
+          <NoteProvider>
+            <Header />
 
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/markets" element={<MarketsPage />} />
-            <Route
-              path="/markets/:marketId/:marketSlug"
-              element={<MarketDetailsPage />}
-            />
-            <Route path="/bookmarks" element={<Bookmarks />} />
-            <Route path="/produce-guide" element={<ProduceGuide />} />
-            <Route path="/products-seasons" element={<ProductsSeasons />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-          </Routes>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/markets" element={<MarketsPage />} />
+              <Route
+                path="/markets/:marketId/:marketSlug"
+                element={<MarketDetailsPage />}
+              />
+              <Route path="/bookmarks" element={<Bookmarks />} />
+              <Route path="/produce-guide" element={<ProduceGuide />} />
+              <Route path="/products-seasons" element={<ProductsSeasons />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+            </Routes>
 
-          <Footer />
+            <Footer />
+          </NoteProvider>
         </BookmarkProvider>
       </ProductsSeasonProvider>
     </AppProvider>

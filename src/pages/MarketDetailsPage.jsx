@@ -1,10 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "../assets/css/market_details_page.css";
 import MapLocation from "../components/MapLocation";
 import { getMarketByIdOrSlug } from "../services/marketService";
 import productsData from "../data/products.json";
 import BookmarkContext from "../context/BookmarkContext";
+import NoteContext from "../context/NoteContext";
+import Modal from "../components/Modal";
 
 const DAYS_OF_WEEK = [
   { key: "mon", label: "Monday", dayIndex: 1 },
@@ -32,6 +34,9 @@ const getCurrentTimeString = () => {
 
 function MarketDetailsPage() {
   const { toggleBookmark, isBookmarked } = useContext(BookmarkContext);
+  const { getNotesByMarketId, addNote, deleteNote } = useContext(NoteContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newNoteText, setNewNoteText] = useState("");
 
   const { marketId, marketSlug } = useParams();
   const foundMarket = getMarketByIdOrSlug(marketId || marketSlug);
@@ -113,12 +118,20 @@ function MarketDetailsPage() {
               <div className="right_container">
                 <div className="right_header_containt">
                   <h1 className="right_header">{market.name}</h1>
-                  <button
-                    className={`right_header_btn ${bookmarked ? "actived" : ""}`}
-                    onClick={() => toggleBookmark(marketIdNum)}
-                  >
-                    Bookmark
-                  </button>
+                  <div className="button_container">
+                    <button
+                      className={`right_header_btn ${bookmarked ? "actived" : ""}`}
+                      onClick={() => toggleBookmark(marketIdNum)}
+                    >
+                      Bookmark
+                    </button>
+                    {bookmarked && (
+                      <button className="note_btn" onClick={() => setIsModalOpen(true)}>
+                        <img className="note_btn_img" src="/images/notes.png" alt="" />
+                        Note
+                      </button>
+                    )}
+                  </div>
                 </div>
                 <p className="right_address">
                   <span className="right_icons">
@@ -179,9 +192,8 @@ function MarketDetailsPage() {
                           {day.label}
                         </span>
                         <span
-                          className={`open_in_week_item_status ${
-                            isOpen ? "open" : "closed"
-                          }`}
+                          className={`open_in_week_item_status ${isOpen ? "open" : "closed"
+                            }`}
                         >
                           {isOpen && sched?.hours
                             ? `${sched.hours.start} - ${sched.hours.end}`
@@ -208,6 +220,49 @@ function MarketDetailsPage() {
           </div>
         </div>
       </section>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <div className="modal_container">
+          <h2 className="modal_header">Your Favorite Market Notes</h2>
+          
+          <form 
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (newNoteText.trim()) {
+                addNote(marketIdNum, newNoteText);
+                setNewNoteText("");
+              }
+            }}
+          >
+            <input 
+              className="modal_input" 
+              type="text" 
+              placeholder="Write some things..." 
+              value={newNoteText}
+              onChange={(e) => setNewNoteText(e.target.value)}
+            />
+          </form>
+
+          <div className="your_note_here_container">
+            {getNotesByMarketId(marketIdNum).length === 0 ? (
+              <p className="place_holder_modal">Your notes will appear here.</p>
+            ) : (
+              <ul className="note_list">
+                {getNotesByMarketId(marketIdNum).map((note) => (
+                  <li key={note.id} className="note_item">
+                    <span className="note_item_text">{note.text}</span>
+                    <button 
+                      className="note_item_button_x"
+                      onClick={() => deleteNote(marketIdNum, note.id)}
+                    >
+                      x
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      </Modal>
     </>
   );
 }
