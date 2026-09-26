@@ -65,6 +65,21 @@ function ProducesGrid({ getByCurrentMonth, filters, limit }) {
     //     </>
     // );
 
+    // check prop limit
+    console.log("[ProducesGrid] prop limit duoc truyen vao : " + limit);
+    if (limit) {
+        let limitVal = Number(limit);
+        if (Number.isNaN(limitVal)) {
+            console.log("[ProducesGrid] prop limit khong phai number !");
+            limitVal = 0;
+        }
+
+        if (limitVal > 0) {
+            console.log("[ProducesGrid] limitVal = " + limitVal + ". chuan bi slice !");
+            filteredProductsList = filteredProductsList.slice(0, limitVal);
+        }
+    }
+
     return (
         <div className="markets-grid-section">            
             {

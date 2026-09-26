@@ -65,19 +65,19 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
     console.log(sortedFilteredMarketsList);
 
     // check prop limit
-    // console.log("[ProductsGrid] prop limit duoc truyen vao : " + limit);
-    // if (limit) {
-    //     let limitVal = Number(limit);
-    //     if (Number.isNaN(limitVal)) {
-    //         console.log("[ProductsGrid] prop limit khong phai number !");
-    //         limitVal = 0;
-    //     }
+    console.log("[MarketsGrid] prop limit duoc truyen vao : " + limit);
+    if (limit) {
+        let limitVal = Number(limit);
+        if (Number.isNaN(limitVal)) {
+            console.log("[MarketsGrid] prop limit khong phai number !");
+            limitVal = 0;
+        }
 
-    //     if (limitVal > 0) {
-    //         console.log("[ProductsGrid] limitVal = " + limitVal + ". chuan bi slice !");
-    //         sortedFilteredProductsList = sortedFilteredProductsList.slice(0, limitVal);
-    //     }
-    // }
+        if (limitVal > 0) {
+            console.log("[MarketsGrid] limitVal = " + limitVal + ". chuan bi slice !");
+            sortedFilteredMarketsList = sortedFilteredMarketsList.slice(0, limitVal);
+        }
+    }
 
     return (
         <div className="markets-grid-section">            

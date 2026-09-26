@@ -1,7 +1,7 @@
 export function getWeekDayDescByKey(weekDayKey) {
     const weekDaysArr = [
         { weekDayKey: "mon", weekDayDesc: "Monday" },
-        { weekDayKey: "tue", weekDayDesc: "Thursday" },
+        { weekDayKey: "tue", weekDayDesc: "Tuesday" },
         { weekDayKey: "wed", weekDayDesc: "Wednesday" },
         { weekDayKey: "thu", weekDayDesc: "Thursday" },
         { weekDayKey: "fri", weekDayDesc: "Friday" },
