@@ -28,6 +28,33 @@ function Bookmarks() {
     .map((id) => getProductById(id))
     .filter(Boolean);
 
+  const exportBookmarks = () => {
+    const marketList = bookmarkedMarkets.map((market, index) =>
+      `${index + 1}. ${market.name} - ${market.location?.area || ""}\n   ${window.location.origin}/markets/${market.id}/${market.slug}`
+    );
+    const productList = bookmarkedProducts.map((product, index) =>
+      `${index + 1}. ${product.name}\n   ${window.location.origin}/produce-guide?search=${encodeURIComponent(product.name)}`
+    );
+
+    const content = [
+      "FRESHFIND - MY BOOKMARKS",
+      "",
+      "MARKETS",
+      ...(marketList.length ? marketList : ["No saved markets"]),
+      "",
+      "PRODUCTS",
+      ...(productList.length ? productList : ["No saved products"]),
+    ].join("\n");
+
+    const file = new Blob([content], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(file);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "freshfind-bookmarks.txt";
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
   const handleOpenNotes = (market) => {
     setSelectedMarket(market);
     setIsModalOpen(true);
@@ -82,6 +109,9 @@ function Bookmarks() {
           <p className="header_desc">
             Your saved markets, produce, and personal notes.
           </p>
+          <button className="export-bookmarks" type="button" onClick={exportBookmarks}>
+            Export bookmarks
+          </button>
         </div>
         <div className="bookmark_fav">
           <ul className="bookmark_fav_list">
@@ -123,6 +153,15 @@ function Bookmarks() {
                       </button>
                     </div>
                     <p className="saved_location">{market.location?.area}</p>
+                    <div className="bookmark-share">
+                      <a
+                        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${window.location.origin}/markets/${market.id}/${market.slug}`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Share on Facebook
+                      </a>
+                    </div>
                   </div>
 
                   <button
@@ -155,7 +194,7 @@ function Bookmarks() {
                   <div className="saved_content">
                     <div className="name_note_read_container">
                       <Link
-                        to={`/produce-guide`}
+                        to={`/produce-guide?search=${encodeURIComponent(product.name)}`}
                         className="saved_header"
                       >
                         {product.name}
@@ -168,6 +207,15 @@ function Bookmarks() {
                       </button>
                     </div>
                     <p className="saved_location">{product.description}</p>
+                    <div className="bookmark-share">
+                      <a
+                        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${window.location.origin}/produce-guide?search=${encodeURIComponent(product.name)}`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Share on Facebook
+                      </a>
+                    </div>
                   </div>
 
                   <button

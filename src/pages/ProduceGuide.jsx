@@ -9,7 +9,9 @@ import { useBookmark } from "../context/BookmarkContext";
 import { useNote } from "../context/NoteContext";
 
 function ProduceGuide() {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState(
+    () => new URLSearchParams(window.location.search).get('search') || ''
+  );
   const [selectedCategoryId, setSelectedCategoryId] = useState('all');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newNoteText, setNewNoteText] = useState('');

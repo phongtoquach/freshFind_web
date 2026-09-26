@@ -105,3 +105,25 @@
 .name_note_read_btn:hover {
   color: green;
 }
+
+.export-bookmarks {
+  margin-top: 12px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 6px;
+  background: #287a43;
+  color: white;
+  cursor: pointer;
+}
+
+.bookmark-share {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.bookmark-share a {
+  color: #287a43;
+  text-decoration: underline;
+}
