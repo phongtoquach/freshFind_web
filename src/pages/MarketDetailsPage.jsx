@@ -33,7 +33,7 @@ const getCurrentTimeString = () => {
 };
 
 function MarketDetailsPage() {
-  const { toggleBookmark, isBookmarked } = useContext(BookmarkContext);
+  const { toggleMarketBookmark, isMarketBookmarked } = useContext(BookmarkContext);
   const { getNotesByMarketId, addNote, deleteNote } = useContext(NoteContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newNoteText, setNewNoteText] = useState("");
@@ -43,7 +43,7 @@ function MarketDetailsPage() {
 
   const market = foundMarket;
   const marketIdNum = Number(market?.id);
-  const bookmarked = isBookmarked(marketIdNum);
+  const bookmarked = isMarketBookmarked(marketIdNum);
 
   const todayDayIndex = new Date().getDay();
   const todayKey = DAYS_OF_WEEK.find((d) => d.dayIndex === todayDayIndex)?.key;
@@ -121,7 +121,7 @@ function MarketDetailsPage() {
                   <div className="button_container">
                     <button
                       className={`right_header_btn ${bookmarked ? "actived" : ""}`}
-                      onClick={() => toggleBookmark(marketIdNum)}
+                      onClick={() => toggleMarketBookmark(marketIdNum)}
                     >
                       Bookmark
                     </button>
