@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import categories from '../data/categories.json';
 import products from '../data/products.json';
+import markets from '../data/markets.json';
 import '../assets/css/produceGuide.css';
 import Modal from "../components/Modal";
 import { useBookmark } from "../context/BookmarkContext";
@@ -111,6 +113,26 @@ function ProduceGuide() {
                   </span>
                 </div>
                 <p className='description'>{product.description}</p>
+                <p className="available-months">
+                  <strong>Available: </strong>
+                  {product.availableMonths.length === 0
+                    ? 'Year-round'
+                    : product.availableMonths.map((month) => `Month ${month}`).join(', ')}
+                </p>
+                <div className="product-markets">
+                  <strong>Find at markets:</strong>
+                  <ul>
+                    {markets
+                      .filter((market) => market.productIds.includes(product.id))
+                      .map((market) => (
+                        <li key={market.id}>
+                          <Link to={`/markets/${market.id}/${market.slug}`}>
+                            {market.name}
+                          </Link>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
               </div>
             ))
           ) : (
