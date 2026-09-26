@@ -1,6 +1,8 @@
 import marketsData from "../data/markets.json";
 import productsData from "../data/products.json";
 
+import { timeToMinutes } from "../utils/dateTimeUtils";
+
 export function getMarketsByFilters(filters) {
     console.log("[getMarketsByFilters] Calling getMarketsByFilters() ! filters : ", filters);
 
@@ -8,8 +10,8 @@ export function getMarketsByFilters(filters) {
     console.log("[getMarketsByFilters] finalFiltersData cuoi cung : ", finalFiltersData);
 
     let lowerCaseAreaName = finalFiltersData.areaName.toLocaleLowerCase();
-    // neu cac filter trong filtersData deu rong, null : lay tat ca product trong mang productsData
-    if (lowerCaseAreaName == "" && finalFiltersData.productCateId == 0 && finalFiltersData.daysOfWeek.length == 0) {
+    // neu cac filter trong filtersData deu rong, null : lay tat ca market trong mang marketsData
+    if (lowerCaseAreaName == "" && finalFiltersData.productCateId == 0 && finalFiltersData.daysOfWeek.length == 0 && finalFiltersData.onlyOpenNow == 0) {
         console.log("[getMarketsByFilters] Khong co filter nao trong finalFiltersData. Lay tat ca market trong mang marketsData !");
         console.log(marketsData);
         return marketsData;
@@ -121,15 +123,70 @@ export function getMarketsByFilters(filters) {
     console.log("[getMarketsByFilters] Mang filteredMarkets sau cung :");
     console.log(filteredMarkets);
 
+    // check tiep finalFiltersData.onlyOpenNow dua tren filteredMarkets
+    // nhung can check ngay hien tai
+    if (finalFiltersData.onlyOpenNow == 1) {
+        console.log("[getMarketsByFilters] filter onlyOpenNow = 1 !");
+
+        const openFilteredMarkets = filteredMarkets.filter(filteredMarketObj => {
+            console.log("[getMarketsByFilters] onlyOpenNow - filteredMarket : ", filteredMarketObj);
+            const marketIsOpenNow = isMarketOpenNow(filteredMarketObj);
+            console.log("[getMarketsByFilters] onlyOpenNow - filteredMarket " + filteredMarketObj.id + " - marketIsOpenNow : ", marketIsOpenNow);
+
+            return marketIsOpenNow;
+        });
+
+        console.log("[getMarketsByFilters] onlyOpenNow - openFilteredMarkets sau cung :");
+        console.log(openFilteredMarkets);
+        return openFilteredMarkets;
+    }
+    else {
+        console.log("[getMarketsByFilters] filter onlyOpenNow = " + finalFiltersData.onlyOpenNow + " ! Bo qua filter nay !");
+    }
+
     return filteredMarkets;
 }
+
+
+export function isMarketOpenNow(market) {
+    const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+
+    const nowObj = new Date();
+
+    const dayIndex = nowObj.getDay();
+    const currentDay = days[dayIndex];
+    console.log("[isMarketOpenNow] dayIndex : " + dayIndex + " ; currentDay : " + currentDay);
+
+    console.log("[isMarketOpenNow] Market " + market.id + " - current time : " + nowObj.getHours() + ":" + nowObj.getMinutes());
+
+    const currentMinutes = nowObj.getHours() * 60 + nowObj.getMinutes();
+
+    const todaySchedule = market.schedule.find(item => item.day === currentDay);
+    
+    console.log("[isMarketOpenNow] Market " + market.id + " - data cua todaySchedule cua market nay : ", todaySchedule);
+
+    if (!todaySchedule || !todaySchedule.open) {
+        console.log("[isMarketOpenNow] Market " + market.id + " : todaySchedule dang CLOSED ! return false !");
+        return false;
+    }
+
+    console.log("[isMarketOpenNow] Market " + market.id + " - hours data : ", todaySchedule.hours);
+    const startMinutes = timeToMinutes(todaySchedule.hours.start);
+    const endMinutes = timeToMinutes(todaySchedule.hours.end);
+    console.log("[isMarketOpenNow] Market " + market.id + " - startMinutes : " + startMinutes + " ; endMinutes : " + endMinutes);
+    console.log("[isMarketOpenNow] Market " + market.id + " - currentMinutes : " + currentMinutes);
+
+    return currentMinutes >= startMinutes && currentMinutes <= endMinutes;
+}
+
 
 /**
  * This function is used to format param filtersData to a unique formar
  * {
 *      areaName: "",
 *      productCateId: 0,
-*      daysOfWeek: []
+*      daysOfWeek: [],
+*      onlyOpenNow: 0
  * }
  */
 export function handleMarketFiltersData(filtersData) {
@@ -137,7 +194,8 @@ export function handleMarketFiltersData(filtersData) {
     let finalFilters = {
         areaName: "",
         productCateId: 0,
-        daysOfWeek: []
+        daysOfWeek: [],
+        onlyOpenNow: 0
     };
 
     // check areaName
@@ -162,6 +220,25 @@ export function handleMarketFiltersData(filtersData) {
     if (Object.hasOwn(filtersData, "daysOfWeek") && Array.isArray(filtersData.daysOfWeek)) {
         console.log("[handleMarketFiltersData] filtersData co attr daysOfWeek va la array !");
         finalFilters.daysOfWeek = filtersData.daysOfWeek;
+    }
+
+    // check onlyOpenNow
+    if (Object.hasOwn(filtersData, "onlyOpenNow")) {
+        console.log("[handleMarketFiltersData] filtersData co attr onlyOpenNow ! Value : " + filtersData.onlyOpenNow);
+        // check co phai number ko
+        let onlyOpenNowVal = Number(filtersData.onlyOpenNow);
+        if (Number.isNaN(onlyOpenNowVal)) {
+            onlyOpenNowVal = 0;
+        }
+        // chi chap nhan 0 hoac 1
+        if (onlyOpenNowVal != 0 && onlyOpenNowVal != 1) {
+            onlyOpenNowVal = 0;
+        }
+
+        finalFilters.onlyOpenNow = onlyOpenNowVal;
+    }
+    else {
+        console.log("[handleMarketFiltersData] filtersData KHONG CO attr onlyOpenNow !");
     }
 
     console.log("[handleMarketFiltersData] Data cuoi cung cua finalFilters : ", finalFilters);
@@ -205,7 +282,7 @@ export function sortMarketsByType(markets_data, sortType, startLocation) {
 
             break;
         case "nearest_first":
-            console.log("[sortMarketsByType] sortType = " + sortType + ". Sort theo tu market gan nhat den xa nhat ! startLocation : ");
+            console.log("[sortMarketsByType] sortType = " + sortType + ". Sort theo market tu gan nhat den xa nhat ! startLocation : ");
             console.log(startLocation);
 
             // check startLocation co phai object va co 2 attr latitude, longitude hay ko

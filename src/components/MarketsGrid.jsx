@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { getMarketsByFilters, sortMarketsByType } from "../services/marketService";
+import { getMarketsByFilters, sortMarketsByType, calculateDistance } from "../services/marketService";
 
 import { truncateDescription } from "../utils/textUtils";
 import { getWeekDayDescByKey } from "../utils/dateTimeUtils";
@@ -31,7 +31,8 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
     let filtersData = {
         areaName: "",
         productCateId: 0,
-        daysOfWeek: []
+        daysOfWeek: [],
+        onlyOpenNow: 0
     };
     if (filters && typeof filters === "object" && filters !== null && !Array.isArray(filters)) {
         console.log("[MarketsGrid] filters la object");
@@ -43,6 +44,9 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
 
     console.log("[MarketsGrid] filtersData cuoi cung :");
     console.log(filtersData);
+
+    // TEST TEST TEST
+    //filtersData.onlyOpenNow = 1;
 
     // THUC HIEN SEARCH
     let filteredMarketsList = getMarketsByFilters(filtersData);
@@ -124,7 +128,7 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
                                                                 market.schedule.map((weekDayItem) => {
                                                                     if (weekDayItem.open === true) {
                                                                         return (
-                                                                            <p key={market.id + "-" + weekDayItem.day}>{getWeekDayDescByKey(weekDayItem.day)} ({weekDayItem.hours.start} - {weekDayItem.hours.end})</p>
+                                                                            <p key={market.id + "-" + weekDayItem.day}>{getWeekDayDescByKey(weekDayItem.day)}</p>
                                                                         )
                                                                     }
                                                                 })
