@@ -129,6 +129,17 @@ function MarketsPage() {
 		});
     }
 
+    function removeMarketFilters(e) {
+        e.preventDefault();
+        console.log("[removeMarketFilters] Calling removeMarketFilters() !");
+
+        setFiltersFormData({
+            areaName: "",
+            productCateId: 0,
+            daysOfWeek: []
+        });
+    }
+
     const userCurrentLocationObj = {...userLocation};
     
     return (
@@ -192,8 +203,8 @@ function MarketsPage() {
                                             </select>
                                         </div>
 
-                                        <button className="market-submit" type="submit">
-                                            Search Markets
+                                        <button className="market-submit" type="button" onClick={(event) => removeMarketFilters(event)}>
+                                            Remove filters
                                         </button>
                                     </div>
                                 </form>
