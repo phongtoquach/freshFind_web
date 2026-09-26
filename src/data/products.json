@@ -133,6 +133,7 @@
         "categoryId": 2,
         "description": "Classic autumn pumpkins for cooking, baking pies, or decoration. A seasonal favorite from local farms.",
         "image": "public/images/pumpkin.jpg",
+<<<<<<< Updated upstream
         "seasonIds": [
             3
         ],
@@ -141,6 +142,10 @@
             9,
             10
         ]
+=======
+        "seasonIds": [3],
+        "availableMonths": [8, 9, 10]
+>>>>>>> Stashed changes
     },
     {
         "id": 10,
@@ -149,6 +154,7 @@
         "categoryId": 2,
         "description": "Sweet, freshly picked corn on the cob. A summer essential best grilled or boiled the same day.",
         "image": "public/images/corn.jpg",
+<<<<<<< Updated upstream
         "seasonIds": [
             2
         ],
@@ -156,6 +162,10 @@
             3,
             5
         ]
+=======
+        "seasonIds": [2],
+        "availableMonths": [3, 5]
+>>>>>>> Stashed changes
     },
     {
         "id": 11,
