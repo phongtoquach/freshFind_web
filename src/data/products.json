@@ -116,7 +116,7 @@
         "slug": "spinach",
         "categoryId": 2,
         "description": "Tender, nutrient-packed spinach leaves. Best in spring and fall, perfect for salads and sauteed dishes.",
-        "image": "/images/spinach.jpg",
+        "image": "public/images/spinach.jpg",
         "seasonIds": [
             1,
             3
@@ -132,7 +132,7 @@
         "slug": "pumpkin",
         "categoryId": 2,
         "description": "Classic autumn pumpkins for cooking, baking pies, or decoration. A seasonal favorite from local farms.",
-        "image": "/images/pumpkin.jpg",
+        "image": "public/images/pumpkin.jpg",
         "seasonIds": [
             3
         ],
@@ -148,7 +148,7 @@
         "slug": "corn",
         "categoryId": 2,
         "description": "Sweet, freshly picked corn on the cob. A summer essential best grilled or boiled the same day.",
-        "image": "/images/corn.jpg",
+        "image": "public/images/corn.jpg",
         "seasonIds": [
             2
         ],
@@ -173,7 +173,7 @@
         "slug": "cheese",
         "categoryId": 4,
         "description": "Artisanal cheeses crafted by local producers. From creamy brie to sharp cheddar, a wide variety available.",
-        "image": "/images/cheese.jpg",
+        "image": "public/images/cheese.jpg",
         "seasonIds": [],
         "availableMonths": []
     }
