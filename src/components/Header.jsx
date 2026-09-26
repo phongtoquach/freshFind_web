@@ -1,10 +1,16 @@
 import { NavLink, Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import BookmarkContext from "../context/BookmarkContext";
 
 import { getFormattedCurrentHourMinute } from "../utils/dateTimeUtils";
 
 function Header() {
+  const [time, setTime] = useState(new Date().toLocaleTimeString());
+  useEffect(() => {
+  const timer = setInterval(() => setTime(new Date().toLocaleTimeString()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
   const navigate = useNavigate();
   const { marketBookmarks } = useContext(BookmarkContext);
 
@@ -52,7 +58,7 @@ function Header() {
             </button>
 
             <div style={{ paddingLeft: "10px" }}><img src="/images/clock.png" alt="clock"/></div>
-            {getFormattedCurrentHourMinute()}
+            <span>{time}</span>
           </div>
         </nav>
       </header>

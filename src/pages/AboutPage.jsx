@@ -6,7 +6,7 @@ function AboutPage() {
     <>
       <section className="section markets-container-section">
         <div className="container">
-          <div className="cotainer_about_side">
+          <div className="container_about_side">
             <div className="left_side_banner">
               <p className="about_content_text">About FindMarket</p>
               <h2 className="about_content_header">Fresh markets, near you.</h2>

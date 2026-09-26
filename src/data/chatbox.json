@@ -1,38 +1,135 @@
 [
   {
-    "keywords": ["find a market", "market near me", "market directory", "markets"],
-    "answer": "Use the Market Directory to find markets by area, opening day, or produce type.",
-    "link": "/markets",
-    "linkText": "Find a market"
+    "keywords": ["apple", "apples", "crisp apple", "cider"],
+    "answer": "Fresh and crisp apples are available in January, May, June, and September from local orchards.",
+    "link": "/produce-guide?search=Apple",
+    "linkText": "View Apples in Produce Guide"
   },
   {
-    "keywords": ["opening hours", "open now", "open today", "market hours"],
-    "answer": "Each market detail page shows its opening days and hours. You can also browse the market directory to find a market.",
-    "link": "/markets",
-    "linkText": "Browse markets"
+    "keywords": ["tomato", "tomatoes", "ripe tomato", "cherry tomato"],
+    "answer": "Vine-ripened tomatoes are available in March, April, and December, ideal for salads and sauces.",
+    "link": "/produce-guide?search=Tomato",
+    "linkText": "View Tomatoes in Produce Guide"
   },
   {
-    "keywords": ["produce", "product", "vegetable", "fruit"],
-    "answer": "The Produce Guide shows when each product is available and which markets sell it.",
+    "keywords": ["strawberry", "strawberries", "berry", "berries"],
+    "answer": "Sweet farm strawberries are in season across multiple months (March, May, June, August, September, October, December).",
+    "link": "/produce-guide?search=Strawberry",
+    "linkText": "View Strawberries in Produce Guide"
+  },
+  {
+    "keywords": ["carrot", "carrots", "crunchy carrot"],
+    "answer": "Crunchy local carrots are harvested and available fresh around February and October.",
+    "link": "/produce-guide?search=Carrot",
+    "linkText": "View Carrots in Produce Guide"
+  },
+  {
+    "keywords": ["potato", "potatoes", "spud", "spuds"],
+    "answer": "Locally grown potatoes are available year-round at almost every farmers market.",
+    "link": "/produce-guide?search=Potato",
+    "linkText": "View Potatoes in Produce Guide"
+  },
+  {
+    "keywords": ["basil", "fresh basil", "pesto"],
+    "answer": "Aromatic fresh basil is best found in May and July, perfect for homemade pesto and seasoning.",
+    "link": "/produce-guide?search=Basil",
+    "linkText": "View Basil in Produce Guide"
+  },
+  {
+    "keywords": ["mint", "mint leaves", "fresh mint"],
+    "answer": "Refreshing mint leaves are picked in September, October, and November for teas and cocktails.",
+    "link": "/produce-guide?search=Mint",
+    "linkText": "View Mint in Produce Guide"
+  },
+  {
+    "keywords": ["spinach", "spinach leaves", "baby spinach"],
+    "answer": "Nutrient-packed spinach leaves are available at their best in February and June.",
+    "link": "/produce-guide?search=Spinach",
+    "linkText": "View Spinach in Produce Guide"
+  },
+  {
+    "keywords": ["pumpkin", "pumpkins", "squash"],
+    "answer": "Autumn pumpkins arrive from August through October, perfect for pies, soups, and roasting.",
+    "link": "/produce-guide?search=Pumpkin",
+    "linkText": "View Pumpkins in Produce Guide"
+  },
+  {
+    "keywords": ["corn", "sweet corn", "corn on the cob", "maize"],
+    "answer": "Fresh sweet corn is harvested in March and May, wonderful for grilling and summer cooking.",
+    "link": "/produce-guide?search=Corn",
+    "linkText": "View Corn in Produce Guide"
+  },
+  {
+    "keywords": ["milk", "dairy", "fresh milk", "raw milk"],
+    "answer": "Fresh, wholesome milk from local dairy farms is supplied year-round across our partner markets.",
+    "link": "/produce-guide?search=Milk",
+    "linkText": "View Milk in Produce Guide"
+  },
+  {
+    "keywords": ["cheese", "artisan cheese", "cheddar", "brie", "dairy cheese"],
+    "answer": "Artisanal cheeses ranging from creamy brie to sharp cheddar are available year-round.",
+    "link": "/produce-guide?search=Cheese",
+    "linkText": "View Cheese in Produce Guide"
+  },
+  {
+    "keywords": ["fruit", "fruits", "fresh fruit", "sweet fruit"],
+    "answer": "Explore a wide variety of fresh seasonal fruits grown by local farmers in our Produce Guide.",
     "link": "/produce-guide",
-    "linkText": "Browse produce"
+    "linkText": "Explore All Fruits"
   },
   {
-    "keywords": ["seasonal", "by month", "in season", "this month"],
-    "answer": "Choose a month on the Seasonal Produce page to see available products and related markets.",
+    "keywords": ["vegetable", "vegetables", "veggie", "veggies", "greens", "organic vegetable"],
+    "answer": "Discover locally grown vegetables including carrots, tomatoes, potatoes, and spinach in the Produce Guide.",
+    "link": "/produce-guide",
+    "linkText": "Explore All Vegetables"
+  },
+  {
+    "keywords": ["herb", "herbs", "fresh herbs", "aromatics", "seasoning"],
+    "answer": "Find fresh culinary herbs like basil and mint to enhance your homemade dishes.",
+    "link": "/produce-guide",
+    "linkText": "Explore All Herbs"
+  },
+  {
+    "keywords": ["find market", "find a market", "market near me", "market directory", "markets", "market location", "address", "area", "downtown"],
+    "answer": "Use our Market Directory to find markets by area, distance, opening days, or available produce.",
+    "link": "/markets",
+    "linkText": "Browse Market Directory"
+  },
+  {
+    "keywords": ["hours", "opening hours", "open now", "open today", "market hours", "schedule", "when open", "closing time"],
+    "answer": "Each market card and detail page displays weekly schedules and indicates whether it is currently open.",
+    "link": "/markets",
+    "linkText": "Check Opening Schedules"
+  },
+  {
+    "keywords": ["season", "seasons", "seasonal", "by month", "in season", "spring", "summer", "fall", "autumn", "winter", "month"],
+    "answer": "Select any month on the Seasonal Produce page to discover what is harvested right now.",
     "link": "/products-seasons",
-    "linkText": "View seasonal produce"
+    "linkText": "View Seasonal Calendar"
   },
   {
-    "keywords": ["bookmark", "favorite", "note"],
-    "answer": "Save your favorite markets and products, then view them and add notes on the Bookmarks page.",
+    "keywords": ["bookmark", "bookmarks", "favorite", "favorites", "save market", "save product", "note", "notes", "personal note", "export"],
+    "answer": "Manage your saved markets and products, review your personal notes, or export your bookmark list.",
     "link": "/bookmarks",
-    "linkText": "View bookmarks"
+    "linkText": "Open My Bookmarks"
   },
   {
-    "keywords": ["contact", "report an issue", "report a problem"],
-    "answer": "You can find our contact information on the Contact page.",
+    "keywords": ["about", "about us", "who are you", "what is freshfind", "story", "mission"],
+    "answer": "FreshFind helps local communities easily discover nearby farmers markets and fresh seasonal produce.",
+    "link": "/about",
+    "linkText": "Learn About FreshFind"
+  },
+  {
+    "keywords": ["contact", "contact us", "help", "support", "email", "phone", "report issue", "feedback"],
+    "answer": "Need help or want to list your market? Get in touch with our team through the Contact page.",
     "link": "/contact",
-    "linkText": "Contact us"
+    "linkText": "Go to Contact Us"
+  },
+  {
+    "keywords": ["login", "log in", "sign in", "signup", "sign up", "register", "account"],
+    "answer": "Access your account or create a new one using the Login / Sign Up portal.",
+    "link": "/login",
+    "linkText": "Go to Login / Sign Up"
   }
 ]
+

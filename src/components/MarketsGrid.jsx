@@ -126,7 +126,7 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
                                                 </Link>
                                             </div>
                                             <div className="market-card-content">
-                                                <h3><Link className="lnk-market-name" to={`/markets/${market.id}/${market.slug}`}>{market.name} - {market.id}</Link></h3>
+                                                <h3><Link className="lnk-market-name" to={`/markets/${market.id}/${market.slug}`}>{market.name}</Link></h3>
                                                 {
                                                     (marketIsOpenNow) ? (
                                                         <div className="market-opennow">

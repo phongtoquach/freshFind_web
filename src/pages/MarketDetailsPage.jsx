@@ -40,7 +40,6 @@ function MarketDetailsPage() {
 
   const { marketId, marketSlug } = useParams();
   const foundMarket = getMarketByIdOrSlug(marketId || marketSlug);
-
   const market = foundMarket;
   const marketIdNum = Number(market?.id);
   const bookmarked = isMarketBookmarked(marketIdNum);

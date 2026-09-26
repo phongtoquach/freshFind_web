@@ -1138,6 +1138,7 @@ img {
   background: var(--green-600);
 }
 .simple-footer {
+  margin-top: auto;
   padding: 22px 0;
   color: var(--surface);
   background: var(--ink-950);

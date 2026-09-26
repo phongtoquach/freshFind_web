@@ -7,8 +7,6 @@ import { getAllCategories } from "../services/categoryService";
 
 function HomeMarketSearchBox() {
 
-    const { setUserLocation } = useContext(AppContext);
-
     console.log("[HomeMarketSearchBox] Vừa vào hàm component HomeMarketSearchBox !");
 
     useEffect(() => {
@@ -51,7 +49,6 @@ function HomeMarketSearchBox() {
             daysOfWeekStr = daysOfWeek.join(",");
         }
 
-        setUserLocation(undefined);
 
         navigate("/markets?productCateId=" + productCategoryId + "&daysOfWeek=" + daysOfWeekStr);
     }

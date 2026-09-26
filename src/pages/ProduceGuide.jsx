@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import categories from '../data/categories.json';
 import products from '../data/products.json';
 import markets from '../data/markets.json';
@@ -9,9 +9,11 @@ import { useBookmark } from "../context/BookmarkContext";
 import { useNote } from "../context/NoteContext";
 
 function ProduceGuide() {
-  const [search, setSearch] = useState(
-    () => new URLSearchParams(window.location.search).get('search') || ''
-  );
+  const [searchParams] = useSearchParams();
+  const querySearch = searchParams.get('search') || '';
+  const [search, setSearch] = useState(querySearch);
+
+  useEffect(() => {setSearch(querySearch);}, [querySearch]);
   const [selectedCategoryId, setSelectedCategoryId] = useState('all');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newNoteText, setNewNoteText] = useState('');
