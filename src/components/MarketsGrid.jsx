@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { getMarketsByFilters, sortMarketsByType, calculateDistance, formatDistance, isMarketOpenNow, getWorkingHoursOfCurrentDateByMarket } from "../services/marketService";
+import { getMarketsByFilters, sortMarketsByType, calculateDistance, formatDistance, isMarketOpenNow, getWorkingHoursOfCurrentDateByMarket, getNextOpenDayOfMarket } from "../services/marketService";
 
 import { truncateDescription } from "../utils/textUtils";
-import { getWeekDayDescByKey, getFormattedCurrentHourMinute } from "../utils/dateTimeUtils";
+import { getWeekDayDescByKey } from "../utils/dateTimeUtils";
 
 
 function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarketsCount }) {
@@ -100,9 +100,16 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
                                 sortedFilteredMarketsList.map((market) => {
                                     const marketIsOpenNow = isMarketOpenNow(market);
                                     let closeHourStr = "";
+                                    let nextOpenDayStr = "";
                                     if (marketIsOpenNow) {
                                         const curDateWorkingHoursObj = getWorkingHoursOfCurrentDateByMarket(market);
                                         closeHourStr = curDateWorkingHoursObj.end;
+                                    }
+                                    else {
+                                        const nextOpenDayObj = getNextOpenDayOfMarket(market.schedule);
+                                        if (nextOpenDayObj && typeof nextOpenDayObj === "object" && nextOpenDayObj !== null && !Array.isArray(nextOpenDayObj)) {
+                                            nextOpenDayStr = getWeekDayDescByKey(nextOpenDayObj.day);
+                                        }
                                     }
 
                                     return (
@@ -124,11 +131,13 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
                                                     (marketIsOpenNow) ? (
                                                         <div className="market-opennow">
                                                             <div className="green-badge"><span>OPEN NOW</span></div>
-                                                            
                                                             <span className="close-hour-msg">Close at {closeHourStr}</span>
                                                         </div>
                                                     ) : (
-                                                        <div className="red-badge"><span>CLOSED</span></div>
+                                                        <div className="market-closed">
+                                                            <div className="red-badge"><span>CLOSED</span></div>
+                                                            <span className="next-open-day-msg">Open next on {nextOpenDayStr}</span>
+                                                        </div>
                                                     )
                                                 }
                                                 

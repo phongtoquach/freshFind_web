@@ -393,6 +393,33 @@ export function getWorkingHoursOfCurrentDateByMarket(market) {
 }
 
 
+export function getNextOpenDayOfMarket(schedule) {
+    if (!Array.isArray(schedule) || schedule.length <= 0) {
+        return null;
+    }
+
+    const dayOrder = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+
+    const today = new Date().getDay();
+
+    // Kiểm tra 7 ngày tiếp theo, bắt đầu từ ngày mai
+    for (let i = 1; i <= 7; i++) {
+        const dayIndex = (today + i) % 7;
+        const dayName = dayOrder[dayIndex];
+
+        const scheduleItem = schedule.find(
+            item => item.day === dayName
+        );
+
+        if (scheduleItem && scheduleItem.open === true) {
+            return scheduleItem;
+        }
+    }
+
+    return null;
+}
+
+
 export function getMarketById(id) {
     if (!id) return null;
     const marketIdNum = Number(id);

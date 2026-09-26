@@ -583,7 +583,7 @@ img {
   padding-top: 5px;
 }
 
-.market-opennow {
+.market-opennow, .market-closed {
   display: flex;
   gap: 5px;
   align-items: center;
@@ -591,7 +591,12 @@ img {
 
 .market-opennow .close-hour-msg {
   color: #d97706;
-  font-size: 16px;
+  font-size: 14px;
+}
+
+.market-closed .next-open-day-msg {
+  color: #15803d;
+  font-size: 14px;
 }
 
 .green-badge {
