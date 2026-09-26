@@ -5,6 +5,15 @@ import marketsData from '../data/markets.json';
 
 const ProductsSeasonContext = createContext();
 
+// Helper kiểm tra sản phẩm có sẵn trong tháng (mảng rỗng hoặc không có nghĩa là có quanh năm)
+const isProductAvailableInMonth = (product, month) => {
+  if (month === null || month === undefined) return true;
+  if (!product || !Array.isArray(product.availableMonths) || product.availableMonths.length === 0) {
+    return true;
+  }
+  return product.availableMonths.includes(month);
+};
+
 export const ProductsSeasonProvider = ({ children }) => {
   const [seasons, setSeasons] = useState([]);
   const [products, setProducts] = useState([]);
@@ -47,7 +56,8 @@ export const ProductsSeasonProvider = ({ children }) => {
       getProductById,
       getMarketByProductId,
       activeMonth,
-      setActiveMonth
+      setActiveMonth,
+      isProductAvailableInMonth
     }}>
       {children}
     </ProductsSeasonContext.Provider>
