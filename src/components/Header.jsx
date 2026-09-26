@@ -4,7 +4,7 @@ import BookmarkContext from "../context/BookmarkContext";
 
 function Header() {
   const navigate = useNavigate();
-  const { bookmarkedIds } = useContext(BookmarkContext);
+  const { marketBookmarks } = useContext(BookmarkContext);
 
   const clickToBookmark = () => {
     navigate("/bookmarks");
@@ -46,7 +46,7 @@ function Header() {
               className="bookmark-nav"
               type="button"
             >
-              Bookmarks {bookmarkedIds.length > 0 && <span>{bookmarkedIds.length}</span>}
+              Bookmarks {marketBookmarks.length > 0 && <span>{marketBookmarks.length}</span>}
             </button>
           </div>
         </nav>

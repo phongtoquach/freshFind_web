@@ -15,11 +15,9 @@ function ProductList({ items = [] }) {
             src={product.image || "https://images.unsplash.com/photo-1542838132-92c53300491e?"}
           />
           <h3>{product.name}</h3>
-          <p className="product-category">Product</p>
-          <p className="product-price">Fresh</p>
           <p>{product.description}</p>
           <Link className="text-link" to={`/markets`}>
-            Find at a market <span aria-hidden="true">→</span>
+            Find at a market <span aria-hidden="true"></span>
           </Link>
         </article>
       ))}

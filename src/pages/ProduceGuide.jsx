@@ -2,24 +2,21 @@ import { useState } from 'react';
 import categories from '../data/categories.json';
 import products from '../data/products.json';
 import '../assets/css/produceGuide.css';
+import Modal from "../components/Modal";
+import { useBookmark } from "../context/BookmarkContext";
+import { useNote } from "../context/NoteContext";
 
 function ProduceGuide() {
   const [search, setSearch] = useState('');
   const [selectedCategoryId, setSelectedCategoryId] = useState('all');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newNoteText, setNewNoteText] = useState('');
+  const [activeProductId, setActiveProductId] = useState(null);
+
+  const { isProductBookmarked, toggleProductBookmark } = useBookmark();
+  const { getNotesByProductId, addProductNote, deleteProductNote } = useNote();
 
   const keyword = search.trim();
-
-  const filteredCategories = categories.filter((category) => {
-    const matchCategory =
-      selectedCategoryId === 'all' || category.id === Number(selectedCategoryId);
-
-    const matchSearch =
-      !keyword ||
-      category.name.includes(keyword) ||
-      category.description.includes(keyword);
-
-    return matchCategory && matchSearch;
-  });
 
   const displayedProducts = products.filter((product) => {
     const matchCategory =
@@ -27,11 +24,27 @@ function ProduceGuide() {
 
     const matchSearch =
       !keyword ||
-      product.name.includes(keyword) ||
-      product.description.includes(keyword);
+      product.name.toLowerCase().includes(keyword.toLowerCase()) ||
+      product.description.toLowerCase().includes(keyword.toLowerCase());
 
     return matchCategory && matchSearch;
   });
+
+  const handleNoteClick = (productId) => {
+    setActiveProductId(productId);
+    setIsModalOpen(true);
+  };
+
+  const handleAddNote = (e) => {
+    e.preventDefault();
+    if (newNoteText.trim() && activeProductId) {
+      addProductNote(activeProductId, newNoteText);
+      setNewNoteText("");
+    }
+  };
+
+  const productNotes = activeProductId ? getNotesByProductId(activeProductId) : [];
+  const activeProduct = products.find(p => p.id === activeProductId);
 
   return (
     <div className="produce-guide">
@@ -81,6 +94,15 @@ function ProduceGuide() {
           {displayedProducts.length > 0 ? (
             displayedProducts.map((product) => (
               <div key={product.id} className="product-items">
+                <button
+                  className={`bookmark ${isProductBookmarked(product.id) ? 'active' : ''}`}
+                  onClick={() => toggleProductBookmark(product.id)}
+                >
+                  {isProductBookmarked(product.id) ? 'Bookmark' : 'Bookmark'}
+                </button>
+                {isProductBookmarked(product.id) && (
+                  <button className="note" onClick={() => handleNoteClick(product.id)}>Note</button>
+                )}
                 <img src={product.image} alt={product.name} />
                 <div className='container_name_category'>
                   <strong>{product.name}</strong>
@@ -96,6 +118,42 @@ function ProduceGuide() {
           )}
         </div>
       </section>
+
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <div className="modal_container">
+          <h2 className="modal_header">Notes for {activeProduct?.name}</h2>
+
+          <form onSubmit={handleAddNote}>
+            <input
+              className="modal_input"
+              type="text"
+              placeholder="Write some things..."
+              value={newNoteText}
+              onChange={(e) => setNewNoteText(e.target.value)}
+            />
+          </form>
+
+          <div className="your_note_here_container">
+            {productNotes.length === 0 ? (
+              <p className="place_holder_modal">Your notes will appear here.</p>
+            ) : (
+              <ul className="note_list">
+                {productNotes.map((note) => (
+                  <li key={note.id} className="note_item">
+                    <span className="note_item_text">{note.text}</span>
+                    <button
+                      className="note_item_button_x"
+                      onClick={() => deleteProductNote(activeProductId, note.id)}
+                    >
+                      x
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }

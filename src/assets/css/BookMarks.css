@@ -67,3 +67,23 @@
 .container_main {
   margin-top: 20px;
 }
+
+.bookmark_fav_list {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.btn_fav{
+  padding: 6px 12px;
+  background: transparent;
+  border: none;
+  transition: all .3s ease;
+}
+
+.btn_fav.active,
+.btn_fav:hover {
+  color: green;
+}

@@ -5,9 +5,9 @@ import BookmarkContext from "../context/BookmarkContext";
 import { getMarketById } from "../services/marketService";
 
 function Bookmarks() {
-  const { bookmarkedIds, toggleBookmark } = useContext(BookmarkContext);
+  const { marketBookmarks, toggleMarketBookmark } = useContext(BookmarkContext);
 
-  const bookmarkedMarkets = bookmarkedIds
+  const bookmarkedMarkets = marketBookmarks
     .map((id) => getMarketById(id))
     .filter(Boolean);
 
@@ -19,6 +19,14 @@ function Bookmarks() {
           <p className="header_desc">
             Your saved markets, produce, and personal notes.
           </p>
+        </div>
+        <div className="bookmark_fav">
+          <ul className="bookmark_fav_list">
+            <li className="bookmark_fav_item"><button className="btn_fav active">
+              My Markets</button></li>
+            <li className="bookmark_fav_item"><button className="btn_fav">
+              My Products</button></li>
+          </ul>
         </div>
         <div className="container_main">
           {bookmarkedMarkets.length === 0 ? (
@@ -47,7 +55,7 @@ function Bookmarks() {
 
                 <button
                   className="saved_delete_btn"
-                  onClick={() => toggleBookmark(market.id)}
+                  onClick={() => toggleMarketBookmark(market.id)}
                 >
                   <img
                     className="saved_delete_img"
