@@ -97,7 +97,13 @@ function MarketsGrid({ filters, sortType, userCurrentLocation, limit, showMarket
                                     return (
                                         <div className="market-card" key={market.id} data-marketid={market.id}>
                                             <div className="market-image-wrap">
-                                                <img alt="Riverside Green Market fresh produce market" src="/images/fresh-produce-banner.jpg"/>
+                                                {
+                                                    (market.images.length > 0) ? (
+                                                        <img src={market.images[0]} alt={market.name} />
+                                                    ) : (
+                                                        <img src="/images/market_default_image.jpg"/>
+                                                    )
+                                                }
                                             </div>
                                             <div className="market-card-content">
                                                 <h3>{market.name} - {market.id}</h3>

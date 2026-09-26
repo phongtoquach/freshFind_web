@@ -4,13 +4,13 @@ import "../App.css";
 function Footer() {
   const [visitCount, setVisitCount] = useState(234);
 
-useEffect(() => {
-  const oldCount = Number(localStorage.getItem("visits") ?? 233);
-  const newCount = oldCount + 1;
+  useEffect(() => {
+    const oldCount = Number(localStorage.getItem("visits") ?? 233);
+    const newCount = oldCount + 1;
 
-  localStorage.setItem("visits", newCount);
-  setVisitCount(newCount);
-}, []);
+    localStorage.setItem("visits", newCount);
+    setVisitCount(newCount);
+  }, []);
 
   return (
     <footer className="simple-footer">
