@@ -1,14 +1,33 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import chatbotData from '../data/chatbox.json';
+import products from '../data/products.json';
+import markets from '../data/markets.json';
 import '../assets/css/chatbox.css';
 
 function normalizeText(text) {
-  return text
-    .toLowerCase()
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/đ/g, 'd');
+  return text.toLowerCase();
 }
+
+const productChatbotData = products.map((product) => ({
+  keywords: [product.name, product.slug],
+  answer: `You can find ${product.name} in the Produce Guide.`,
+  link: `/produce-guide?search=${encodeURIComponent(product.name)}`,
+  linkText: `View ${product.name}`
+}));
+
+const marketChatbotData = markets.map((market) => ({
+  keywords: [market.name, market.slug],
+  answer: `View details and opening hours for ${market.name}.`,
+  link: `/markets/${market.id}/${market.slug}`,
+  linkText: `View ${market.name}`
+}));
+
+const searchableChatbotData = [
+  ...chatbotData,
+  ...productChatbotData,
+  ...marketChatbotData
+];
 
 function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,11 +49,12 @@ function Chatbot() {
     const questionToSearch = normalizeText(userText);
     const matches = [];
 
-    for (const item of chatbotData) {
+    for (const item of searchableChatbotData) {
       let longestKeyword = 0;
 
       for (const keyword of item.keywords) {
-        if (questionToSearch.includes(keyword) && keyword.length > longestKeyword) {
+        const normalizedKeyword = normalizeText(keyword);
+        if (questionToSearch.includes(normalizedKeyword) && normalizedKeyword.length > longestKeyword) {
           longestKeyword = keyword.length;
         }
       }

@@ -14,6 +14,7 @@ import AboutPage from "./pages/AboutPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import Bookmarks from "./pages/BookMarks.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
+import NotFound from "./pages/NotFound.jsx";
 import Chatbot from './components/Chatbox.jsx';
 
 import Header from "./components/Header.jsx";
@@ -41,6 +42,7 @@ function App() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<LoginPage signup />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
 
             <Chatbot />

@@ -54,13 +54,66 @@
 .chatbot-suggestions {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 6px;
   margin: 10px 0;
 }
 
-.chatbot-suggestions button,
+.chatbot-suggestions button {
+  padding: 6px 12px;
+  border: 1px solid #287a43;
+  border-radius: 999px;
+  background: #f3f8f4;
+  color: #1f5c34;
+  font-size: 12px;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.chatbot-suggestions button:hover {
+  background: #287a43;
+  color: #fff;
+}
+
+.chatbot-suggestions button:active {
+  transform: scale(0.97);
+}
+
+.chatbot-suggestions button:focus-visible {
+  outline: 2px solid #287a43;
+  outline-offset: 2px;
+}
+
 .chatbot-box form button {
   cursor: pointer;
+}
+
+.chatbot-message a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+  padding: 4px 10px 4px 8px;
+  border-radius: 999px;
+  background: #287a43;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.chatbot-message a:hover {
+  background: #1f5c34;
+}
+
+.chatbot-message a:hover::after {
+  transform: translateX(2px);
+}
+
+.chatbot-message a:focus-visible {
+  outline: 2px solid #1f5c34;
+  outline-offset: 2px;
 }
 
 .chatbot-box form {

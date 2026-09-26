@@ -7,6 +7,7 @@ import productsData from "../data/products.json";
 import BookmarkContext from "../context/BookmarkContext";
 import NoteContext from "../context/NoteContext";
 import Modal from "../components/Modal";
+import NotFound from "./NotFound";
 
 const DAYS_OF_WEEK = [
   { key: "mon", label: "Monday", dayIndex: 1 },
@@ -40,6 +41,10 @@ function MarketDetailsPage() {
 
   const { marketId, marketSlug } = useParams();
   const foundMarket = getMarketByIdOrSlug(marketId || marketSlug);
+
+  if (!foundMarket) {
+    return <NotFound />;
+  }
 
   const market = foundMarket;
   const marketIdNum = Number(market?.id);
