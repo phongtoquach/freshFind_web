@@ -58,7 +58,7 @@ function Header() {
             </button>
 
             <div style={{ paddingLeft: "10px" }}><img src="/images/clock.png" alt="clock" /></div>
-            {getFormattedCurrentHourMinute()}
+            <span>{time}</span>
           </div>
         </nav>
       </header>
