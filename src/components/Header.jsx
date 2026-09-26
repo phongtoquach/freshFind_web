@@ -25,7 +25,7 @@ function Header() {
               Markets
             </NavLink>
             <NavLink to="/produce-guide" end>
-              Produce
+              Farm Products
             </NavLink>
             <NavLink to="/products-seasons" end>
               Seasonal
