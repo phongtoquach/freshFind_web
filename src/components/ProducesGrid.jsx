@@ -124,7 +124,7 @@ function ProducesGrid({ getByCurrentMonth, filters, limit }) {
                                                 }
                                             </div>
                                             <div className="market-card-content">
-                                                <h3>{product.name} - {product.id}</h3>
+                                                <h3>{product.name}</h3>
                                                 {/* <p className="market-desc">{ truncateDescription(product.description, 50) }</p> */}
                                                 
                                                 <p><b>Available Months :</b> {formatMonthsList(product.availableMonths)}</p>
