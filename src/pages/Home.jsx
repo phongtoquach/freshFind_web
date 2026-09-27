@@ -35,7 +35,7 @@ function Home() {
     if (userLocation === undefined) {
         console.log("[Home] Đang lấy user current location ! Only show loadng text !");
         return (
-            <div style={{ textAlign: "center" }}>Loading...</div>
+            <div style={{ textAlign: "center" }}>Loading user current position...</div>
         )
     }
 
