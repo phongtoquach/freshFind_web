@@ -16,7 +16,7 @@ function ProductList({ items = [] }) {
           />
           <h3>{product.name}</h3>
           <p>{product.description}</p>
-          <Link className="text-link" to={`/markets`}>
+          <Link className="text-link" to={`/markets?productCateId=${product.categoryId}`}>
             Find at a market <span aria-hidden="true"></span>
           </Link>
         </article>
