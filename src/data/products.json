@@ -179,5 +179,75 @@
         "image": "public/images/cheese.jpg",
         "seasonIds": [],
         "availableMonths": []
+    },
+    {
+        "id": 13,
+        "name": "Brown Rice",
+        "slug": "brown-rice",
+        "categoryId": 5,
+        "description": "Nutritious whole-grain brown rice sourced from local Vietnamese rice farms.",
+        "image": "/images/brown-rice.jpg",
+        "seasonIds": [],
+        "availableMonths": []
+    },
+    {
+        "id": 14,
+        "name": "Jasmine Rice",
+        "slug": "jasmine-rice",
+        "categoryId": 5,
+        "description": "Fragrant jasmine rice with soft texture, grown by local rice farmers.",
+        "image": "/images/jasmine-rice.jpg",
+        "seasonIds": [],
+        "availableMonths": []
+    },
+    {
+        "id": 15,
+        "name": "Oats",
+        "slug": "oats",
+        "categoryId": 5,
+        "description": "Whole oats suitable for breakfast bowls, baking, and homemade granola.",
+        "image": "/images/oats.jpg",
+        "seasonIds": [],
+        "availableMonths": [3,6,9]
+    },
+    {
+        "id": 16,
+        "name": "Quinoa",
+        "slug": "quinoa",
+        "categoryId": 5,
+        "description": "Wholesome quinoa grains packed with plant-based protein and nutrients.",
+        "image": "/images/quinoa.jpg",
+        "seasonIds": [],
+        "availableMonths": [9,10,11]
+    },
+    {
+        "id": 17,
+        "name": "Honey",
+        "slug": "honey",
+        "categoryId": 6,
+        "description": "Pure natural honey collected from local beekeepers and flowering farms.",
+        "image": "public/images/honey.jpg",
+        "seasonIds": [],
+        "availableMonths": []
+    },
+    {
+        "id": 18,
+        "name": "Strawberry Jam",
+        "slug": "strawberry-jam",
+        "categoryId": 6,
+        "description": "Small-batch strawberry jam made from ripe local strawberries and natural ingredients.",
+        "image": "public/images/strawberry-jam.jpg",
+        "seasonIds": [],
+        "availableMonths": []
+    },
+    {
+        "id": 19,
+        "name": "Mango Jam",
+        "slug": "mango-jam",
+        "categoryId": 6,
+        "description": "Sweet and fruity mango jam prepared from locally grown ripe mangoes.",
+        "image": "public/images/mango-jam.jpg",
+        "seasonIds": [],
+        "availableMonths": [2,3,4,5,6,9,11,12]
     }
 ]
