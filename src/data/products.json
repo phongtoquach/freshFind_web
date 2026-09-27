@@ -226,7 +226,7 @@
         "slug": "honey",
         "categoryId": 6,
         "description": "Pure natural honey collected from local beekeepers and flowering farms.",
-        "image": "public/images/honey.jpg",
+        "image": "/images/honey.jpg",
         "seasonIds": [],
         "availableMonths": []
     },
@@ -236,7 +236,7 @@
         "slug": "strawberry-jam",
         "categoryId": 6,
         "description": "Small-batch strawberry jam made from ripe local strawberries and natural ingredients.",
-        "image": "public/images/strawberry-jam.jpg",
+        "image": "/images/strawberry-jam.jpg",
         "seasonIds": [],
         "availableMonths": []
     },
@@ -246,7 +246,7 @@
         "slug": "mango-jam",
         "categoryId": 6,
         "description": "Sweet and fruity mango jam prepared from locally grown ripe mangoes.",
-        "image": "public/images/mango-jam.jpg",
+        "image": "/images/mango-jam.jpg",
         "seasonIds": [],
         "availableMonths": [2,3,4,5,6,9,11,12]
     }
