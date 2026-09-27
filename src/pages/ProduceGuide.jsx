@@ -8,6 +8,8 @@ import Modal from "../components/Modal";
 import { useBookmark } from "../context/BookmarkContext";
 import { useNote } from "../context/NoteContext";
 
+import { formatMonthsList } from "../utils/dateTimeUtils";
+
 function ProduceGuide() {
   const [searchParams] = useSearchParams();
   const querySearch = searchParams.get('search') || '';
@@ -119,9 +121,7 @@ function ProduceGuide() {
                 <p className='description'>{product.description}</p>
                 <p className="available-months">
                   <strong>Available: </strong>
-                  {product.availableMonths.length === 0
-                    ? 'Year-round'
-                    : product.availableMonths.map((month) => `Month ${month}`).join(', ')}
+                  {formatMonthsList(product.availableMonths)}
                 </p>
                 <div className="product-markets">
                   <strong>Find at markets:</strong>

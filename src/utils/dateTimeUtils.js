@@ -52,7 +52,7 @@ export function getMonthDescByMonthNo(monthNo) {
 
 export function formatMonthsList(months) {
     if (!Array.isArray(months) || months.length <= 0) {
-        return "Year around";
+        return "Year round";
     }
     
     const sortedMonths = [...new Set(months)].sort((a, b) => a - b);
