@@ -180,11 +180,8 @@
             },
             {
                 "day": "sun",
-                "open": true,
-                "hours": {
-                    "start": "09:00",
-                    "end": "19:00"
-                }
+                "open": false,
+                "hours": null
             }
         ]
     },
