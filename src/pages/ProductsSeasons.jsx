@@ -11,16 +11,10 @@ function ProductsSeasons() {
   const {
     products,
     markets,
-    seasons,
     isLoading,
-    activeSeasonId,
-    setActiveSeasonId,
-    currentSeason,
     activeMonth,
     setActiveMonth,
   } = useProductsSeason();
-
-  if (isLoading) return <div>Loading...</div>;
 
   // Handler khi click vào tháng
   const handleMonthClick = (month) => {
@@ -30,25 +24,6 @@ function ProductsSeasons() {
   // Handler khi click vào All
   const handleAllClick = () => {
     setActiveMonth(null);
-  };
-
-  const formatDuration = (startMonth, endMonth) => {
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    if (!startMonth || !endMonth) return "";
-    return `${months[startMonth - 1]} to ${months[endMonth - 1]}`;
   };
 
   // Logic lọc sản phẩm theo tháng và từ khóa tìm kiếm
@@ -83,6 +58,8 @@ function ProductsSeasons() {
       market.productIds.some((id) => validProductIds.has(id)),
     );
   }, [markets, filteredProducts]);
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className="Container_Product">
